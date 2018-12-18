@@ -15,6 +15,11 @@ public class LabelService {
 
 	}
 
+	public boolean deleteLabel(int id) {
+		return this.labelDAO.deleteLabel(id);
+
+	}
+
 	public List<Label> getAllLabel() {
 		return this.labelDAO.getAllLabel();
 
@@ -26,11 +31,6 @@ public class LabelService {
 
 	public boolean updateLabel(Request request) {
 		return this.labelDAO.updateLabel(request);
-	}
-
-	public boolean deleteLabel(int id) {
-		return this.labelDAO.deleteLabel(id);
-
 	}
 
 }

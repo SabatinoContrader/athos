@@ -4,11 +4,11 @@ import main.controller.Request;
 
 public interface View {
 
-    public void showResults (Request request);
+	public String getInput();
 
-    public void showOptions ();
+	public void showOptions();
 
-    public String getInput ();
+	public void showResults(Request request);
 
-    public void submit();
+	public void submit();
 }

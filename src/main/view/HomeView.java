@@ -1,17 +1,17 @@
 package main.view;
 
+import java.util.Scanner;
+
 import main.MainDispatcher;
 import main.controller.Request;
-import sun.applet.Main;
-
-import java.util.Scanner;
 
 public class HomeView implements View {
 
 	private int choice;
 
-	public void showResults(Request request) {
-
+	public String getInput() {
+		Scanner scanner = new Scanner(System.in);
+		return scanner.nextLine();
 	}
 
 	public void showOptions() {
@@ -26,9 +26,13 @@ public class HomeView implements View {
 		this.choice = Integer.parseInt(getInput());
 	}
 
+	public void showResults(Request request) {
+
+	}
+
 	public void submit() {
 
-		 if (choice == 1) {
+		if (choice == 1) {
 			Request request = new Request();
 			request.put("choice", choice);
 			MainDispatcher.getInstance().callAction("UserType", "doControl", request);
@@ -39,11 +43,6 @@ public class HomeView implements View {
 			MainDispatcher.getInstance().callAction("SubMenuBotMessage", "doControl", request);
 
 		}
-	}
-
-	public String getInput() {
-		Scanner scanner = new Scanner(System.in);
-		return scanner.nextLine();
 	}
 
 }

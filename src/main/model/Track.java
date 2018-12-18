@@ -1,50 +1,54 @@
 package main.model;
 
 public class Track {
-	
-	private long id;
+
+	private int id;
 	private String name;
-	private long startPoiId;
-	private long endPoiId;
-	
-public Track() {
-	
-}
+	private int startPoiId;
+	private int endPoiId;
 
-public long getId() {
-	return id;
-}
+	public Track() {
 
-public String getName() {
-	return name;
-}
+	}
 
-public void setName(String name) {
-	this.name = name;
-}
+	public Track(int id, String name, int startPoiId, int endPoiId) {
 
-public long getStartPoiId() {
-	return startPoiId;
-}
+		this.id = id;
+		this.name = name;
+		this.startPoiId = startPoiId;
+		this.endPoiId = endPoiId;
+	}
 
-public void setStartPoiId(long startPoiId) {
-	this.startPoiId = startPoiId;
-}
+	public int getEndPoiId() {
+		return endPoiId;
+	}
 
-public long getEndPoiId() {
-	return endPoiId;
-}
+	public long getId() {
+		return id;
+	}
 
-public void setEndPoiId(long endPoiId) {
-	this.endPoiId = endPoiId;
-}
+	public String getName() {
+		return name;
+	}
 
-public Track(long id, String name, long startPoiId, long endPoiId) {
-	
-	this.id = id;
-	this.name = name;
-	this.startPoiId = startPoiId;
-	this.endPoiId = endPoiId;
-}
+	public long getStartPoiId() {
+		return startPoiId;
+	}
+
+	public void setEndPoiId(int endPoiId) {
+		this.endPoiId = endPoiId;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setStartPoiId(int startPoiId) {
+		this.startPoiId = startPoiId;
+	}
 
 }

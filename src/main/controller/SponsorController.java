@@ -28,8 +28,7 @@ public class SponsorController implements Controller {
 		case "readSponsor":
 			MainDispatcher.getInstance().callView("Sponsor", request);
 			break;
-		
-		
+
 		case "insert":
 			MainDispatcher.getInstance().callView("SponsorInsert", request);
 			break;
@@ -44,7 +43,7 @@ public class SponsorController implements Controller {
 				this.message = "Errore durante l'inserimento del sponsor...!!!";
 			}
 			request.put("message", this.message);
-        	MainDispatcher.getInstance().callView("Sponsor", request);
+			MainDispatcher.getInstance().callView("Sponsor", request);
 			break;
 
 		case "update":
@@ -53,22 +52,22 @@ public class SponsorController implements Controller {
 			MainDispatcher.getInstance().callView("SponsorUpdate", request);
 			break;
 
-		case "updateSponsor":		
+		case "updateSponsor":
 			if (sponsorService.updateSponsor(request)) {
 				this.message = "Sponsor modificato con successo...";
 			} else {
 				this.message = "Errore durante la modifica dello Sponsor!!!";
 			}
 			request.put("message", this.message);
-        	MainDispatcher.getInstance().callView("Sponsor", request);
-        	break;
-        	
-        case "delete":
-        	List<Sponsor> sponsor3 = sponsorService.getAllSponsor();
+			MainDispatcher.getInstance().callView("Sponsor", request);
+			break;
+
+		case "delete":
+			List<Sponsor> sponsor3 = sponsorService.getAllSponsor();
 			request.put("listaSponsor", sponsor3);
 			MainDispatcher.getInstance().callView("SponsorDelete", request);
 			break;
-			
+
 		case "deleteSponsor":
 			if (this.sponsorService.deleteSponsor(Integer.parseInt(request.get("deleteSponsor").toString()))) {
 
@@ -81,8 +80,8 @@ public class SponsorController implements Controller {
 
 			MainDispatcher.getInstance().callView("Sponsor", request);
 			break;
-			
-		case "return" :
+
+		case "return":
 			MainDispatcher.getInstance().callView("HomeGamer", request);
 			break;
 		}

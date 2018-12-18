@@ -1,51 +1,50 @@
 package main.model;
 
 public class User {
-	
-	private long id;
+
+	private int id;
 	private String username;
 	private String password;
-	private long role;
-	
-public User() {
+	private int role;
 
-}
+	public User() {
 
-public long getId() {
-	return id;
-}
+	}
 
+	public User(int id, String username, String password, int role) {
 
-public String getUsername() {
-	return username;
-}
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.role = role;
+	}
 
-public void setUsername(String username) {
-	this.username = username;
-}
+	public int getId() {
+		return id;
+	}
 
-public String getPassword() {
-	return password;
-}
+	public String getPassword() {
+		return password;
+	}
 
-public void setPassword(String password) {
-	this.password = password;
-}
+	public int getRole() {
+		return role;
+	}
 
-public long getRole() {
-	return role;
-}
+	public String getUsername() {
+		return username;
+	}
 
-public void setRole(long role) {
-	this.role = role;
-}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-public User(long id, String username, String password, long role) {
-	
-	this.id = id;
-	this.username = username;
-	this.password = password;
-	this.role = role;
-}
+	public void setRole(int role) {
+		this.role = role;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 }

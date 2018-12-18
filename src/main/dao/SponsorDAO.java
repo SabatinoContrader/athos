@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +22,21 @@ public class SponsorDAO {
 
 	public SponsorDAO() {
 
+	}
+
+	public boolean deleteSponsor(int id) {
+		Connection connection = ConnectionSingleton.getInstance();
+
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
+			preparedStatement.setLong(1, id);
+			preparedStatement.execute();
+			return true;
+		} catch (SQLException e) {
+
+			GestoreEccezioni.getInstance().gestisciEccezione(e);
+			return false;
+		}
 	}
 
 	public List<Sponsor> getAllSponsor() {
@@ -93,21 +107,6 @@ public class SponsorDAO {
 			return false;
 		}
 
-	}
-
-	public boolean deleteSponsor(int id) {
-		Connection connection = ConnectionSingleton.getInstance();
-
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
-			preparedStatement.setLong(1, id);
-			preparedStatement.execute();
-			return true;
-		} catch (SQLException e) {
-
-			GestoreEccezioni.getInstance().gestisciEccezione(e);
-			return false;
-		}
 	}
 
 }

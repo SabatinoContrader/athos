@@ -8,7 +8,6 @@ import main.MainDispatcher;
 import main.controller.Request;
 import main.model.Sponsor;
 import main.service.SponsorService;
-import main.view.View;
 
 public class SponsorReadView implements View {
 	private String mode = "";
@@ -21,24 +20,9 @@ public class SponsorReadView implements View {
 	}
 
 	@Override
-	public void showResults(Request request) {
-		if (request != null) {
-			
-			List<Sponsor> listasponsor = (List<Sponsor>) request.get("listaSponsor");
-			System.out.println("----- Visualizza Sponsor-----");
-	        System.out.println();
-	        System.out.println();
-	        System.out.format("+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+%n");
-		    System.out.format("%12s %20s %20s %30s %n","1. ID SPONSOR","2. ID POINT OF INTEREST","3. NOME","4. DESCRIZIONE");
-		    System.out.format("+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+%n");
-		  		  		
-	  		
-	        for(Sponsor sponsor:listasponsor){
-	        	    //String leftAlignFormat ="| %-4s | %-9s | %-15s |%n";
-	                System.out.format( "%12s %20s %20s %30s %n", sponsor.getId() , sponsor.getPoiID() , sponsor.getName(), sponsor.getDescription());
-	            }	
-	          System.out.println();
-		}
+	public String getInput() {
+		Scanner scanner = new Scanner(System.in);
+		return scanner.nextLine();
 
 	}
 
@@ -48,9 +32,27 @@ public class SponsorReadView implements View {
 	}
 
 	@Override
-	public String getInput() {
-		Scanner scanner = new Scanner(System.in);
-		return scanner.nextLine();
+	public void showResults(Request request) {
+		if (request != null) {
+
+			List<Sponsor> listasponsor = (List<Sponsor>) request.get("listaSponsor");
+			System.out.println("----- Visualizza Sponsor-----");
+			System.out.println();
+			System.out.println();
+			System.out.format(
+					"+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+%n");
+			System.out.format("%12s %20s %20s %30s %n", "1. ID SPONSOR", "2. ID POINT OF INTEREST", "3. NOME",
+					"4. DESCRIZIONE");
+			System.out.format(
+					"+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+%n");
+
+			for (Sponsor sponsor : listasponsor) {
+				// String leftAlignFormat ="| %-4s | %-9s | %-15s |%n";
+				System.out.format("%12s %20s %20s %30s %n", sponsor.getId(), sponsor.getPoiID(), sponsor.getName(),
+						sponsor.getDescription());
+			}
+			System.out.println();
+		}
 
 	}
 

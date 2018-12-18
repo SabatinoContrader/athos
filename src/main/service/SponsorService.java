@@ -15,6 +15,11 @@ public class SponsorService {
 
 	}
 
+	public boolean deleteSponsor(int idSponsor) {
+		return this.sponsorDAO.deleteSponsor(idSponsor);
+
+	}
+
 	public List<Sponsor> getAllSponsor() {
 		return this.sponsorDAO.getAllSponsor();
 
@@ -26,11 +31,6 @@ public class SponsorService {
 
 	public boolean updateSponsor(Request request) {
 		return this.sponsorDAO.updateSponsor(request);
-	}
-
-	public boolean deleteSponsor(int idSponsor) {
-		return this.sponsorDAO.deleteSponsor(idSponsor);
-
 	}
 
 }

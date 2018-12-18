@@ -8,7 +8,6 @@ import main.MainDispatcher;
 import main.controller.Request;
 import main.model.Label;
 import main.service.LabelService;
-import main.view.View;
 
 public class LabelReadView implements View {
 	private String mode = "";
@@ -21,24 +20,9 @@ public class LabelReadView implements View {
 	}
 
 	@Override
-	public void showResults(Request request) {
-		if (request != null) {
-			
-			List<Label> listalabel = (List<Label>) request.get("listaLabel");
-			System.out.println("----- Visualizza Indovinelli-----");
-	        System.out.println();
-	        System.out.println();
-	        System.out.format("+------------------------------------------------------------------------------------------------------------------------------------------------+%n");
-		    System.out.format("%12s %40s %80s %12s %n","1. ID INDOVINELLO","2. NOME","3. DESCRIZIONE", "4. ID GAME ASSOCIATO");
-		    System.out.format("+------------------------------------------------------------------------------------------------------------------------------------------------+%n");
-		  		  		
-	  		
-	        for(Label label:listalabel){
-	        	    //String leftAlignFormat ="| %-4s | %-9s | %-15s |%n";
-	                System.out.format( "%12s %40s %80s %12s %n", label.getId() , label.getName(), label.getDescription(), label.getIdGame());
-	            }	
-	          System.out.println();
-		}
+	public String getInput() {
+		Scanner scanner = new Scanner(System.in);
+		return scanner.nextLine();
 
 	}
 
@@ -48,9 +32,27 @@ public class LabelReadView implements View {
 	}
 
 	@Override
-	public String getInput() {
-		Scanner scanner = new Scanner(System.in);
-		return scanner.nextLine();
+	public void showResults(Request request) {
+		if (request != null) {
+
+			List<Label> listalabel = (List<Label>) request.get("listaLabel");
+			System.out.println("----- Visualizza Indovinelli-----");
+			System.out.println();
+			System.out.println();
+			System.out.format(
+					"+------------------------------------------------------------------------------------------------------------------------------------------------+%n");
+			System.out.format("%12s %40s %80s %12s %n", "1. ID INDOVINELLO", "2. NOME", "3. DESCRIZIONE",
+					"4. ID GAME ASSOCIATO");
+			System.out.format(
+					"+------------------------------------------------------------------------------------------------------------------------------------------------+%n");
+
+			for (Label label : listalabel) {
+				// String leftAlignFormat ="| %-4s | %-9s | %-15s |%n";
+				System.out.format("%12s %40s %80s %12s %n", label.getId(), label.getName(), label.getDescription(),
+						label.getIdGame());
+			}
+			System.out.println();
+		}
 
 	}
 
