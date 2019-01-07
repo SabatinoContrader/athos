@@ -18,27 +18,27 @@ public class UserService {
         this.userDAO = new UserDAO();
     }
 
-    public List<User> getAllUsers () {
-        return this.userDAO.getAllUsers();
-    }
+//    public List<User> getAllUsers () {
+//        return this.userDAO.getAllUsers();
+//    }
+//    
+//    public User getUser (int id) {
+//        return this.userDAO.getUser(id);
+//    }
     
-    public User getUser (int id) {
-        return this.userDAO.getUser(id);
-    }
-    
-
-    public boolean insertUser (User user) {
-        return this.userDAO.insertUser(user);
-    }
-    
-    public boolean deleteUser(int idUser) {
-    	return this.userDAO.deleteUser(idUser);
-    }
-    
-    
-    public boolean updateUser(HttpServletRequest request) {
-    	return this.userDAO.updateUser(request);
-    }
+//
+//    public boolean insertUser (User user) {
+//        return this.userDAO.insertUser(user);
+//    }
+//    
+//    public boolean deleteUser(int idUser) {
+//    	return this.userDAO.deleteUser(idUser);
+//    }
+//    
+//    
+//    public boolean updateUser(HttpServletRequest request) {
+//    	return this.userDAO.updateUser(request);
+//    }
 }
 
 

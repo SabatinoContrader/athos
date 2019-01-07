@@ -8,20 +8,48 @@
     <servlet-class>com.virtualpairprogrammers.servlets.LoginTraderServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>PrincipiServlet</servlet-name>
-    <servlet-class>com.virtualpairprogrammers.servlets.PrincipiServlet</servlet-class>
+    <servlet-name>HomeSuperServlet</servlet-name>
+    <servlet-class>com.virtualpairprogrammers.servlets.HomeSuperServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>BadgeReaderServlet</servlet-name>
-    <servlet-class>com.virtualpairprogrammers.servlets.BadgeReaderServlet</servlet-class>
+    <servlet-name>HomeGamerServlet</servlet-name>
+    <servlet-class>com.virtualpairprogrammers.servlets.HomeGamerServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SponsorServlet</servlet-name>
+    <servlet-class>com.virtualpairprogrammers.servlets.SponsorServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SintomiServlet</servlet-name>
+    <servlet-class>com.virtualpairprogrammers.servlets.SintomiServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>CustomersServlet</servlet-name>
     <servlet-class>com.virtualpairprogrammers.servlets.CustomersServlet</servlet-class>
   </servlet>
   <servlet>
+  	<servlet-name>ErbaServlet</servlet-name>
+  	<servlet-class>com.virtualpairprogrammers.servlets.ErbaServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MovimentoServlet</servlet-name>
+    <servlet-class>com.virtualpairprogrammers.servlets.MovimentoServlet</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>MenuServlet</servlet-name>
     <servlet-class>com.virtualpairprogrammers.servlets.MenuServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MedicoServlet</servlet-name>
+    <servlet-class>com.virtualpairprogrammers.servlets.MedicoServlet</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>BadgeServlet</servlet-name>
+  <servlet-class>com.virtualpairprogrammers.servlets.BadgeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ProdottoServlet</servlet-name>
+    <servlet-class>com.virtualpairprogrammers.servlets.ProdottoServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>LogoutServlet</servlet-name>
@@ -35,29 +63,34 @@
     <servlet-name>RegisterServlet</servlet-name>
     <servlet-class>com.virtualpairprogrammers.servlets.RegisterServlet</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>CategorieStandarServlet</servlet-name>
-    <servlet-class>com.virtualpairprogrammers.servlets.CategorieStandarServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CategorieStandarServlet</servlet-name>
-    <url-pattern>/CategorieStandarServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>StandardServlet</servlet-name>
-    <servlet-class>com.virtualpairprogrammers.servlets.StandardServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>StandardServlet</servlet-name>
-    <url-pattern>/StandardServlet</url-pattern>
-  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>LoginTraderServlet</servlet-name>
     <url-pattern>/LoginTraderServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>PrincipiServlet</servlet-name>
-    <url-pattern>/PrincipiServlet</url-pattern>
+    <servlet-name>HomeSuperServlet</servlet-name>
+    <url-pattern>/HomeSuperServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HomeGamerServlet</servlet-name>
+    <url-pattern>/HomeGamerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SponsorServlet</servlet-name>
+    <url-pattern>/SponsorServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SintomiServlet</servlet-name>
+    <url-pattern>/SintomiServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ProdottoServlet</servlet-name>
+    <url-pattern>/ProdottoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ErbaServlet</servlet-name>
+    <url-pattern>/ErbaServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
@@ -75,45 +108,34 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/RegisterServlet</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
-    <servlet-name>BadgeReaderServlet</servlet-name>
-    <url-pattern>/BadgeReaderServlet</url-pattern>
+    <servlet-name>MovimentoServlet</servlet-name>
+    <url-pattern>/MovimentoServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>CustomersServlet</servlet-name>
     <url-pattern>/CustomersServlet</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BadgeServlet</servlet-name>
+    <url-pattern>/BadgeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MedicoServlet</servlet-name>
+    <url-pattern>/MedicoServlet</url-pattern>
+  </servlet-mapping>
   <session-config>
     <session-timeout>4000</session-timeout>
   </session-config>
+  
   <servlet>
-    <description></description>
-    <display-name>ParametriServlet</display-name>
-    <servlet-name>ParametriServlet</servlet-name>
-    <servlet-class>com.virtualpairprogrammers.servlets.ParametriServlet</servlet-class>
+    <servlet-name>AssegnazioneServlet</servlet-name>
+    <servlet-class>com.virtualpairprogrammers.servlets.AssegnazioneServlet</servlet-class>
   </servlet>
+
   <servlet-mapping>
-    <servlet-name>ParametriServlet</servlet-name>
-    <url-pattern>/ParametriServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>MatrixServlet</display-name>
-    <servlet-name>MatrixServlet</servlet-name>
-    <servlet-class>com.virtualpairprogrammers.servlets.MatrixServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>MatrixServlet</servlet-name>
-    <url-pattern>/MatrixServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>ExpParametroServlet</display-name>
-    <servlet-name>ExpParametroServlet</servlet-name>
-    <servlet-class>com.virtualpairprogrammers.servlets.ExpParametroServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ExpParametroServlet</servlet-name>
-    <url-pattern>/ExpParametroServlet</url-pattern>
+    <servlet-name>AssegnazioneServlet</servlet-name>
+    <url-pattern>/AssegnazioneServlet</url-pattern>
   </servlet-mapping>
 </web-app>
