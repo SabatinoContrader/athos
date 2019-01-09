@@ -2,26 +2,26 @@
 
 <html>
 <head>
-<title>Menu Principale SPONSOR</title>
+<title>Menu Principale GIOCHI</title>
 </head>
 <body>
      
-     <h2>------- MENU PRINCIPALE GESTIONE SPONSOR -------</h2>
+     <h2>------- MENU PRINCIPALE GESTIONE GIOCHI-------</h2>
      <h2>    <h2>
 
-     <h3>1. Visualizza/Modifica/Elimina gli Sponsor</h3>
-     <form action="SponsorServlet" method="post">
+     <h3>1. Visualizza/Modifica/Elimina i giochi</h3>
+     <form action="GameServlet" method="post">
      <button type="submit" value="view" name="richiesta">Vai</button>
      </form>
      
-     <h3>2. Inserisci nuovo Sponsor</h3>
-     <form action="SponsorServlet" method="post">
+     <h3>2. Inserisci nuovo gioco</h3>
+     <form action="GameServlet" method="post">
      <button type="submit" value="insert" name="richiesta">Vai</button>
      </form>
      
      
      <h3>3. Return<h3>
-     <form action="SponsorServlet" method="post">
+     <form action="GameServlet" method="post">
      <input type="submit" value="Return" name="richiesta">
      </form>
 

@@ -23,6 +23,14 @@
     <servlet-name>LabelServlet</servlet-name>
     <servlet-class>com.virtualpairprogrammers.servlets.LabelServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>TrackServlet</servlet-name>
+    <servlet-class>com.virtualpairprogrammers.servlets.TrackServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GameServlet</servlet-name>
+    <servlet-class>com.virtualpairprogrammers.servlets.GameServlet</servlet-class>
+  </servlet>
 
   <servlet>
     <servlet-name>MenuServlet</servlet-name>
@@ -62,6 +70,14 @@
   <servlet-mapping>
     <servlet-name>LabelServlet</servlet-name>
     <url-pattern>/LabelServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TrackServlet</servlet-name>
+    <url-pattern>/TrackServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GameServlet</servlet-name>
+    <url-pattern>/GameServlet</url-pattern>
   </servlet-mapping>
   
     <servlet-mapping>

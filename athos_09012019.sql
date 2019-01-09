@@ -29,10 +29,9 @@ CREATE TABLE `game` (
   `name` varchar(45) DEFAULT NULL,
   `gamer_id` int(11) DEFAULT NULL,
   `location` varchar(45) DEFAULT NULL,
-  `label_id` int(11) DEFAULT NULL,
   `help` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +40,7 @@ CREATE TABLE `game` (
 
 LOCK TABLES `game` WRITE;
 /*!40000 ALTER TABLE `game` DISABLE KEYS */;
+INSERT INTO `game` VALUES (1,'Milano Game',1,'Milano','bohhhh');
 /*!40000 ALTER TABLE `game` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -158,7 +158,7 @@ CREATE TABLE `track` (
   `start_poi_id` int(11) DEFAULT NULL,
   `end_poi_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -167,6 +167,7 @@ CREATE TABLE `track` (
 
 LOCK TABLES `track` WRITE;
 /*!40000 ALTER TABLE `track` DISABLE KEYS */;
+INSERT INTO `track` VALUES (1,'percorso numero 1',1,2),(3,'ciaone',3,4);
 /*!40000 ALTER TABLE `track` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,4 +235,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-09 10:11:58
+-- Dump completed on 2019-01-09 15:10:16

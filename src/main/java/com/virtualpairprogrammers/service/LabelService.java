@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.virtualpairprogrammers.dao.LabelDAO;
 import com.virtualpairprogrammers.model.Label;
-import com.virtualpairprogrammers.model.Sponsor;
 
 public class LabelService {
 

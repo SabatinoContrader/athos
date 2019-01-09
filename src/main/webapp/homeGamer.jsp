@@ -23,7 +23,7 @@
      <button type="submit" value="sponsor" name="richiesta">Vai</button>
      </form>
      
-     <h3>4. Gestione Tracciamenti</h3>
+     <h3>4. Gestione Percorsi</h3>
      <form action="HomeGamerServlet" method="post">
      <button type="submit" value="track" name="richiesta">Vai</button>
      </form>
