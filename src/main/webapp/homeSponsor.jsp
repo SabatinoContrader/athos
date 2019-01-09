@@ -21,7 +21,7 @@
      </form>
      
      
-     <h3>5. Return<h3>
+     <h3>3. Return<h3>
      <form action="SponsorServlet" method="post">
      <input type="submit" value="Return" name="richiesta">
      </form>

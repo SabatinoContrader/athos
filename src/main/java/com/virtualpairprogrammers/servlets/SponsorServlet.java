@@ -49,7 +49,7 @@ public class SponsorServlet extends HttpServlet{
     				  
     	       	   }
     			   else {
-    				   response.sendRedirect("/sponsorInsert.jsp");
+    				   response.sendRedirect("sponsorInsert.jsp");
 
     			   }
     		     }

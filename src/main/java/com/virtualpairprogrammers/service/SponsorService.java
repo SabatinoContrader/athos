@@ -2,10 +2,10 @@ package com.virtualpairprogrammers.service;
 
 import java.util.List;
 
-import com.virtualpairprogrammers.servlets.Request;
+import javax.servlet.http.HttpServletRequest;
+
 import com.virtualpairprogrammers.dao.SponsorDAO;
 import com.virtualpairprogrammers.model.Sponsor;
-import javax.servlet.http.HttpServletRequest;
 
 public class SponsorService {
 

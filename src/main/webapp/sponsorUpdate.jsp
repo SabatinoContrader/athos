@@ -6,13 +6,13 @@
 <%
 	List<Sponsor> allSponsor = (List<Sponsor>) request.getAttribute("allSponsor");
 %>
-<h1>------Modifica Sponsor------</h1>
+
 </head>
 <body>
 	<%
 		int scelta = Integer.parseInt(request.getParameter("id"));
 	%>
-
+	<h1>------Modifica Sponsor------</h1>
 	<form action="SponsorServlet" method="post">
 
 		<table border="2">

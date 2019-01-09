@@ -12,21 +12,21 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.virtualpairprogrammers.utils.ConnectionSingleton;
 import com.virtualpairprogrammers.utils.GestoreEccezioni;
-import com.virtualpairprogrammers.model.Sponsor;
+import com.virtualpairprogrammers.model.Label;
 
-public class SponsorDAO {
+public class LabelDAO {
 
 	String campo = "";
 
-	private final String QUERY_ALL = " select * from sponsor ";
-	private final String QUERY_INSERT = " insert into sponsor (poi_id,name,description) values (?,?,?) ";
-	private String QUERY_DELETE = " delete from sponsor where id = ?";
+	private final String QUERY_ALL = " select * from label ";
+	private final String QUERY_INSERT = " insert into label (orders,description,idGame) values (?,?,?) ";
+	private String QUERY_DELETE = " delete from label where id = ?";
 
-	public SponsorDAO() {
+	public LabelDAO() {
 
 	}
 
-	public boolean deleteSponsor(int id) {
+	public boolean deleteLabel(int id) {
 		Connection connection = ConnectionSingleton.getInstance();
 
 		try {
@@ -41,43 +41,43 @@ public class SponsorDAO {
 		}
 	}
 
-	public List<Sponsor> getAllSponsor() {
-		List<Sponsor> allSponsor = new ArrayList<Sponsor>();
+	public List<Label> getAllLabel() {
+		List<Label> allLabel = new ArrayList<Label>();
 		Connection connection = ConnectionSingleton.getInstance();
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_ALL);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
-				Sponsor newSponsor = new Sponsor();
+				Label newLabel = new Label();
 
-				newSponsor.setId(resultSet.getInt("id"));
-				newSponsor.setPoiID(resultSet.getLong("poi_id"));
-				newSponsor.setName(resultSet.getString("name"));
-				newSponsor.setDescription(resultSet.getString("description"));
-				allSponsor.add(newSponsor);
+				newLabel.setId(resultSet.getLong("id"));
+				newLabel.setOrders(resultSet.getLong("orders"));
+				newLabel.setDescription(resultSet.getString("description"));
+				newLabel.setIdGame(resultSet.getLong("idGame"));
+				allLabel.add(newLabel);
 
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			// System.out.println("Errore nella ricerca dello sponsor!!");
+			System.out.println("Errore nella ricerca dell' indovinello!!");
 		}
 
-		return allSponsor;
+		return allLabel;
 
 	}
 
-	public boolean insertSponsor(Sponsor sponsor) {
+	public boolean insertLabel(Label label) {
 
 		Connection connection = ConnectionSingleton.getInstance();
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
-			preparedStatement.setLong(1, sponsor.getPoiID());
-			preparedStatement.setString(2, sponsor.getName());
-			preparedStatement.setString(3, sponsor.getDescription());
-			preparedStatement.execute();
+			preparedStatement.setLong(1, label.getOrders());
+			preparedStatement.setString(2, label.getDescription());
+			preparedStatement.setLong(3, label.getIdGame());
+			preparedStatement.executeUpdate();
 			return true;
 
 		}
@@ -89,15 +89,15 @@ public class SponsorDAO {
 		}
 	}
 
-	public boolean updateSponsor(HttpServletRequest request) {
+	public boolean updateLabel(HttpServletRequest request) {
 		Connection connection = ConnectionSingleton.getInstance();
 
 		try {
 			String campo = (String) request.getParameter("campo");
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("update sponsor set " + campo + "=? where id =?");
+					.prepareStatement("update label set " + campo + "=? where id =?");
 			preparedStatement.setString(1, (String) request.getParameter("newCampo"));
-			preparedStatement.setInt(2,  Integer.parseInt(request.getParameter("id")));
+			preparedStatement.setInt(2, Integer.parseInt(request.getParameter("id")));
 			preparedStatement.execute();
 			return true;
 
@@ -111,30 +111,30 @@ public class SponsorDAO {
 
 	}
 	
-	public List<Sponsor> getSponsor(int id) {
-		List<Sponsor> sponsor = new ArrayList<>();
+	public List<Label> getLabel(long id) {
+		List<Label> label = new ArrayList<>();
 		Connection connection = ConnectionSingleton.getInstance();
 
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery("select * from sponsor where id=" +id);
+			ResultSet resultSet = statement.executeQuery("select * from label where id=" +id);
 			while (resultSet.next()) {
 				
-				int idSponsor= resultSet.getInt("id");
-				int idPoi= resultSet.getInt("poi_id");
-				String nome=resultSet.getString("name");
+				int idLabel= resultSet.getInt("id");
+				int order=resultSet.getInt("orders");
 				String descrizione= resultSet.getString("description");
+				int idGame=resultSet.getInt("idGame");
 				
-				sponsor.add(new Sponsor(idSponsor, idPoi, nome, descrizione));
+				label.add(new Label(idLabel, order, descrizione, idGame));
 
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			// System.out.println("Errore nella ricerca degli sponsor!!");
+			// System.out.println("Errore nella ricerca degli indovinelli!!");
 		}
 
-		return sponsor;
+		return label;
 
 	}
 
