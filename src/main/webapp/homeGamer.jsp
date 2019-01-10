@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Menu Principale D.I.M.</title>
+<title>Menu Principale Gamer</title>
 </head>
 <body>
      
