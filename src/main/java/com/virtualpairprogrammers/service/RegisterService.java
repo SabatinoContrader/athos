@@ -1,19 +1,18 @@
 package com.virtualpairprogrammers.service;
 
-import com.virtualpairprogrammers.dao.UtenteDAO;
-import com.virtualpairprogrammers.model.Utente;
+import com.virtualpairprogrammers.dao.RegisterDAO;
+import com.virtualpairprogrammers.model.User;
 
 public class RegisterService {
-
-    private UtenteDAO utenteDAO;
+	
+	private RegisterDAO registerDAO;
 
     public RegisterService() {
-        this.utenteDAO = new UtenteDAO();
+        this.registerDAO = new RegisterDAO();
     }
 
-    public boolean insert(Utente utente) {
-         return this.utenteDAO.insert(utente);
-
+    public boolean register (User utente) {
+        return this.registerDAO.register(utente);
     }
 
 }

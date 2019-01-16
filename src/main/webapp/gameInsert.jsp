@@ -11,10 +11,8 @@
 	 
   <form action="GameServlet?richiesta=insertGame" method="post">
     
-    <h2>Nome del gioco: <input type="text" name="name"></h2>
-    <h2>Id gamer creatore: <input type="text" name="gamerId"></h2>
-    <h2>Luogo del gioco: <input type="text" name="location"> </h2>
-    <h2>Aiuto: <input type="text" name="help"> </h2>
+    <h2>Nome del gioco: <input type="text" name="nome"></h2>
+    <h2>Descrizione del percorso: <input type="text" name="descrPercorso"> </h2>
    	
     <input type="submit" value="Inserisci" name="richiesta">
   </form>

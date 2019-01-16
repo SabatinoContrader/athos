@@ -45,10 +45,13 @@ public class HomeSuperServlet extends HttpServlet {
 	    			   if (userService.insertGamer(new User(idGamer, username, password, 1))){
 	    				  this.listaGamer = this.userService.getAllGamer();
 	    				  request.setAttribute("allGamer", this.listaGamer);
+	    				  request.setAttribute("messaggio", "Gamer inserito con successo.\n");
 	    				  getServletContext().getRequestDispatcher("/gamerView.jsp").forward(request, response);
+	    				  
 	    				  
 	    	       	   }
 	    			   else {
+	    				   request.setAttribute("messaggio", "Problemi con l'inserimento del gamer. Riprovare.\n");
 	    				   response.sendRedirect("gamerInsert.jsp");
 
 	    			   }
@@ -66,6 +69,7 @@ public class HomeSuperServlet extends HttpServlet {
 	   				this.userService.updateGamer(request);
 	   				this.listaGamer= this.userService.getAllGamer();
 	   				request.setAttribute("allGamer",this.listaGamer);
+	   				request.setAttribute("messaggio", "Gamer modificato con successo.\n");
 	   				getServletContext().getRequestDispatcher("/gamerView.jsp").forward(request, response);
 	   				break; 
 	   					
@@ -73,6 +77,7 @@ public class HomeSuperServlet extends HttpServlet {
 	   				this.userService.deleteGamer(Integer.parseInt(request.getParameter("id")));
 	   				this.listaGamer = this.userService.getAllGamer();
 	   				request.setAttribute("allGamer",this.listaGamer);
+	   				request.setAttribute("messaggio", "Gamer cancellato con successo.\n");
 	   				getServletContext().getRequestDispatcher("/gamerView.jsp").forward(request, response);
 	   				break; 
 	            

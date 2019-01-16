@@ -39,19 +39,19 @@ public class LabelServlet extends HttpServlet{
     		   if (request != null) {
     			   int idLabel = 0; 
     			   long ordine= Long.parseLong(request.getParameter("ordine").toString());
-    			   //int ordine = Integer.parseInt(request.getParameter("ordine").toString());
     			   String descr = request.getParameter("descr").toString();
-    			   //int idGame = Integer.parseInt(request.getParameter("idGame").toString());
     			   long idGame = Long.parseLong(request.getParameter("idGame").toString());
     			   
     			   if (labelService.insertLabel(new Label(idLabel, ordine, descr, idGame))){
     				  this.listaLabel = this.labelService.getAllLabel();
     				  request.setAttribute("allLabel", this.listaLabel);
+    				  request.setAttribute("messaggio", "Indizio inserito con successo.\n");
     				  getServletContext().getRequestDispatcher("/labelView.jsp").forward(request, response);
     				  
     	       	   }
     			   else {
-    				   response.sendRedirect("/labelInsert.jsp");
+    				   request.setAttribute("messaggio", "Problemi con l'inserimento del' indizio. Riprovare.\n");
+    				   response.sendRedirect("labelInsert.jsp");
 
     			   }
     		     }
@@ -68,6 +68,7 @@ public class LabelServlet extends HttpServlet{
    				this.labelService.updateLabel(request);
    				this.listaLabel= this.labelService.getAllLabel();
    				request.setAttribute("allLabel",this.listaLabel);
+   				request.setAttribute("messaggio", "Indizio modificato con successo.\n");
    				getServletContext().getRequestDispatcher("/labelView.jsp").forward(request, response);
    				break; 
    				
@@ -75,6 +76,7 @@ public class LabelServlet extends HttpServlet{
    				this.labelService.deleteLabel(Integer.parseInt(request.getParameter("id")));
    				this.listaLabel = this.labelService.getAllLabel();
    				request.setAttribute("allLabel",this.listaLabel);
+   				request.setAttribute("messaggio", "Indizio cancellato con successo.\n");
    				getServletContext().getRequestDispatcher("/labelView.jsp").forward(request, response);
    				break; 
                 

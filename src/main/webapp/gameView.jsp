@@ -14,10 +14,9 @@
 
      <tr>   
          <th> ID GIOCO</th>
-         <th> NOME GIOCO </th>
          <th> ID GAMER CREATORE </th>
-         <th> LUOGO DEL GIOCO </th>
-         <th> AIUTO </th>
+         <th> NOME GIOCO </th>
+         <th> DESCRIZIONE DEL PERCORSO CON PRIMO INDIZIO </th>
      </tr>
      
         <%for (Game game : allGame) { %>
@@ -25,10 +24,9 @@
      <tr>
         
          <td> <%= game.getId()%> </td>
-         <td> <%= game.getName()%> </td>
-         <td> <%= game.getGamerId()%> </td>
-         <td> <%= game.getLocation()%> </td>
-         <td> <%= game.getHelp()%> </td>
+         <td> <%= game.getIdCreatore()%> </td>
+         <td> <%= game.getNome()%> </td>
+         <td> <%= game.getDescrPercorso()%> </td>
        
 		 <td> <a href="GameServlet?richiesta=update&id=<%= game.getId() %>">Modifica</a></td>
 		 <td> <a href="GameServlet?richiesta=delete&id=<%= game.getId() %>">Elimina</a></td>

@@ -34,7 +34,7 @@ public class GameService {
 		return this.gameDAO.updateGame(request);
 	}
 	
-	public List<Game> getGame(long id) {
+	public List<Game> getGame(int id) {
 		return this.gameDAO.getGame(id);
 
 	}

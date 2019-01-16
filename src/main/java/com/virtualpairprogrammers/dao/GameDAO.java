@@ -19,7 +19,7 @@ public class GameDAO {
 	String campo = "";
 
 	private final String QUERY_ALL = " select * from game ";
-	private final String QUERY_INSERT = " insert into game (name,gamer_id,location, help) values (?,?,?,?) ";
+	private final String QUERY_INSERT = " insert into game (idCreatore,nome, descrPercorso) values (?,?,?) ";
 	private String QUERY_DELETE = " delete from game where id = ?";
 
 	public GameDAO() {
@@ -52,10 +52,9 @@ public class GameDAO {
 				Game newGame = new Game();
 
 				newGame.setId(resultSet.getInt("id"));
-				newGame.setName(resultSet.getString("name"));
-				newGame.setGamerId(resultSet.getInt("gamer_id"));
-				newGame.setLocation(resultSet.getString("location"));
-				newGame.setHelp(resultSet.getString("help"));
+				newGame.setIdCreatore(resultSet.getInt("idCreatore"));
+				newGame.setNome(resultSet.getString("nome"));
+				newGame.setDescrPercorso(resultSet.getString("descrPercorso"));
 				allGame.add(newGame);
 
 			}
@@ -75,10 +74,9 @@ public class GameDAO {
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
-			preparedStatement.setString(1, game.getName());
-			preparedStatement.setLong(2, game.getGamerId());
-			preparedStatement.setString(3, game.getLocation());
-			preparedStatement.setString(4, game.getHelp());
+			preparedStatement.setInt(1, game.getIdCreatore());
+			preparedStatement.setString(2, game.getNome());
+			preparedStatement.setString(3, game.getDescrPercorso());
 			preparedStatement.executeUpdate();
 			return true;
 
@@ -113,7 +111,7 @@ public class GameDAO {
 
 	}
 	
-	public List<Game> getGame(long id) {
+	public List<Game> getGame(int id) {
 		List<Game> game = new ArrayList<>();
 		Connection connection = ConnectionSingleton.getInstance();
 
@@ -123,12 +121,11 @@ public class GameDAO {
 			while (resultSet.next()) {
 				
 				int idGame= resultSet.getInt("id");
-				String nome= resultSet.getString("name");
-				int gamerId=resultSet.getInt("gamer_id");
-				String location= resultSet.getString("location");
-				String help= resultSet.getString("help");
+				int idCreatore=resultSet.getInt("idCreatore");
+				String nome= resultSet.getString("nome");
+				String descrPercorso= resultSet.getString("descrPercorso");
 				
-				game.add(new Game(idGame, nome, gamerId, location, help));
+				game.add(new Game(idGame, idCreatore, nome, descrPercorso));
 
 			}
 

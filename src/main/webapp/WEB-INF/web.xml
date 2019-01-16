@@ -23,14 +23,6 @@
     <servlet-name>LabelServlet</servlet-name>
     <servlet-class>com.virtualpairprogrammers.servlets.LabelServlet</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>TrackServlet</servlet-name>
-    <servlet-class>com.virtualpairprogrammers.servlets.TrackServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>GameServlet</servlet-name>
-    <servlet-class>com.virtualpairprogrammers.servlets.GameServlet</servlet-class>
-  </servlet>
 
   <servlet>
     <servlet-name>MenuServlet</servlet-name>
@@ -48,12 +40,24 @@
     <servlet-name>AssegnazioneServlet</servlet-name>
     <servlet-class>com.virtualpairprogrammers.servlets.AssegnazioneServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>PoiServlet</servlet-name>
+    <servlet-class>com.virtualpairprogrammers.servlets.PoiServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GameServlet</servlet-name>
+    <servlet-class>com.virtualpairprogrammers.servlets.GameServlet</servlet-class>
+  </servlet>
   
   <!-- _______________________________________________________________________________________ -->
   
   <servlet-mapping>
     <servlet-name>LoginTraderServlet</servlet-name>
     <url-pattern>/LoginTraderServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PoiServlet</servlet-name>
+    <url-pattern>/PoiServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>HomeSuperServlet</servlet-name>
@@ -71,14 +75,6 @@
     <servlet-name>LabelServlet</servlet-name>
     <url-pattern>/LabelServlet</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>TrackServlet</servlet-name>
-    <url-pattern>/TrackServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>GameServlet</servlet-name>
-    <url-pattern>/GameServlet</url-pattern>
-  </servlet-mapping>
   
     <servlet-mapping>
     <servlet-name>MenuServlet</servlet-name>
@@ -95,6 +91,10 @@
   <servlet-mapping>
     <servlet-name>AssegnazioneServlet</servlet-name>
     <url-pattern>/AssegnazioneServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GameServlet</servlet-name>
+    <url-pattern>/GameServlet</url-pattern>
   </servlet-mapping>
 
   <session-config>

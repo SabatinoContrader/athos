@@ -37,13 +37,12 @@ public class GameServlet extends HttpServlet{
     		    
     	   case "insertGame":
     		   if (request != null) {
-    			   int idGame = 0; 
-    			   String name = request.getParameter("name").toString();
-    			   int gamerId = Integer.parseInt(request.getParameter("gamerId").toString());
-    			   String location = request.getParameter("location").toString();
-    			   String help = request.getParameter("help").toString();
+    			   int id = 0; 
+    			   int idCreatore=Integer.parseInt(session.getAttribute("idUser").toString());
+    			   String nome = request.getParameter("nome").toString();
+    			   String descrPercorso = request.getParameter("descrPercorso").toString();
     			   
-    			   if (gameService.insertGame(new Game(idGame, name, gamerId, location, help))){
+    			   if (gameService.insertGame(new Game(id,idCreatore, nome, descrPercorso))){
     				  this.listaGame = this.gameService.getAllGame();
     				  request.setAttribute("allGame", this.listaGame);
     				  getServletContext().getRequestDispatcher("/gameView.jsp").forward(request, response);

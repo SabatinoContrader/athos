@@ -25,10 +25,12 @@ public class LoginTraderServlet extends HttpServlet {
 	        String password = request.getParameter("password").toString();
 	        User u = loginService.ruolo(nomeUtente, password);
 	        if (u != null) {
+	        	session.setAttribute("idUser", u.getId());
 	        	request.setAttribute("messaggio", "Login corretto\n");
 	        	if (u.getRole() == 0) {
 					getServletContext().getRequestDispatcher("/homeSuper.jsp").forward(request,response);
 				} else if (u.getRole() == 1) {
+					
 					getServletContext().getRequestDispatcher("/homeGamer.jsp").forward(request,response);
 				} else if (u.getRole() == 2) {
 					getServletContext().getRequestDispatcher("/homePlayer.jsp").forward(request,response);
@@ -39,7 +41,7 @@ public class LoginTraderServlet extends HttpServlet {
 	        	
 	        }
 	        else {
-	        	request.setAttribute("messaggio", "Username o Password sbagiati.\n");
+	        	request.setAttribute("messaggio", "Username o Password sbagliati.");
 	            getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
 	        }
 	    }

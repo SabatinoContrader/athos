@@ -3,61 +3,56 @@ package com.virtualpairprogrammers.model;
 public class Game {
 
 	private int id;
-	private String name;
-	private int gamerId;
-	private String location;
-	private String help;
+	private int idCreatore;
+	private String nome;
+	private String descrPercorso;
 
 	public Game() {
 	}
 
-	public Game(int id, String name, int gamerId, String location, String help) {
+	public Game(int id, int idCreatore, String nome, String descrPercorso) {
 
 		this.id = id;
-		this.name = name;
-		this.gamerId = gamerId;
-		this.location = location;
-		this.help = help;
+		this.idCreatore = idCreatore;
+		this.nome = nome;
+		this.descrPercorso = descrPercorso;
 	}
 
-	public int getGamerId() {
-		return gamerId;
-	}
-
-	public String getHelp() {
-		return help;
-	}
-
-	public long getId() {
+	public int getId() {
 		return id;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setGamerId(int gamerId) {
-		this.gamerId = gamerId;
-	}
-
-	public void setHelp(String help) {
-		this.help = help;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public void setLocation(String location) {
-		this.location = location;
+	public int getIdCreatore() {
+		return idCreatore;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setIdCreatore(int idCreatore) {
+		this.idCreatore = idCreatore;
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getDescrPercorso() {
+		return descrPercorso;
+	}
+
+	public void setDescrPercorso(String descrPercorso) {
+		this.descrPercorso = descrPercorso;
+	}
+
+
+
+	
+
 
 }
