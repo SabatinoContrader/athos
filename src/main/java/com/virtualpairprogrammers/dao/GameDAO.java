@@ -18,7 +18,7 @@ public class GameDAO {
 
 	String campo = "";
 
-	private final String QUERY_ALL = " select * from game ";
+	private final String QUERY_ALL = " select * from game where id=? ";
 	private final String QUERY_INSERT = " insert into game (idCreatore,nome, descrPercorso) values (?,?,?) ";
 	private String QUERY_DELETE = " delete from game where id = ?";
 
@@ -41,12 +41,13 @@ public class GameDAO {
 		}
 	}
 
-	public List<Game> getAllGame() {
+	public List<Game> getAllGame(int idGamer) {
 		List<Game> allGame = new ArrayList<Game>();
 		Connection connection = ConnectionSingleton.getInstance();
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_ALL);
+			preparedStatement.setInt(1, idGamer);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				Game newGame = new Game();
@@ -77,7 +78,15 @@ public class GameDAO {
 			preparedStatement.setInt(1, game.getIdCreatore());
 			preparedStatement.setString(2, game.getNome());
 			preparedStatement.setString(3, game.getDescrPercorso());
-			preparedStatement.executeUpdate();
+			
+			if(preparedStatement.execute()) {
+				Statement statement = connection.createStatement();
+				ResultSet resultSet= statement.executeQuery("select max(id) from game");
+				while (resultSet.next()) {
+					game.setId(resultSet.getInt("id"));
+				}
+			}
+			
 			return true;
 
 		}

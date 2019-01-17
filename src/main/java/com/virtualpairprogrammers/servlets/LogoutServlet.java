@@ -12,6 +12,7 @@ public class LogoutServlet extends HttpServlet {
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.invalidate();
+        request.setAttribute("messaggio", " ");
         response.sendRedirect("index.jsp");
     }
 }

@@ -21,8 +21,8 @@ public class GameService {
 
 	}
 
-	public List<Game> getAllGame() {
-		return this.gameDAO.getAllGame();
+	public List<Game> getAllGame(int idGamer) {
+		return this.gameDAO.getAllGame(idGamer);
 
 	}
 

@@ -1,9 +1,10 @@
 <%@ page import="com.virtualpairprogrammers.model.Game" %>
+<%@ page import="com.virtualpairprogrammers.model.Poi" %>
 <%@ page import="java.util.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-     
+	 <% List<Poi> allPoi = (List<Poi>) request.getAttribute("allPoi");%>     
 </head>
 <body>
 
@@ -13,6 +14,13 @@
     
     <h2>Nome del gioco: <input type="text" name="nome"></h2>
     <h2>Descrizione del percorso: <input type="text" name="descrPercorso"> </h2>
+    <br>
+    <h2>Seleziona i Poi nell'ordine desiderato</h2>
+    <select>
+    	<%for (Poi poi : allPoi) { %>
+	  		<option value="<%= poi.getId()%>">(<%= poi.getId()%>,<%= poi.getId()%>) <%= poi.getCity()%></option>
+	    <% }%>
+	</select>
    	
     <input type="submit" value="Inserisci" name="richiesta">
   </form>
