@@ -17,7 +17,7 @@ public class PoiDAO {
 	String campo = "";
 
 	private final String QUERY_ALL = " select * from poi ";
-	private final String QUERY_INSERT = " insert into poi (id, city , hystorical ) values (?,?,?) ";
+	private final String QUERY_INSERT = " insert into poi (latitudine,longitudine ,idSponsor,indizio) values (?,?,?,?) ";
 	private String QUERY_DELETE = " delete from poi where id = ?";
 
 	public PoiDAO() {
@@ -35,8 +35,10 @@ public class PoiDAO {
 				Poi newPoi = new Poi();
 
 				newPoi.setId(resultSet.getInt("id"));
-				newPoi.setCity(resultSet.getString("city"));
-				newPoi.setHystorical(resultSet.getString("hystorical"));
+				newPoi.setLatitudine(resultSet.getFloat("latitudine"));
+				newPoi.setLongitudine(resultSet.getFloat("longitudine"));
+				newPoi.setIdSponsor(resultSet.getInt("idSponsor"));
+				newPoi.setIndizio(resultSet.getString("indizio"));
 				allPoi.add(newPoi);
 
 			}
@@ -56,10 +58,12 @@ public class PoiDAO {
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
-			preparedStatement.setInt(1, (int) poi.getId());
-			preparedStatement.setString(2, poi.getCity());
-			preparedStatement.setString(3, poi.getHystorical());
-			preparedStatement.execute();
+
+            preparedStatement.setFloat(1, (float) poi.getLatitudine());
+			preparedStatement.setFloat(2, (float) poi.getLongitudine());
+			preparedStatement.setInt(3, (int) poi.getIdSponsor());
+			preparedStatement.setString(4, poi.getIndizio());
+			preparedStatement.executeUpdate();
 			return true;
 
 		}
@@ -118,10 +122,12 @@ public class PoiDAO {
 			while (resultSet.next()) {
 				
 				int idPoi= resultSet.getInt("id");
-				String city = resultSet.getString("city");
-				String hystorical = resultSet.getString("hystorical");
+				float latitudine = resultSet.getFloat("latitudine");
+				float longitudine = resultSet.getFloat("longitudine");
+				int idSponsor = resultSet.getInt("idSponsor");
+				String indizio = resultSet.getString("indizio");
 				
-				poi.add(new Poi(id, city, hystorical));
+				poi.add(new Poi(id, latitudine, longitudine, idSponsor, indizio));
 
 			}
 

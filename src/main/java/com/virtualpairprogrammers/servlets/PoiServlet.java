@@ -37,18 +37,18 @@ public class PoiServlet extends HttpServlet{
     	   case "insertPoi":
     		   if (request != null) {
     			   int idPoi = 0; 
-    			   String city = request.getParameter("city").toString();
-    			   String hystorical = request.getParameter("hystorical").toString();
+    			   float latitudine = Float.parseFloat( request.getParameter("latitudine").toString());
+    			   float longitudine = Float.parseFloat(request.getParameter("longitudine").toString());
+    			   int idSponsor = Integer.parseInt(request.getParameter("idSponsor").toString());
+    			   String indizio = request.getParameter("indizio").toString();
     			   
-    			   if (poiService.insertPoi(new Poi(idPoi, city, hystorical))){
+    			   if (poiService.insertPoi(new Poi(idPoi, latitudine,longitudine,idSponsor,indizio))){
     				  this.listaPoi = this.poiService.getAllPoi();
     				  request.setAttribute("allPoi", this.listaPoi);
-    				  getServletContext().getRequestDispatcher("/poiView.jsp").forward(request, response);
-    				  
+    				  getServletContext().getRequestDispatcher("/poiView.jsp").forward(request, response);  				  
     	       	   }
     			   else {
     				   response.sendRedirect("poiInsert.jsp");
-
     			   }
     		     }
     		   break;    
@@ -58,13 +58,13 @@ public class PoiServlet extends HttpServlet{
    				this.listaPoi = this.poiService.getPoi(id);
    				request.setAttribute("allPoi", this.listaPoi);
    				getServletContext().getRequestDispatcher("/poiUpdate.jsp").forward(request, response);
-     		   break;
+     		   break; 		       		   
    			case "updatePoi":
    				this.poiService.updatePoi(request);
    				this.listaPoi= this.poiService.getAllPoi();
    				request.setAttribute("allPoi",this.listaPoi);
    				getServletContext().getRequestDispatcher("/poiView.jsp").forward(request, response);
-   				break; 
+   				break;  
    				
    			case "delete":
    				this.poiService.deletePoi(Integer.parseInt(request.getParameter("id")));

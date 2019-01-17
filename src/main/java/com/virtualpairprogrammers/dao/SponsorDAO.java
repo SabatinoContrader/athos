@@ -19,7 +19,7 @@ public class SponsorDAO {
 	String campo = "";
 
 	private final String QUERY_ALL = " select * from sponsor ";
-	private final String QUERY_INSERT = " insert into sponsor (poi_id,name,description) values (?,?,?) ";
+	private final String QUERY_INSERT = " insert into sponsor (name,description) values (?,?) ";
 	private String QUERY_DELETE = " delete from sponsor where id = ?";
 
 	public SponsorDAO() {
@@ -31,7 +31,7 @@ public class SponsorDAO {
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
-			preparedStatement.setLong(1, id);
+			preparedStatement.setInt(1, id);
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -52,7 +52,6 @@ public class SponsorDAO {
 				Sponsor newSponsor = new Sponsor();
 
 				newSponsor.setId(resultSet.getInt("id"));
-				newSponsor.setPoiID(resultSet.getLong("poi_id"));
 				newSponsor.setName(resultSet.getString("name"));
 				newSponsor.setDescription(resultSet.getString("description"));
 				allSponsor.add(newSponsor);
@@ -61,7 +60,7 @@ public class SponsorDAO {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			// System.out.println("Errore nella ricerca dello sponsor!!");
+			 System.out.println("Errore nella ricerca dello sponsor!!");
 		}
 
 		return allSponsor;
@@ -74,10 +73,9 @@ public class SponsorDAO {
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
-			preparedStatement.setLong(1, sponsor.getPoiID());
-			preparedStatement.setString(2, sponsor.getName());
-			preparedStatement.setString(3, sponsor.getDescription());
-			preparedStatement.execute();
+			preparedStatement.setString(1, sponsor.getName());
+			preparedStatement.setString(2, sponsor.getDescription());
+			preparedStatement.executeUpdate();
 			return true;
 
 		}
@@ -121,17 +119,16 @@ public class SponsorDAO {
 			while (resultSet.next()) {
 				
 				int idSponsor= resultSet.getInt("id");
-				int idPoi= resultSet.getInt("poi_id");
-				String nome=resultSet.getString("name");
-				String descrizione= resultSet.getString("description");
+				String name=resultSet.getString("name");
+				String description= resultSet.getString("description");
 				
-				sponsor.add(new Sponsor(idSponsor, idPoi, nome, descrizione));
+				sponsor.add(new Sponsor(idSponsor, name, description));
 
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			// System.out.println("Errore nella ricerca degli sponsor!!");
+			System.out.println("Errore nella ricerca degli sponsor!!");
 		}
 
 		return sponsor;
@@ -139,3 +136,4 @@ public class SponsorDAO {
 	}
 
 }
+

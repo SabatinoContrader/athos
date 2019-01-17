@@ -24,6 +24,7 @@ public class GameServlet extends HttpServlet{
         gameService = new GameService();
         
         switch (scelta) {
+      
         
     	   case "view":
     		    listaGame= gameService.getAllGame();

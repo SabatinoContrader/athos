@@ -13,29 +13,20 @@ public class SponsorService {
 
 	public SponsorService() {
 		sponsorDAO = new SponsorDAO();
-
 	}
-
-	public boolean deleteSponsor(int idSponsor) {
-		return this.sponsorDAO.deleteSponsor(idSponsor);
-
-	}
-
 	public List<Sponsor> getAllSponsor() {
 		return this.sponsorDAO.getAllSponsor();
-
 	}
-
 	public boolean insertSponsor(Sponsor sponsor) {
 		return this.sponsorDAO.insertSponsor(sponsor);
 	}
-
 	public boolean updateSponsor(HttpServletRequest request) {
 		return this.sponsorDAO.updateSponsor(request);
 	}
-
+	public boolean deleteSponsor(int idSponsor) {
+		return this.sponsorDAO.deleteSponsor(idSponsor);
+	}
 	public List<Sponsor> getSponsor(int id) {
 		return this.sponsorDAO.getSponsor(id);
-
 	}
 }

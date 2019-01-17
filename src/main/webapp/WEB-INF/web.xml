@@ -7,6 +7,10 @@
     <servlet-name>LoginTraderServlet</servlet-name>
     <servlet-class>com.virtualpairprogrammers.servlets.LoginTraderServlet</servlet-class>
   </servlet>
+   <servlet>
+    <servlet-name>HomePlayerServlet</servlet-name>
+    <servlet-class>com.virtualpairprogrammers.servlets.HomePlayerServlet</servlet-class>
+  </servlet>
   <servlet>
     <servlet-name>HomeSuperServlet</servlet-name>
     <servlet-class>com.virtualpairprogrammers.servlets.HomeSuperServlet</servlet-class>
@@ -19,12 +23,7 @@
     <servlet-name>SponsorServlet</servlet-name>
     <servlet-class>com.virtualpairprogrammers.servlets.SponsorServlet</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>LabelServlet</servlet-name>
-    <servlet-class>com.virtualpairprogrammers.servlets.LabelServlet</servlet-class>
-  </servlet>
-
-  <servlet>
+   <servlet>
     <servlet-name>MenuServlet</servlet-name>
     <servlet-class>com.virtualpairprogrammers.servlets.MenuServlet</servlet-class>
   </servlet>
@@ -70,12 +69,7 @@
   <servlet-mapping>
     <servlet-name>SponsorServlet</servlet-name>
     <url-pattern>/SponsorServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>LabelServlet</servlet-name>
-    <url-pattern>/LabelServlet</url-pattern>
-  </servlet-mapping>
-  
+  </servlet-mapping>  
     <servlet-mapping>
     <servlet-name>MenuServlet</servlet-name>
     <url-pattern>/MenuServlet</url-pattern>
@@ -95,6 +89,10 @@
   <servlet-mapping>
     <servlet-name>GameServlet</servlet-name>
     <url-pattern>/GameServlet</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>HomePlayerServlet</servlet-name>
+    <url-pattern>/HomePlayerServlet</url-pattern>
   </servlet-mapping>
 
   <session-config>

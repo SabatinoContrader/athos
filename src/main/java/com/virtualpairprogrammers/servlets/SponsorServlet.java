@@ -38,19 +38,17 @@ public class SponsorServlet extends HttpServlet{
     	   case "insertSponsor":
     		   if (request != null) {
     			   int idSponsor = 0;
-    			   int idpoi = Integer.parseInt(request.getParameter("idPoi").toString());
+    			   //int idpoi = Integer.parseInt(request.getParameter("idPoi").toString());
     			   String nome = request.getParameter("nome").toString();
     			   String descr = request.getParameter("descr").toString();
     			   
-    			   if (sponsorService.insertSponsor(new Sponsor(idSponsor, idpoi, nome, descr))){
+    			   if (sponsorService.insertSponsor(new Sponsor(idSponsor, nome, descr))){
     				  this.listaSponsor = this.sponsorService.getAllSponsor();
     				  request.setAttribute("allSponsor", this.listaSponsor);
-    				  request.setAttribute("messaggio", "Sponsor inserito con successo.\n");
     				  getServletContext().getRequestDispatcher("/sponsorView.jsp").forward(request, response);
     				  
     	       	   }
     			   else {
-    				   request.setAttribute("messaggio", "Problemi con l'inserimento dello sponsor. Riprovare.\n");
     				   response.sendRedirect("sponsorInsert.jsp");
 
     			   }
@@ -67,7 +65,6 @@ public class SponsorServlet extends HttpServlet{
    				this.sponsorService.updateSponsor(request);
    				this.listaSponsor= this.sponsorService.getAllSponsor();
    				request.setAttribute("allSponsor",this.listaSponsor);
-   				request.setAttribute("messaggio", "Sponsor modificato con successo.\n");
    				getServletContext().getRequestDispatcher("/sponsorView.jsp").forward(request, response);
    				break; 
    				
@@ -75,7 +72,6 @@ public class SponsorServlet extends HttpServlet{
    				this.sponsorService.deleteSponsor(Integer.parseInt(request.getParameter("id")));
    				this.listaSponsor = this.sponsorService.getAllSponsor();
    				request.setAttribute("allSponsor",this.listaSponsor);
-   				request.setAttribute("messaggio", "Sponsor cancellato con successo.\n");
    				getServletContext().getRequestDispatcher("/sponsorView.jsp").forward(request, response);
    				break; 
                 

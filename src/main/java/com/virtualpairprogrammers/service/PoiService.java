@@ -12,26 +12,20 @@ public class PoiService {
 	public PoiService() {
 		poiDAO = new PoiDAO();
 	}
-
 	public List<Poi> getAllPoi() {
 		return this.poiDAO.getAllPoi();
 	}
-
 	public boolean insertPoi(Poi poi) {
 		return this.poiDAO.insertPoi(poi);
 	}
-
 	public boolean updatePoi(HttpServletRequest request) {
 		return this.poiDAO.updatePoi(request);
 	}
-
 	public boolean deletePoi(int id) {
 		return this.poiDAO.deletePoi(id);
-
-	}
-	
+	}	
 	public List<Poi> getPoi(int id) {
 		return this.poiDAO.getPoi(id);
 	}
-
 }
+
