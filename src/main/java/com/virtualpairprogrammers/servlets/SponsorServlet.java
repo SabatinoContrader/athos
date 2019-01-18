@@ -30,7 +30,11 @@ public class SponsorServlet extends HttpServlet{
                 request.setAttribute("allSponsor", listaSponsor);
                 getServletContext().getRequestDispatcher("/sponsorView.jsp").forward(request,response);           
                 break; 
-                
+    	   case "view2":
+   		    listaSponsor = sponsorService.getAllSponsor();
+               request.setAttribute("allSponsor", listaSponsor);
+               getServletContext().getRequestDispatcher("/poiInsert.jsp").forward(request,response);           
+               break; 
     	   case "insert":
     		    response.sendRedirect("sponsorInsert.jsp");
     		    break;  

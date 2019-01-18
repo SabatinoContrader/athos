@@ -21,6 +21,7 @@ public class SponsorDAO {
 	private final String QUERY_ALL = " select * from sponsor ";
 	private final String QUERY_INSERT = " insert into sponsor (name,description) values (?,?) ";
 	private String QUERY_DELETE = " delete from sponsor where id = ?";
+	private String QUERY_RETURN_NOME = "select name from sponsor where id = ?";
 
 	public SponsorDAO() {
 
@@ -135,5 +136,27 @@ public class SponsorDAO {
 
 	}
 
+	public String getNome(int id) {
+		String spot = "";
+		Connection connection = ConnectionSingleton.getInstance();
+
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_RETURN_NOME);
+			preparedStatement.setInt(1, id);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				spot = "";
+				spot = resultSet.getString("name");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			 System.out.println("Errore nella ricerca dello sponsor!!");
+		}
+
+		return spot;
+
+	}
+	
 }
 

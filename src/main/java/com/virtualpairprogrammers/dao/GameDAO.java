@@ -13,15 +13,17 @@ import javax.servlet.http.HttpServletRequest;
 import com.virtualpairprogrammers.utils.ConnectionSingleton;
 import com.virtualpairprogrammers.utils.GestoreEccezioni;
 import com.virtualpairprogrammers.model.Game;
+import com.virtualpairprogrammers.model.Poi;
 
 public class GameDAO {
 
 	String campo = "";
 
-	private final String QUERY_ALL = " select * from game where id=? ";
+	private final String QUERY_ALL = " select * from game where idCreatore=? ";
 	private final String QUERY_INSERT = " insert into game (idCreatore,nome, descrPercorso) values (?,?,?) ";
 	private String QUERY_DELETE = " delete from game where id = ?";
-
+    private  String QUERY_POI = "select * from poi where id in( select idPoi from rel_giochi_poi where idGiochi = ?)";
+	
 	public GameDAO() {
 
 	}
@@ -144,6 +146,36 @@ public class GameDAO {
 		}
 
 		return game;
+
+	}
+	
+	
+	public List<Poi> getAllPoi(int idg) {
+		List<Poi> allPoi = new ArrayList<Poi>();
+		Connection connection = ConnectionSingleton.getInstance();
+
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_POI);
+			preparedStatement.setInt(1, idg);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				Poi newPoi = new Poi();
+
+				newPoi.setId(resultSet.getInt("id"));
+				newPoi.setLatitudine(resultSet.getFloat("latitudine"));
+				newPoi.setLongitudine(resultSet.getFloat("longitudine"));
+				newPoi.setIndizio(resultSet.getString("indizio"));
+				newPoi.setIdSponsor(resultSet.getInt("idSponsor"));
+				allPoi.add(newPoi);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Errore nella restituzione dei poi del gioco!!");
+		}
+
+		return allPoi;
 
 	}
 

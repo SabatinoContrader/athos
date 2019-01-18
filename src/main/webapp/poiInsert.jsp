@@ -1,9 +1,10 @@
 <%@ page import="com.virtualpairprogrammers.model.Poi" %>
+<%@ page import="com.virtualpairprogrammers.model.Sponsor" %>
 <%@ page import="java.util.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-     
+     <% List<Sponsor> allSponsor = (List<Sponsor>) request.getAttribute("allSponsor");%>
 </head>
 <body>
 
@@ -17,7 +18,29 @@
    <h2>ID Sponsor: <input type="text" name="idSponsor"></h2>
    	   <h2>Indizio: <input type="text" name="indizio"> </h2>
   
-  
+    <h2>-------Elenco sponsor disponibili-------</h2><br/>
+      
+<!-- <form action="SponsorServlet" method="post">-->
+ <table border="2">
+
+     <tr>   
+         <th> ID SPONSOR</th>
+         <th> NOME </th>
+         <th> DESCRIZIONE </th>
+     </tr>
+     
+        <%for (Sponsor sponsor : allSponsor) { %>
+        
+     <tr>
+        
+         <td> <%= sponsor.getId()%> </td> 
+         <td> <%= sponsor.getName()%> </td>
+         <td> <%= sponsor.getDescription()%> </td>
+		 
+     </tr>
+     <% }%>
+ </table>
+ <br>
     <input type="submit" value="Inserisci" name="richiesta">
   </form>
   

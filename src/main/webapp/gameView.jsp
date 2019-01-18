@@ -30,6 +30,7 @@
        
 		 <td> <a href="GameServlet?richiesta=update&id=<%= game.getId() %>">Modifica</a></td>
 		 <td> <a href="GameServlet?richiesta=delete&id=<%= game.getId() %>">Elimina</a></td>
+		 <td> <a href="GameServlet?richiesta=control&id=<%= game.getId() %>">Controlla</a></td>
 		 
      </tr>
      <% }%>

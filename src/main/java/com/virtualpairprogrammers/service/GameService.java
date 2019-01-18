@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.virtualpairprogrammers.dao.GameDAO;
 import com.virtualpairprogrammers.model.Game;
+import com.virtualpairprogrammers.model.Poi;
 
 public class GameService {
 
@@ -26,6 +27,11 @@ public class GameService {
 
 	}
 
+	public List<Poi> getAllPoi(int idg) {
+		return this.gameDAO.getAllPoi(idg);
+
+	}
+	
 	public boolean insertGame(Game game) {
 		return this.gameDAO.insertGame(game);
 	}

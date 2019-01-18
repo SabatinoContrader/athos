@@ -1,6 +1,7 @@
 package com.virtualpairprogrammers.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,6 +14,9 @@ import com.virtualpairprogrammers.model.Game;
 import com.virtualpairprogrammers.service.GameService;
 import com.virtualpairprogrammers.model.Poi;
 import com.virtualpairprogrammers.service.PoiService;
+import com.virtualpairprogrammers.model.Sponsor;
+import com.virtualpairprogrammers.service.SponsorService;
+
 
 public class GameServlet extends HttpServlet{  
 	
@@ -20,6 +24,12 @@ public class GameServlet extends HttpServlet{
 	private List<Game> listaGame;
 	private PoiService poiService;
 	private List<Poi> listaPoi;
+	private SponsorService sponsorService;
+	private List<Sponsor> listaSponsor;
+	private Sponsor spot;
+	private String prova; 
+	private List<String> listaStringa;
+	
 	
 	public void service (HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
 		
@@ -27,16 +37,16 @@ public class GameServlet extends HttpServlet{
         HttpSession session = request.getSession(true);
         gameService = new GameService();
         poiService = new PoiService();
+        sponsorService = new SponsorService();
         int idGamer=Integer.parseInt(session.getAttribute("idUser").toString());
         
         
         switch (scelta) {
       
         
-    	   case "view":
-
-    		    
+    	   case "view":   		    
     		    listaGame= gameService.getAllGame(idGamer);
+    		    //System.out.println(idGamer);
                 request.setAttribute("allGame", listaGame);
                 getServletContext().getRequestDispatcher("/gameView.jsp").forward(request,response);           
                 break; 
@@ -96,6 +106,27 @@ public class GameServlet extends HttpServlet{
                request.setAttribute("allGame", listaGame);
                getServletContext().getRequestDispatcher("/gameView.jsp").forward(request,response);
       		   break;   
+            case "control":       
+            	List<String> listaStringa = new ArrayList<>();
+            	int idg= Integer.parseInt(request.getParameter("id"));
+   				listaPoi = gameService.getAllPoi(idg);
+   		    	request.setAttribute("allPoi", listaPoi);   
+  
+   		    	for (Poi poi : listaPoi) {
+   		    		this.prova = this.sponsorService.returnNome(poi.getIdSponsor());
+   		    		if (prova == "") {
+   		    			listaStringa.add("");	
+   		    		}
+   		    		else
+   		    		{
+   		    			listaStringa.add(prova);
+   		    		}
+				}
+   		    	
+   		        request.setAttribute("allSponsor", listaStringa);  
+                getServletContext().getRequestDispatcher("/poiOfGame.jsp").forward(request,response);    
+   		        break;  
+   				         
             case "Return":
       		   response.sendRedirect("homeGamer.jsp");
       		   break;

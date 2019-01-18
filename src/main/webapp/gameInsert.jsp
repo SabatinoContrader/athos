@@ -18,7 +18,7 @@
     <h2>Seleziona i Poi nell'ordine desiderato</h2>
     <select>
     	<%for (Poi poi : allPoi) { %>
-	  		<option value="<%= poi.getId()%>">(<%= poi.getId()%>,<%= poi.getId()%>) <%= poi.getCity()%></option>
+	  		<option value="<%= poi.getId()%>">(<%= poi.getId()%>,<%= poi.getId()%>) </option>
 	    <% }%>
 	</select>
    	

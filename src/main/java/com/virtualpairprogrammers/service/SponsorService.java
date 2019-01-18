@@ -29,4 +29,8 @@ public class SponsorService {
 	public List<Sponsor> getSponsor(int id) {
 		return this.sponsorDAO.getSponsor(id);
 	}
+	public String returnNome(int id) {
+		return this.sponsorDAO.getNome(id);
+	}
+	
 }
