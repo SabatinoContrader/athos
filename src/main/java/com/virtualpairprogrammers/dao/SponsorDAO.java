@@ -19,7 +19,7 @@ public class SponsorDAO {
 	String campo = "";
 
 	private final String QUERY_ALL = " select * from sponsor ";
-	private final String QUERY_INSERT = " insert into sponsor (name,description) values (?,?) ";
+	private final String QUERY_INSERT = " insert into sponsor (name,messaggio) values (?,?) ";
 	private String QUERY_DELETE = " delete from sponsor where id = ?";
 	private String QUERY_RETURN_NOME = "select name from sponsor where id = ?";
 
@@ -54,7 +54,7 @@ public class SponsorDAO {
 
 				newSponsor.setId(resultSet.getInt("id"));
 				newSponsor.setName(resultSet.getString("name"));
-				newSponsor.setDescription(resultSet.getString("description"));
+				newSponsor.setMessaggio(resultSet.getString("messaggio"));
 				allSponsor.add(newSponsor);
 
 			}
@@ -75,7 +75,7 @@ public class SponsorDAO {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
 			preparedStatement.setString(1, sponsor.getName());
-			preparedStatement.setString(2, sponsor.getDescription());
+			preparedStatement.setString(2, sponsor.getMessaggio());
 			preparedStatement.executeUpdate();
 			return true;
 
@@ -115,15 +115,19 @@ public class SponsorDAO {
 		Connection connection = ConnectionSingleton.getInstance();
 
 		try {
-			Statement statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery("select * from sponsor where id=" +id);
+			
+
+			PreparedStatement preparedStatement = connection.prepareStatement("select * from sponsor where id = ?");
+			preparedStatement.setInt(1, id);
+			//Statement statement = connection.createStatement();
+			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				
 				int idSponsor= resultSet.getInt("id");
 				String name=resultSet.getString("name");
-				String description= resultSet.getString("description");
+				String messaggio= resultSet.getString("messaggio");
 				
-				sponsor.add(new Sponsor(idSponsor, name, description));
+				sponsor.add(new Sponsor(idSponsor, name, messaggio));
 
 			}
 

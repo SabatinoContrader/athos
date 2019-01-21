@@ -23,6 +23,8 @@ public class GameDAO {
 	private final String QUERY_INSERT = " insert into game (idCreatore,nome, descrPercorso) values (?,?,?) ";
 	private String QUERY_DELETE = " delete from game where id = ?";
     private  String QUERY_POI = "select * from poi where id in( select idPoi from rel_giochi_poi where idGiochi = ?)";
+	private final String QUERY_INSERT_REL_GIOCHIPOI = " insert into rel_giochi_poi (idPoi,idGiochi, ordine) values (?,?,?) ";
+
 	
 	public GameDAO() {
 
@@ -88,6 +90,31 @@ public class GameDAO {
 					game.setId(resultSet.getInt("id"));
 				}
 			}
+			
+			return true;
+
+		}
+
+		catch (SQLException e) {
+			GestoreEccezioni.getInstance().gestisciEccezione(e);
+			return false;
+
+		}
+	}
+	
+	public boolean insertRelGiochiPoi(int idGioco,String[] idPoi, String[] ordine) {
+
+		Connection connection = ConnectionSingleton.getInstance();
+
+		try {
+			for(int i=0;i<idPoi.length;i++) {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT_REL_GIOCHIPOI);
+			preparedStatement.setInt(2, idGioco);
+			preparedStatement.setString(1, idPoi[i]);
+			preparedStatement.setString(3, ordine[i]);
+			preparedStatement.execute();
+			}	
+			
 			
 			return true;
 

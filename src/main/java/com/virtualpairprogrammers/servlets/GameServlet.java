@@ -3,6 +3,7 @@ package com.virtualpairprogrammers.servlets;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +17,6 @@ import com.virtualpairprogrammers.model.Poi;
 import com.virtualpairprogrammers.service.PoiService;
 import com.virtualpairprogrammers.model.Sponsor;
 import com.virtualpairprogrammers.service.SponsorService;
-
 
 public class GameServlet extends HttpServlet{  
 	
@@ -38,6 +38,7 @@ public class GameServlet extends HttpServlet{
         gameService = new GameService();
         poiService = new PoiService();
         sponsorService = new SponsorService();
+
         int idGamer=Integer.parseInt(session.getAttribute("idUser").toString());
         
         
@@ -46,14 +47,26 @@ public class GameServlet extends HttpServlet{
         
     	   case "view":   		    
     		    listaGame= gameService.getAllGame(idGamer);
-    		    //System.out.println(idGamer);
                 request.setAttribute("allGame", listaGame);
                 getServletContext().getRequestDispatcher("/gameView.jsp").forward(request,response);           
                 break; 
                 
     	   case "insert":
+    		   listaSponsor=new ArrayList<Sponsor>();
     		   listaPoi = poiService.getAllPoi();
+    		   for (Poi poi : listaPoi) {
+    			   int idSponsor=poi.getIdSponsor();
+    			   if(idSponsor!=0) {
+    				   List<Sponsor> singleSponsor=sponsorService.getSponsor(idSponsor);
+        			   listaSponsor.add(singleSponsor.get(0));
+    			   }else {
+    				   listaSponsor.add(null);
+    			   }
+    			   
+    		   }
+    		   
                request.setAttribute("allPoi", listaPoi);
+               request.setAttribute("allSponsor", listaSponsor);
                getServletContext().getRequestDispatcher("/gameInsert.jsp").forward(request,response);    
     		   break;  
     		    
@@ -63,10 +76,14 @@ public class GameServlet extends HttpServlet{
     			   int idCreatore=Integer.parseInt(session.getAttribute("idUser").toString());
     			   String nome = request.getParameter("nome").toString();
     			   String descrPercorso = request.getParameter("descrPercorso").toString();
+    			   String [] idPoi =request.getParameterValues("poi[]");
+    			   String [] ordine =request.getParameterValues("ordine[]");
     			   
     			   if (gameService.insertGame(new Game(id,idCreatore, nome, descrPercorso))){
     				  
     				  this.listaGame = this.gameService.getAllGame(idGamer);
+    				  int idLastGame=listaGame.get(listaGame.size()-1).getId();
+    				  gameService.insertRelGiochiPoi(idLastGame, idPoi, ordine);
     				  request.setAttribute("allGame", this.listaGame);
     				  getServletContext().getRequestDispatcher("/gameView.jsp").forward(request, response);
     				  

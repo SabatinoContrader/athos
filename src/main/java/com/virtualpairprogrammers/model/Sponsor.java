@@ -4,21 +4,21 @@ public class Sponsor {
 
 	private int id;
 	private String name;
-	private String description;
+	private String messaggio;
 
 	public Sponsor() {
 
 	}
 
-	public Sponsor (int id, String name, String description) {
+	public Sponsor (int id, String name, String messaggio) {
 
 		this.id = id;
 		this.name = name;
-		this.description = description;
+		this.messaggio = messaggio;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getMessaggio() {
+		return messaggio;
 	}
 
 	public int getId() {
@@ -29,8 +29,8 @@ public class Sponsor {
 		return name;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setMessaggio(String messaggio) {
+		this.messaggio = messaggio;
 	}
 
 	public void setId(int id) {

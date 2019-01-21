@@ -18,7 +18,8 @@ public class PoiDAO {
 
 	private final String QUERY_ALL = " select * from poi ";
 	private final String QUERY_INSERT = " insert into poi (latitudine,longitudine ,idSponsor,indizio) values (?,?,?,?) ";
-	private String QUERY_DELETE = " delete from poi where id = ?";
+	private final String QUERY_DELETE = " delete from poi where id = ?";
+	private final String query_tutto= "select p.id, p.latitudine,p.longitudine, p.indizio, s.name from sponsor as s right join poi as p on s.id=p.idSponsor";
 
 	public PoiDAO() {
 

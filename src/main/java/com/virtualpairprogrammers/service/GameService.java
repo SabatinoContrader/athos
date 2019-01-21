@@ -44,5 +44,10 @@ public class GameService {
 		return this.gameDAO.getGame(id);
 
 	}
+	
+	public boolean insertRelGiochiPoi(int idGioco,String[] idPoi, String[] ordine) {
+		return this.gameDAO.insertRelGiochiPoi(idGioco, idPoi, ordine);
+	}
+	  
 
 }
