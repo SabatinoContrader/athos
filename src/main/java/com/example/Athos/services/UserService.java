@@ -15,15 +15,15 @@ public class UserService {
 		this.userRepository = userRepository;
 	}
 	
-	public Boolean login(String username, String password) {
-		User user = userRepository.findByUsername(username);
-		if (user == null) {
-			return false;
-		} else {
-			if (user.getPassword().equals(password))
-				return true;
-			else
-				return false;
+	public User login(String username, String password) {
+		User user = this.userRepository.findByUsernameAndPassword(username,password);
+		if (user == null) 
+		{
+			return null;
+		}
+		else 
+		{
+				return user;
 		}
 	}
 }

@@ -1,5 +1,10 @@
 package com.example.Athos.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,38 +13,40 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
+import javax.persistence.Table;
 
 @Getter
 @Setter
 @Entity
-public class User {
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name="user")
+public class User implements Serializable {
 	
-public User() {}
+//public User() {}
 
 	@Id
-	@Column
+	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int id;
 
-	@Column
+	@Column(name="username")
 	@NotNull
 	private String username;
 
-	@Column
+	@Column(name="password")
 	@NotNull
 	private String password;
 
-	@Column
+	@Column(name="role")
 	@NotNull
 	private int role;
 
-	public User(int id, String username, String password, int role) {
-		this();
-		this.id=id;
-		this.username=username;
-		this.password=password;
-		this.role=role;
-	}
+	//public User(int id, String username, String password, int role) {
+	//	this();
+	//	this.id=id;
+	//	this.username=username;
+	//	this.password=password;
+	//	this.role=role;
+	//}
 }

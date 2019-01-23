@@ -17,6 +17,8 @@ import org.springframework.jca.cci.connection.*;
 @Transactional
 public interface UserRepository extends CrudRepository<User, Long> {
 
-	User findByUsername(String username);
+	@Modifying
+	@Query("select u from user u where u.username like ?1 and u.password like ?2")
+	User findByUsernameAndPassword(String username, String password);
 	
 }
