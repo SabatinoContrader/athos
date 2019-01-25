@@ -20,33 +20,35 @@ import javax.persistence.Table;
 @Entity
 //@AllArgsConstructor
 //@NoArgsConstructor
-@Table(name="user")
-public class User {//implements Serializable {
+@Table(name="message")
+
+public class Message {//implements Serializable{
 	
-public User() {}
+	public Message() {}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int id;
 
-	@Column(name="username")
+	@Column(name="idSender")
 	@NotNull
-	private String username;
+	private int idSender;
 
-	@Column(name="password")
+	@Column(name="idReceiver")
 	@NotNull
-	private String password;
+	private int idReceiver;
 
-	@Column(name="role")
+	@Column(name="tipo")
 	@NotNull
-	private int role;
-
-	public User(int id, String username, String password, int role) {
-		this();
+	private String tipo;
+	
+	public Message(int id, int idSender, int idReceiver, String tipo) {
+		super();
 		this.id=id;
-		this.username=username;
-		this.password=password;
-		this.role=role;
+		this.idSender=idSender;
+		this.idReceiver=idReceiver;
+		this.tipo=tipo;
 	}
+
 }

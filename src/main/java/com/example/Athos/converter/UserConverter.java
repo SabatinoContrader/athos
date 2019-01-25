@@ -4,11 +4,10 @@ import org.springframework.stereotype.Component;
 import com.example.Athos.dto.UserDTO;
 import com.example.Athos.model.User;
 
-@Component
-public class UserConverter implements Converter<User , UserDTO>{
+//@Component
+public class UserConverter {//implements Converter<User , UserDTO>{
 
-	@Override
-	public User converToEntity(UserDTO userDTO) {
+	public static User converToEntity(UserDTO userDTO) {
 		User user=new User();
 		user.setId(userDTO.getId());
 		user.setRole(userDTO.getRole());
@@ -17,8 +16,8 @@ public class UserConverter implements Converter<User , UserDTO>{
 		return user;
 	}
 
-	@Override
-	public UserDTO covertToDTO(User user) {
+	
+	public static UserDTO convertToDTO(User user) {
 		UserDTO userDTO=new UserDTO();
 		userDTO.setId(user.getId());
 		userDTO.setUsername(user.getUsername());

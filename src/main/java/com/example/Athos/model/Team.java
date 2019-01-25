@@ -20,33 +20,25 @@ import javax.persistence.Table;
 @Entity
 //@AllArgsConstructor
 //@NoArgsConstructor
-@Table(name="user")
-public class User {//implements Serializable {
+@Table(name="team")
+
+public class Team {//implements Serializable{
 	
-public User() {}
+	public Team() {}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int id;
 
-	@Column(name="username")
+	@Column(name="nome")
 	@NotNull
-	private String username;
-
-	@Column(name="password")
-	@NotNull
-	private String password;
-
-	@Column(name="role")
-	@NotNull
-	private int role;
-
-	public User(int id, String username, String password, int role) {
-		this();
+	private String nome;
+	
+	public Team(int id, String nome) {
+		super();
 		this.id=id;
-		this.username=username;
-		this.password=password;
-		this.role=role;
+		this.nome=nome;
 	}
+	
 }
