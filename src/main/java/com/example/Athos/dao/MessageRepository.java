@@ -20,5 +20,5 @@ import org.springframework.jca.cci.connection.*;
 public interface MessageRepository extends CrudRepository<Message, Long>{
 	Message save(Message message);
 	Boolean deleteById(int id);
-	List<Message> findAll();
+	List <Message> findAll();
 }

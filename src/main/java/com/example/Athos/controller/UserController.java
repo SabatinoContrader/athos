@@ -15,19 +15,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@RestController
-@CrossOrigin
+@Controller
+@CrossOrigin(value = "*")
 @RequestMapping("/Login")
 public class UserController {
 
 	private UserService userService;
-	private UserDTO userDTO;
 	private HttpSession session;
 	private User user;
 
 	@Autowired
-	public UserController(UserService userService) {
+	public UserController(UserService userService) {		
 		this.userService = userService;
+		this.user = user;
 	}
 
 //	@RequestMapping(value = "/loginControl", method = RequestMethod.POST)
@@ -50,7 +50,7 @@ public class UserController {
 
 	@CrossOrigin
 	@RequestMapping(value = "/viewUser", method = RequestMethod.GET)
-	public List<UserDTO> getAll(int role){
+	public List<UserDTO> getAll(@RequestParam("role") int role){
 		List<UserDTO> user = userService.getAll(role);
 		return user;
 	}
@@ -58,20 +58,7 @@ public class UserController {
 	public HttpSession getSession() 
 	{return this.session;}
 	
-	@RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
-	public String delete(@RequestParam("id") int id, Model model ) 
-	{
-		
-		userService.deleteById(id);
-		return "userView";
-		}
 	
-	@RequestMapping(value="/deleteUser", method=RequestMethod.GET)
-	public String delete(HttpServletRequest request, Model model) {
-		int id = Integer.parseInt(request.getParameter("id"));
-		userService.deleteById(id);
-		return "userView";
-	} 
 	
 	@RequestMapping(value = "/logoutControl", method = RequestMethod.GET)
 	public String logoutControl(HttpServletRequest request, Model model ) {
@@ -85,6 +72,7 @@ public class UserController {
 		//HttpSession session = request.getSession(true);
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		//boolean attivo = request.getParameter("attivo");
 		this.user = this.userService.login(username, password);
 		if (user.getRole() == 0)
 		{return "homeSuper";}

@@ -5,7 +5,7 @@ public class MessageDTO {
 	private int id;
 	private int idReceiver;
 	private int idSender;
-	private String tipo;
+	private String text;
 	
 	public MessageDTO() {}
 
@@ -33,19 +33,19 @@ public class MessageDTO {
 		this.idSender = idSender;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getText() {
+		return text;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setText(String text) {
+		this.text = text;
 	}
 
-	public MessageDTO(int id, int idReceiver, int idSender, String tipo) {
-		super();
+	public MessageDTO(int id, int idReceiver, int idSender, String text) {
+		//super();
 		this.id = id;
 		this.idReceiver = idReceiver;
 		this.idSender = idSender;
-		this.tipo = tipo;
+		this.text = text;
 	}
 }

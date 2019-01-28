@@ -6,15 +6,17 @@ private int id;
 private int role;
 private String username;
 private String password;
+private boolean attivo;
 
 public UserDTO() {}
 
-public UserDTO(int id, int role, String username,String password) {
-	this();
+public UserDTO(int id, int role, String username,String password, boolean attivo) {
+	//this();
 	this.id = id;
 	this.role = role;
 	this.username = username;
 	this.password=password;
+	this.attivo=attivo;
 }
 public UserDTO(String username, String password) {
 	this();
@@ -24,6 +26,14 @@ public UserDTO(String username, String password) {
 
 public String getPassword() {
 	return password;
+}
+
+public boolean isAttivo() {
+	return attivo;
+}
+
+public void setAttivo(boolean attivo) {
+	this.attivo = attivo;
 }
 
 public void setPassword(String password) {

@@ -22,7 +22,7 @@ public class UserService {
 	}
 	
 	public User login(String username, String password) {
-		User user = (User) this.userRepository.findByUsernameAndPassword(username,password);
+		User user = (User) this.userRepository.findUserByUsernameAndPassword(username,password);
 		if (user == null) 
 		{
 			return null;
@@ -39,8 +39,9 @@ public class UserService {
 //		listaUser.forEach(i->user.add(UserConverter.convertToDTO(i)));
 //		return user;
 //	}
+
 	 public List<UserDTO> getAll(int role) {	    	
-	    	List<User> ListUser= (List<User>) this.userRepository.fi
+	    	List<User> ListUser= (List<User>) this.userRepository.findAllByRole(role);
 	    	List<UserDTO> user=new ArrayList<>();
 	    	for(User u: ListUser) {
 	    		user.add(UserConverter.convertToDTO(u));
@@ -53,7 +54,5 @@ public class UserService {
 		 return this.userRepository.save(user);
 		 	 }
 	 
-	  public void deleteById(int id) {
-	    	this.userRepository.deleteById(id);
-	    }
+	 
 	  }

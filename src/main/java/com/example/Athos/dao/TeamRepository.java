@@ -23,6 +23,6 @@ public interface TeamRepository extends CrudRepository<Team, Long>{
 	
 	Boolean deleteById(int id);
 	
-	List<Team> findAll();
+	List <Team> findAll();
 }
 

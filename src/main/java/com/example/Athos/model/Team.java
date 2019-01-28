@@ -18,13 +18,13 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
-//@AllArgsConstructor
-//@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="team")
 
-public class Team {//implements Serializable{
+public class Team {
 	
-	public Team() {}
+	//public Team() {}
 
 	@Id
 	@Column(name="id")
@@ -35,10 +35,14 @@ public class Team {//implements Serializable{
 	@NotNull
 	private String nome;
 	
-	public Team(int id, String nome) {
-		super();
-		this.id=id;
-		this.nome=nome;
-	}
+	@Column(name="attivo")
+	@NotNull
+	private boolean attivo;
+	
+	//public Team(int id, String nome) {
+	//	super();
+	//	this.id=id;
+	//	this.nome=nome;
+	//}
 	
 }

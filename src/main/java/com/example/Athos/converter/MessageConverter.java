@@ -1,29 +1,32 @@
 package com.example.Athos.converter;
-
+import org.springframework.*;//.Override;
 import org.springframework.stereotype.Component;
 import com.example.Athos.dto.MessageDTO;
 import com.example.Athos.model.Message;
 
-//@Component
-public class MessageConverter {//implements Converter<Message , MessageDTO> {
+@Component
+
+public class MessageConverter implements Converter<Message , MessageDTO> {
 	
+	@Override
 	
-	public static Message converToEntity(MessageDTO messageDTO) {
+	public  Message converToEntity(MessageDTO messageDTO) {
 		Message message=new Message();
 		message.setId(messageDTO.getId());
-		message.setTipo(messageDTO.getTipo());
+		message.setText(messageDTO.getText());
 		message.setIdSender(messageDTO.getIdSender());
 		message.setIdReceiver(messageDTO.getIdReceiver());
 		return message;
 	}
 
+	@Override
 	
-	public static MessageDTO convertToDTO(Message message) {
+	public MessageDTO convertToDTO(Message message) {
 		MessageDTO messageDTO=new MessageDTO();
 		messageDTO.setId(message.getId());
 		messageDTO.setIdSender(message.getIdSender());
 		messageDTO.setIdReceiver(message.getIdReceiver());
-		messageDTO.setTipo(message.getTipo());
+		messageDTO.setText(message.getText());
 		return messageDTO;
 	}
 }

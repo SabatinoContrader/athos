@@ -18,13 +18,13 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
-//@AllArgsConstructor
-//@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="message")
 
-public class Message {//implements Serializable{
+public class Message {
 	
-	public Message() {}
+	//public Message() {}
 
 	@Id
 	@Column(name="id")
@@ -39,16 +39,16 @@ public class Message {//implements Serializable{
 	@NotNull
 	private int idReceiver;
 
-	@Column(name="tipo")
+	@Column(name="text")
 	@NotNull
-	private String tipo;
+	private String text;
 	
-	public Message(int id, int idSender, int idReceiver, String tipo) {
-		super();
-		this.id=id;
-		this.idSender=idSender;
-		this.idReceiver=idReceiver;
-		this.tipo=tipo;
-	}
+	//public Message(int id, int idSender, int idReceiver, String tipo) {
+	//	super();
+	//	this.id=id;
+	//	this.idSender=idSender;
+	//	this.idReceiver=idReceiver;
+	//	this.tipo=tipo;
+	//}
 
 }

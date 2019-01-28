@@ -18,12 +18,12 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
-//@AllArgsConstructor
-//@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="user")
-public class User {//implements Serializable {
+public class User {
 	
-public User() {}
+//public User() {}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
@@ -41,12 +41,16 @@ public User() {}
 	@Column(name="role")
 	@NotNull
 	private int role;
+	
+	@Column(name="attivo")
+	@NotNull
+	private boolean attivo;
 
-	public User(int id, String username, String password, int role) {
-		this();
-		this.id=id;
-		this.username=username;
-		this.password=password;
-		this.role=role;
-	}
+	//public User(int id, String username, String password, int role) {
+	//	this();
+	//	this.id=id;
+	//	this.username=username;
+	//	this.password=password;
+	//	this.role=role;
+	//}
 }
