@@ -16,12 +16,14 @@ import com.example.Athos.model.User;
 public class MessageService {
 
 	private MessageRepository messageRepository;
+	private MessageConverter messageConverter;
 	
 	public MessageService() {}
 
 	@Autowired 
-	public MessageService(MessageRepository messageRepository) {
+	public MessageService(MessageRepository messageRepository, MessageConverter messageConverter) {
 		this.messageRepository = messageRepository;
+		this.messageConverter = messageConverter;
 	}
 	
 	public boolean insert(Message message) {
@@ -32,7 +34,7 @@ public class MessageService {
 	    	List<Message> ListMessage= (List<Message>) messageRepository.findAll();
 	    	List<MessageDTO> message=new ArrayList<>();
 	    	for(Message m: ListMessage) {
-	    		message.add(MessageConverter.convertToDTO(m));
+	    		message.add(messageConverter.convertToDTO(m));
 	    	}
 	        return message;
 	    }

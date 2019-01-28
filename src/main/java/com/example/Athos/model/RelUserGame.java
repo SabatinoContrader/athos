@@ -31,37 +31,33 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="user")
-public class User {
-	
+@Table(name="rel_user_giochi")
+public class RelUserGame implements Serializable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int id;
 
-	@Column(name="username")
-	@NotNull
-	private String username;
-
-	@Column(name="password")
-	@NotNull
-	private String password;
-
-	@Column(name="role")
-	@NotNull
-	private int role;
+	@ManyToOne()
+    @JoinColumn(name = "id_user")  
+	private User id_user;
 	
-
-	@Column(name="attivo")
-	@NotNull
-	private boolean attivo;
-
-	@OneToMany(mappedBy = "id_user")
-	private Set<RelUserGame> relUserGame = new HashSet<RelUserGame>();
+	@ManyToOne()
+    @JoinColumn(name = "id_game")
+	private Game id_game;
 	
-	  
-	/*public void addUserGiochi(RelUserGame userGame) {
-        this.userGame.add(userGame);
-    }*/
+	@Column(name="id_p")
+	private int id_p;
+	
+	/*@ManyToMany(mappedBy="users")
+	private Set<Game> games = new HashSet<Game>();
+	*/
+	
+	
+    
+	
+	
 }
+	
+

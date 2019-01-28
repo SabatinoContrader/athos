@@ -17,12 +17,14 @@ import com.example.Athos.model.User;
 public class TeamService {
 
 	private TeamRepository teamRepository;
+	private TeamConverter teamConverter;
 
 	public TeamService() {}
 	
 	@Autowired 
-	public TeamService(TeamRepository teamRepository) {
+	public TeamService(TeamRepository teamRepository, TeamConverter teamCoverter) {
 		this.teamRepository = teamRepository;
+		this.teamConverter = teamConverter;
 	}
 	
 	public boolean insert(Team team) {
@@ -34,7 +36,7 @@ public class TeamService {
 	    	List<Team> ListTeam= (List<Team>) teamRepository.findAll();
 	    	List<TeamDTO> team=new ArrayList<>();
 	    	for(Team t: ListTeam) {
-	    		team.add(TeamConverter.convertToDTO(t));
+	    		team.add(teamConverter.convertToDTO(t));
 	    	}
 	        return team;
 	    }

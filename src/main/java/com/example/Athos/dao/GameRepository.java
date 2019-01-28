@@ -1,6 +1,8 @@
 package com.example.Athos.dao;
 
+import com.example.Athos.model.Game;
 import com.example.Athos.model.User;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -15,10 +17,23 @@ import org.springframework.jca.cci.connection.*;
 
 @Repository
 @Transactional
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface GameRepository extends CrudRepository<Game, Integer> {
 
-	User findUserByUsernameAndPassword(String username, String password);
+	List<Game> findByIdcreatore(User user);
 	
-	List <User> findUserByRole(int role);
+	@Modifying
+	@Query(value="select * from game where nome=?", nativeQuery = true)
+	List<Game> findByVersione(String nome);
 	
+
+	Game findById(int id);
+	
+	
+	@Modifying
+	@Query(value="select * from game where attivo=1", nativeQuery = true)
+	List<Game> findByAttivo(int idCreatore);
+	
+	@Modifying
+	@Query(value="select * from game where attivo=0", nativeQuery = true)
+	List<Game> findByNonAttivo(int idCreatore);
 }

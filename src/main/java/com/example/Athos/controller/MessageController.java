@@ -49,19 +49,5 @@ public class MessageController {
 		return message;
 	}
 	
-	@RequestMapping(value = "/deleteMessage", method = RequestMethod.GET)
-	public String delete(@RequestParam("id") int id, Model model ) 
-	{
-		 
-		messageService.deleteById(id);
-		return "messageView";
-		}
-	
-	@RequestMapping(value="/deleteMessage", method=RequestMethod.GET)
-	public String delete(HttpServletRequest request, Model model) {
-		int id = Integer.parseInt(request.getParameter("id"));
-		messageService.deleteById(id);
-		return "messageView";
-	} 
 	
 }

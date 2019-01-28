@@ -13,12 +13,15 @@ import java.util.ArrayList;
 public class UserService {
 
 	private UserRepository userRepository;
+	private UserConverter userConverter;
 	
 	public UserService() {}
 
 	@Autowired 
-	public UserService(UserRepository userRepository) {
+	public UserService(UserRepository userRepository, UserConverter userConverter) {
+		
 		this.userRepository = userRepository;
+		this.userConverter = userConverter;
 	}
 	
 	public User login(String username, String password) {
@@ -41,16 +44,16 @@ public class UserService {
 //	}
 
 	 public List<UserDTO> getAll(int role) {	    	
-	    	List<User> ListUser= (List<User>) this.userRepository.findAllByRole(role);
+	    	List<User> ListUser= (List<User>) this.userRepository.findUserByRole(role);
 	    	List<UserDTO> user=new ArrayList<>();
 	    	for(User u: ListUser) {
-	    		user.add(UserConverter.convertToDTO(u));
+	    		user.add(userConverter.convertToDTO(u));
 	    	}
 	        return user;
 	    }
 	 
 	 public User insert(UserDTO userDTO) {
-		 User user = UserConverter.converToEntity(userDTO);
+		 User user = userConverter.converToEntity(userDTO);
 		 return this.userRepository.save(user);
 		 	 }
 	 
