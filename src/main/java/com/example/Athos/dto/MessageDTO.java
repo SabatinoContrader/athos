@@ -42,7 +42,7 @@ public class MessageDTO {
 	}
 
 	public MessageDTO(int id, int idReceiver, int idSender, String text) {
-		//super();
+		
 		this.id = id;
 		this.idReceiver = idReceiver;
 		this.idSender = idSender;

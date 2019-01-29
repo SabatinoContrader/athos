@@ -25,7 +25,7 @@ public class TeamDTO {
 	}
 
 	public TeamDTO(int id, String nome, boolean attivo) {
-		//super();
+		
 		this.id= id;
 		this.nome=nome;
 		this.attivo= attivo;

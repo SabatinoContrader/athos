@@ -29,7 +29,7 @@ public class UserConverter implements Converter<User , UserDTO>{
 		userDTO.setAttivo(user.isAttivo());
 		
 		return userDTO;
-		//return new UserDTO(user.getId(),user.getRole(),user.getUsername(),user.getPassword());
+		
 	}
 
 }
