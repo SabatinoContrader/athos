@@ -40,7 +40,6 @@ public class MessageService {
 	    }
 	 
 	 
-	  public void deleteById(int id) {
-	    	this.messageRepository.deleteById(id);
-	    }
+	 // public void deleteById(int id) {
+	  //  	this.messageRepository.deleteById(id);}
 }

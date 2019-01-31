@@ -5,16 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +23,7 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="rel_user_giochi")
+@Table(name="rel_user_game")
 public class RelUserGame implements Serializable {
 	
 	@Id
@@ -41,14 +33,17 @@ public class RelUserGame implements Serializable {
 
 	@ManyToOne()
     @JoinColumn(name = "id_user")  
+	@NotNull
 	private User id_user;
 	
 	@ManyToOne()
     @JoinColumn(name = "id_game")
+	@NotNull
 	private Game id_game;
 	
-	@Column(name="id_p")
-	private int id_p;
+	@Column(name="id_poi")
+	@NotNull
+	private int id_poi;
 	
 	/*@ManyToMany(mappedBy="users")
 	private Set<Game> games = new HashSet<Game>();

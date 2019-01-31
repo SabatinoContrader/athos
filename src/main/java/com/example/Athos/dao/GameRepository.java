@@ -17,9 +17,11 @@ import org.springframework.jca.cci.connection.*;
 
 @Repository
 @Transactional
-public interface GameRepository extends CrudRepository<Game, Integer> {
+public interface GameRepository extends CrudRepository<Game, Long> {
 
-	List<Game> findByIdcreatore(User user);
+	@Modifying
+	@Query(value="select * from game where id_creatore=?", nativeQuery = true)
+	List<Game> findByCreatore(User user);
 	
 	@Modifying
 	@Query(value="select * from game where nome=?", nativeQuery = true)
@@ -31,9 +33,9 @@ public interface GameRepository extends CrudRepository<Game, Integer> {
 	
 	@Modifying
 	@Query(value="select * from game where attivo=1", nativeQuery = true)
-	List<Game> findByAttivo(int idCreatore);
+	List<Game> findByAttivo(int id_creatore);
 	
 	@Modifying
 	@Query(value="select * from game where attivo=0", nativeQuery = true)
-	List<Game> findByNonAttivo(int idCreatore);
+	List<Game> findByNonAttivo(int id_creatore);
 }

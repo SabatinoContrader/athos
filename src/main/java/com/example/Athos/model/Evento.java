@@ -5,16 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.sql.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,40 +20,40 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
+
 @Getter
 @Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="user")
-public class User {
-	
+@Table(name="evento")
+public class Evento implements Serializable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int id;
-
-	@Column(name="username")
+	
+    @JoinColumn(name = "id_game")
+    @NotNull
+	private Game id_game;
+	
+    @Column(name="descr_evento")
+    @NotNull
+	private String descr_evento;
+	
+    @Column(name="data_inizio")
+    @NotNull
+	private Date data_inizio;
+	
+	@Column(name="data_fine")
 	@NotNull
-	private String username;
-
-	@Column(name="password")
-	@NotNull
-	private String password;
-
-	@Column(name="role")
-	@NotNull
-	private int role;
-
-	@Column(name="attivo")
-	@NotNull
-	private boolean attivo;
-
-	//@OneToMany(mappedBy = "id_user")
-	//private Set<RelUserGame> relUserGame = new HashSet<RelUserGame>();
-	 
-	/*public void addUserGiochi(RelUserGame userGame) {
-        this.userGame.add(userGame);
-    }*/
+	private Date data_fine;
+		
 }
+

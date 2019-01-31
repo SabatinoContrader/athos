@@ -25,16 +25,24 @@ import lombok.Setter;
 public class Sponsor implements Serializable {
 		
 		@Id
-		@Column
+		@Column(name = "id")
 		@GeneratedValue(strategy = GenerationType.IDENTITY)	
 		private int id;
 		
-		@Column
+		@Column(name = "name")
 		@NotNull
 		private String name;
 		
-		@Column
+		@Column(name = "messagio")
 		@NotNull
 		private String messaggio;
+		
+		@Column(name = "descrizione")
+		@NotNull
+		private String descrizione;
+		
+		@Column(name = "attivo")
+		@NotNull
+		private boolean attivo;
 
 }

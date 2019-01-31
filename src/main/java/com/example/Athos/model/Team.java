@@ -24,8 +24,6 @@ import javax.persistence.Table;
 
 public class Team {
 	
-	//public Team() {}
-
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
@@ -39,10 +37,5 @@ public class Team {
 	@NotNull
 	private boolean attivo;
 	
-	//public Team(int id, String nome) {
-	//	super();
-	//	this.id=id;
-	//	this.nome=nome;
-	//}
 	
 }

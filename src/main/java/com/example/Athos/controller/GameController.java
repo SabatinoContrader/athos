@@ -72,15 +72,14 @@ public class GameController {
 		return true;
 	}
 	
-	@RequestMapping(value = "/deleteGiochi", method = RequestMethod.POST)
-	public boolean deleteGame(@RequestParam("idGame") int idGame, HttpServletRequest request) {
-		
-		this.session = request.getSession();
-		//Game game1= gameService.findById(idGame);
-		relUserGameService.deleteRelUserGame(idGame);
-		gameService.deleteGame(idGame);
-		return true;
-	}
+	//@RequestMapping(value = "/deleteGiochi", method = RequestMethod.POST)
+	//public boolean deleteGame(@RequestParam("idGame") int idGame, HttpServletRequest request) {	
+	//	this.session = request.getSession();
+	//////Game game1= gameService.findById(idGame);
+	//	relUserGameService.deleteRelUserGame(idGame);
+	//	gameService.deleteGame(idGame);
+	//	return true;
+	//}
 	
 	@RequestMapping(value = "/insertRelUserGiochi", method = RequestMethod.POST)
 	public boolean insertRelUserGiochi(@RequestBody RelUserGame rug, HttpServletRequest request) {
@@ -92,11 +91,11 @@ public class GameController {
 	}
 	
 	@RequestMapping(value = "/giochiPerAttivoCreatore", method = RequestMethod.POST)
-	public List<Game> gamePerAttivoCreatore(@RequestParam("idCreatore") int idCreatore , HttpServletRequest request) {
+	public List<Game> gamePerAttivoCreatore(@RequestParam("id_creatore") int id_creatore , HttpServletRequest request) {
 		
 		this.session = request.getSession();
-		List <Game> gameAttivi=gameService.findByAttivo(idCreatore);
-		List <Game> gameNonAttivi=gameService.findByNonAttivo(idCreatore);
+		List <Game> gameAttivi=gameService.findByAttivo(id_creatore);
+		List <Game> gameNonAttivi=gameService.findByNonAttivo(id_creatore);
 		return gameAttivi;
 	}
 	

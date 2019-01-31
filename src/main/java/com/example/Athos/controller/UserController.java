@@ -28,7 +28,7 @@ public class UserController {
 	private UserConverter userConverter;
 	
 	@Autowired
-	public UserController(UserService userService) {		
+	public UserController(UserService userService, UserConverter userConverter) {		
 		this.userService = userService;
 		this.userConverter = userConverter;
 	}
@@ -48,19 +48,25 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/loginControl", method = RequestMethod.POST)
-	public GenericResponse<UserDTO> loginControl(HttpServletRequest request, @RequestBody UserDTO userDTO){ 
-		User user = userConverter.converToEntity(userDTO);
-		user = userService.login(user.getUsername(),user.getPassword());
-		if (user!=null)
-		{
-			UserDTO userdto = userConverter.convertToDTO(user);
-			return new GenericResponse<UserDTO>(0,userdto);
-		}
-		else
-		{
-			return new GenericResponse<UserDTO>(1,null);
-		}
+	public String loginControl(HttpServletRequest request, @RequestBody UserDTO userDTO){ 
 		
+		//User user = userConverter.converToEntity(userDTO);
+		//GenericResponse<UserDTO>
+		 int role = userService.login(userDTO.getUsername(),userDTO.getPassword());
+		 if (role == 0) {return "hello super";}
+		 else if (role ==1) {return "hello gamer";}
+		 else if (role ==2) {return "hello player";}
+		 return "null";
+		//if (user!=null)
+		//{
+		//	UserDTO userdto = userConverter.convertToDTO(user);
+		//	return new GenericResponse<UserDTO>(0,userdto);
+		 
+		//}
+		//else
+		//{			
+		//	return new GenericResponse<UserDTO>(1,null);
+		//}		
 	}
 }
 

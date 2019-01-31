@@ -19,7 +19,7 @@ public class GameService {
 	}
 	
 	public List<Game> findByCreatore(User user) {
-		List<Game> game = gameRepository.findByIdcreatore(user);
+		List<Game> game = gameRepository.findByCreatore(user);
 		
 			return game;
 		
@@ -39,15 +39,15 @@ public class GameService {
 		
 	}
 	
-	public List<Game> findByAttivo(int idCreatore) {
-		List<Game> game = gameRepository.findByAttivo(idCreatore);
+	public List<Game> findByAttivo(int id_creatore) {
+		List<Game> game = gameRepository.findByAttivo(id_creatore);
 		
 			return game;
 		
 	}
 	
-	public List<Game> findByNonAttivo(int idCreatore) {
-		List<Game> game = gameRepository.findByNonAttivo(idCreatore);
+	public List<Game> findByNonAttivo(int id_creatore) {
+		List<Game> game = gameRepository.findByNonAttivo(id_creatore);
 		
 			return game;
 		
@@ -60,10 +60,9 @@ public class GameService {
 		
 	}
 	
-	public boolean deleteGame(int id) {
-		gameRepository.delete(id);		
-		return true;
-		
-	}
+	//public boolean deleteGame(int id) {
+	//	gameRepository.delete(id);		
+	//	return true;
+	//}
 	
 }

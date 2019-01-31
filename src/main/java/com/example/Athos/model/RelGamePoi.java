@@ -5,16 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,35 +23,27 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="user")
-public class User {
-	
+@Table(name="rel_game_poi")
+public class RelGamePoi implements Serializable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int id;
 
-	@Column(name="username")
+	@ManyToOne()
 	@NotNull
-	private String username;
-
-	@Column(name="password")
+    @JoinColumn(name = "id_poi")  
+	private Poi id_poi;
+	
+	@ManyToOne()
 	@NotNull
-	private String password;
-
-	@Column(name="role")
+    @JoinColumn(name = "id_game")
+	private Game id_game;
+	
+	@Column(name="ordine")
 	@NotNull
-	private int role;
-
-	@Column(name="attivo")
-	@NotNull
-	private boolean attivo;
-
-	//@OneToMany(mappedBy = "id_user")
-	//private Set<RelUserGame> relUserGame = new HashSet<RelUserGame>();
-	 
-	/*public void addUserGiochi(RelUserGame userGame) {
-        this.userGame.add(userGame);
-    }*/
+	private int ordine;
+		
 }
+

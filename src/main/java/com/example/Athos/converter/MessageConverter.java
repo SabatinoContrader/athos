@@ -14,8 +14,8 @@ public class MessageConverter implements Converter<Message , MessageDTO> {
 		Message message=new Message();
 		message.setId(messageDTO.getId());
 		message.setText(messageDTO.getText());
-		message.setIdSender(messageDTO.getIdSender());
-		message.setIdReceiver(messageDTO.getIdReceiver());
+		message.setId_sender(messageDTO.getId_sender());
+		message.setId_receiver(messageDTO.getId_receiver());
 		return message;
 	}
 
@@ -24,8 +24,8 @@ public class MessageConverter implements Converter<Message , MessageDTO> {
 	public MessageDTO convertToDTO(Message message) {
 		MessageDTO messageDTO=new MessageDTO();
 		messageDTO.setId(message.getId());
-		messageDTO.setIdSender(message.getIdSender());
-		messageDTO.setIdReceiver(message.getIdReceiver());
+		messageDTO.setId_sender(message.getId_sender());
+		messageDTO.setId_receiver(message.getId_receiver());
 		messageDTO.setText(message.getText());
 		return messageDTO;
 	}
