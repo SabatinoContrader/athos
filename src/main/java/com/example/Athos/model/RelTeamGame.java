@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,19 +34,27 @@ public class RelTeamGame implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int id;
 
-	@ManyToOne()
-    @JoinColumn(name = "id_team")  
+	//@ManyToOne
+    //@JoinColumn(name = "id_team")  
+	@Column(name="id_team")
 	@NotNull
-	private Team id_team;
+	private int id_team;
 	
-	@ManyToOne()
-    @JoinColumn(name = "id_game")
+	//@ManyToOne
+    //@JoinColumn(name = "id_game")
+	@Column(name="id_game")
 	@NotNull
-	private Game id_game;
+	private int id_game;
 	
 	@Column(name="id_poi")
 	@NotNull
 	private int id_poi;
+	
+	@OneToMany	(mappedBy="id")
+	private List<Game> listgame=new ArrayList<>();
+
+	@OneToMany	(mappedBy="id")
+	private List<Team> listteam=new ArrayList<>();
 	
 	
 }

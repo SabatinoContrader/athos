@@ -1,5 +1,7 @@
 package com.example.Athos.dto;
 
+import com.example.Athos.model.User;
+
 public class GameDTO {
 	
 	private int id;

@@ -1,9 +1,15 @@
 package com.example.Athos.dao;
 
 import org.springframework.data.repository.CrudRepository;
-import java.util.List;
-import com.example.Athos.model.Poi;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import com.example.Athos.model.Poi;
+@Repository
+@Transactional
 public interface PoiRepository extends CrudRepository<Poi, Long>{
 	
 	Poi save(Poi poi);

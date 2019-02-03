@@ -2,6 +2,8 @@ package com.example.Athos.dto;
 
 import java.sql.Date;
 
+import com.example.Athos.model.Game;
+
 public class EventoDTO {
 	
 	private int id;
@@ -42,7 +44,7 @@ public class EventoDTO {
 	public void setData_fine(Date data_fine) {
 		this.data_fine = data_fine;
 	}
-	public EventoDTO(int id, int id_game, String descr_evento, Date data_inizio, Date data_fine) {
+	public EventoDTO(int id,int id_game, String descr_evento, Date data_inizio, Date data_fine) {
 		
 		this.id = id;
 		this.id_game = id_game;

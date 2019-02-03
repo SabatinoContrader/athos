@@ -43,9 +43,11 @@ public class Game implements Serializable {
 		@GeneratedValue(strategy = GenerationType.IDENTITY)	
 		private int id;
 		
-		@ManyToOne()
-		@JoinColumn (name="id_creatore")
-		private User id_creatore;
+		//@ManyToOne
+		//@JoinColumn (name="id_creatore")
+		@Column(name="id_creatore")
+		@NotNull
+		private int id_creatore;
 		
 		@Column (name="nome")
 		@NotNull
@@ -61,7 +63,26 @@ public class Game implements Serializable {
 		
 		@Column(name="attivo")
 		@NotNull
-		private int attivo=1;
+		private boolean attivo;
+		
+		@OneToMany	(mappedBy="id_team")
+		private List<RelTeamGame> listteam=new ArrayList<>();
+		
+		@OneToMany	(mappedBy="id_user")
+		private List<RelUserGame> listuser=new ArrayList<>();
+		
+		@OneToMany	(mappedBy="id")
+		private List<RelUserGame> listgameuser=new ArrayList<>();
+		
+
+		@OneToMany	(mappedBy="id")
+		private List<RelTeamGame> listgameteam=new ArrayList<>();
+		
+		@OneToMany	(mappedBy="id")
+		private List<Poi> listpoi=new ArrayList<>();
+	
+		@OneToMany	(mappedBy="id")
+		private List<RelGamePoi> listgamepoi=new ArrayList<>();
 		
 		//@OneToMany(mappedBy="id_game")
 		//private Set<RelUserGame> relUserGame = new HashSet<RelUserGame>();

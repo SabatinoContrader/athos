@@ -6,8 +6,8 @@ import com.example.Athos.model.User;
 public class RelUserGameDTO {
 	
 	private int id;
-	private User id_user;
-	private Game id_game;
+	private int id_user;
+	private int id_game;
 	private int id_poi;
 	
 	public RelUserGameDTO() {}
@@ -20,19 +20,19 @@ public class RelUserGameDTO {
 		this.id = id;
 	}
 
-	public User getId_user() {
+	public int getId_user() {
 		return id_user;
 	}
 
-	public void setId_user(User id_user) {
+	public void setId_user(int id_user) {
 		this.id_user = id_user;
 	}
 
-	public Game getId_game() {
+	public int getId_game() {
 		return id_game;
 	}
 
-	public void setId_game(Game id_game) {
+	public void setId_game(int id_game) {
 		this.id_game = id_game;
 	}
 
@@ -44,7 +44,7 @@ public class RelUserGameDTO {
 		this.id_poi = id_poi;
 	}
 
-	public RelUserGameDTO(int id, User id_user, Game id_game, int id_poi) {
+	public RelUserGameDTO(int id, int id_user, int id_game, int id_poi) {
 		
 		this.id = id;
 		this.id_user = id_user;

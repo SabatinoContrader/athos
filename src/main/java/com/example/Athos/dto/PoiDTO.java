@@ -1,9 +1,11 @@
 package com.example.Athos.dto;
 
+import com.example.Athos.model.Sponsor;
+
 public class PoiDTO {
 
 	private int id;
-	private int id_sponsor;
+	private Sponsor id_sponsor;
 	private String indizio;
 	private String latitudine;
 	private String longitudine;
@@ -18,11 +20,11 @@ public class PoiDTO {
 		this.id = id;
 	}
 
-	public int getId_sponsor() {
+	public Sponsor getId_sponsor() {
 		return id_sponsor;
 	}
 
-	public void setId_sponsor(int id_sponsor) {
+	public void setId_sponsor(Sponsor id_sponsor) {
 		this.id_sponsor = id_sponsor;
 	}
 
@@ -50,7 +52,7 @@ public class PoiDTO {
 		this.longitudine = longitudine;
 	}
 
-	public PoiDTO(int id, int id_sponsor, String indizio, String latitudine, String longitudine) {
+	public PoiDTO(int id, Sponsor id_sponsor, String indizio, String latitudine, String longitudine) {
 		
 		this.id = id;
 		this.id_sponsor = id_sponsor;

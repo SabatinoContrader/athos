@@ -1,9 +1,15 @@
 package com.example.Athos.dao;
 
 import java.util.List;
-import org.springframework.data.repository.CrudRepository;
-import com.example.Athos.model.Sponsor;
 
+import javax.transaction.Transactional;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import com.example.Athos.model.Sponsor;
+@Repository
+@Transactional
 public interface SponsorRepository extends CrudRepository<Sponsor, Long>{
 	
 	Sponsor save(Sponsor sponsor);

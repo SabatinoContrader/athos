@@ -6,12 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.Athos.converter.TeamConverter;
-import com.example.Athos.converter.UserConverter;
+
 import com.example.Athos.dao.TeamRepository;
-import com.example.Athos.dto.UserDTO;
 import com.example.Athos.dto.TeamDTO;
 import com.example.Athos.model.Team;
-import com.example.Athos.model.User;
 
 @Service
 public class TeamService {
@@ -41,5 +39,9 @@ public class TeamService {
 	        return team;
 	    }
 	 
-	
+		public Team findById(int id) {
+			Team team = teamRepository.findById(id);	
+				return team;	
+		}
+		
  }

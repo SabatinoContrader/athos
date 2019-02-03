@@ -38,10 +38,11 @@ public class Evento implements Serializable {
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int id;
-	
-    @JoinColumn(name = "id_game")
+
+	//@JoinColumn(name = "id_game")
+	 @Column(name="id_game")	   
     @NotNull
-	private Game id_game;
+	private int id_game;
 	
     @Column(name="descr_evento")
     @NotNull

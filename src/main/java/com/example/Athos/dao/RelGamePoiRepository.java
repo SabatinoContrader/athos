@@ -1,9 +1,15 @@
 package com.example.Athos.dao;
 
 import org.springframework.data.repository.CrudRepository;
-import java.util.List;
-import com.example.Athos.model.RelGamePoi;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import com.example.Athos.model.RelGamePoi;
+@Repository
+@Transactional
 public interface RelGamePoiRepository extends CrudRepository<RelGamePoi, Long>{
 	
 	RelGamePoi save(RelGamePoi relgamepoi);

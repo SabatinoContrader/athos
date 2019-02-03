@@ -1,10 +1,14 @@
 package com.example.Athos.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.Athos.converter.PoiConverter;
 import com.example.Athos.dao.PoiRepository;
+
+import com.example.Athos.model.Poi;
 
 @Service
 public class PoiService {
@@ -25,5 +29,19 @@ public class PoiService {
 	    	return this.poiRepository;
 	    }
 	
+		public Poi findById(int id) {
+			Poi poi = poiRepository.findById(id);	
+				return poi;	
+		}
+		
+		public List<Poi> findAll() {
+			List<Poi> poi = poiRepository.findAll();	
+				return poi;	
+		}
 
+		public boolean save(Poi poi) {
+			poiRepository.save(poi);	
+			return true;
+			
+		}
 }
