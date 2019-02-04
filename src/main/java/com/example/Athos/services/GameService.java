@@ -60,9 +60,9 @@ public class GameService {
 		
 	}
 	
-	public boolean deleteGame(int id) {
-		gameRepository.delete(id);		
-		return true;
+	public int disattivaGame(int id) {
+
+		return gameRepository.disattivaGame(id);
 		
 	}
 	

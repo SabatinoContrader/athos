@@ -10,6 +10,8 @@ import com.example.Athos.services.RelUserGameService;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
@@ -72,32 +74,34 @@ public class GameController {
 		return true;
 	}
 	
-	@RequestMapping(value = "/deleteGiochi", method = RequestMethod.POST)
-	public boolean deleteGame(@RequestParam("idGame") int idGame, HttpServletRequest request) {
+	@RequestMapping(value = "/disattivaGiochi", method = RequestMethod.POST)
+	public int disattivaGame(@RequestParam("idGame") int idGame, HttpServletRequest request) {
 		
 		this.session = request.getSession();
-		//Game game1= gameService.findById(idGame);
-		relUserGameService.deleteRelUserGame(idGame);
-		gameService.deleteGame(idGame);
-		return true;
+		return gameService.disattivaGame(idGame);
 	}
 	
-	@RequestMapping(value = "/insertRelUserGiochi", method = RequestMethod.POST)
-	public boolean insertRelUserGiochi(@RequestBody RelUserGame rug, HttpServletRequest request) {
-		
-		this.session = request.getSession();
-		relUserGameService.saveRelUserGame(rug);
-		
-		return true;
-	}
 	
-	@RequestMapping(value = "/giochiPerAttivoCreatore", method = RequestMethod.POST)
-	public List<Game> gamePerAttivoCreatore(@RequestParam("idCreatore") int idCreatore , HttpServletRequest request) {
+	@RequestMapping(value = "/giochiPerAttivoCreatore", method = RequestMethod.GET)
+	public List<List<Game>> gamePerAttivoCreatore(@RequestParam("idCreatore") int idCreatore , HttpServletRequest request) {
 		
 		this.session = request.getSession();
 		List <Game> gameAttivi=gameService.findByAttivo(idCreatore);
 		List <Game> gameNonAttivi=gameService.findByNonAttivo(idCreatore);
-		return gameAttivi;
+		List <List<Game>> games=new ArrayList<List<Game>>();
+		games.add(gameAttivi);
+		games.add(gameNonAttivi);
+		return games;
+	}
+	
+	
+	@RequestMapping(value = "/giochiPerId", method = RequestMethod.POST)
+	public Set<RelUserGame> gameID(@RequestParam("id") int id , HttpServletRequest request) {
+		
+		this.session = request.getSession();
+		Game game=gameService.findById(id);
+		//game.getRelUserGame()
+		return null;
 	}
 	
 	public HttpSession getSession() {

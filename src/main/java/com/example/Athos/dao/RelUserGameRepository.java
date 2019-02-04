@@ -20,8 +20,16 @@ import org.springframework.jca.cci.connection.*;
 @Transactional
 public interface RelUserGameRepository extends CrudRepository<RelUserGame, Long> {
 
-	@Modifying
+	/*@Modifying
 	@Query(value="delete from rel_user_giochi where id_game=?", nativeQuery = true)
-	int deleteById_game(int id_game);
+	int deleteById_game(int id_game);*/
+	
+	
+	@Query(value="select * from rel_user_giochi where id_game=?", nativeQuery = true)
+	List<RelUserGame> chiGiocatoGioco(int id_game);
+
+	
+	@Query(value="select * from rel_user_giochi where id_game=?", nativeQuery = true)
+	List<RelUserGame>findById_game(int id);
 	
 }

@@ -18,30 +18,30 @@ public class UserService {
 	public UserService() {}
 
 	@Autowired 
-	public UserService(UserRepository userRepository, UserConverter userConverter) {
-		
+	public UserService(UserRepository userRepository,UserConverter userConverter) {
+
 		this.userRepository = userRepository;
 		this.userConverter = userConverter;
 	}
 	
-	public User login(String username, String password) {
-		User user = (User) this.userRepository.findUserByUsernameAndPassword(username,password);
-		if (user == null) 
-		{
-			return null;
-		}
-		else 
-		{
-				return user;
-		}
-	}
-//	public List<UserDTO> getAll(){
-//				
-//		List<User> listaUser = (List<User>) this.userRepository.findAll();
-//		List<UserDTO> user= new ArrayList<>();
-//		listaUser.forEach(i->user.add(UserConverter.convertToDTO(i)));
+	    public UserRepository getUserRepository() {
+	    	return this.userRepository;
+	    }
+	
+	
+//	public User login(String username, String password) {
+		
+//		User user = userRepository.findByUsernameAndPassword(username,password);
+		//UserDTO userDTO = userConverter.convertToDTO(user);
 //		return user;
 //	}
+	    public int login(String username, String password) {
+		
+		User user = userRepository.findByUsernameAndPassword(username,password);
+		//UserDTO userDTO = userConverter.convertToDTO(user);
+		return user.getRole();
+	}
+
 
 	 public List<UserDTO> getAll(int role) {	    	
 	    	List<User> ListUser= (List<User>) this.userRepository.findUserByRole(role);
@@ -56,6 +56,5 @@ public class UserService {
 		 User user = userConverter.converToEntity(userDTO);
 		 return this.userRepository.save(user);
 		 	 }
-	 
 	 
 	  }

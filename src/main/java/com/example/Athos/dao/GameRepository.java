@@ -30,10 +30,16 @@ public interface GameRepository extends CrudRepository<Game, Integer> {
 	
 	
 	@Modifying
-	@Query(value="select * from game where attivo=1", nativeQuery = true)
+	@Query(value="select * from game where attivo=1 and id_creatore=?", nativeQuery = true)
 	List<Game> findByAttivo(int idCreatore);
 	
 	@Modifying
-	@Query(value="select * from game where attivo=0", nativeQuery = true)
+	@Query(value="select * from game where attivo=0 and id_creatore=?", nativeQuery = true)
 	List<Game> findByNonAttivo(int idCreatore);
+	
+	@Modifying
+	@Query(value="update game set attivo=0 where id=?", nativeQuery = true)
+	int disattivaGame(int id);
+	
+	
 }

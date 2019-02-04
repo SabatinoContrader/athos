@@ -17,8 +17,16 @@ import org.springframework.jca.cci.connection.*;
 @Transactional
 public interface UserRepository extends CrudRepository<User, Long> {
 
+
 	User findUserByUsernameAndPassword(String username, String password);
 	
-	List <User> findUserByRole(int role);
+
+	User findByUsernameAndPassword(String username, String password);
+	
+	List<User> findUserByRole(int role);
+	
+	User save(User user);
+	
+
 	
 }

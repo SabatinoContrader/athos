@@ -61,10 +61,8 @@ public class Game implements Serializable {
 		
 		@Column(name="attivo")
 		@NotNull
-		private int attivo=1;
+		private boolean attivo=true;
 		
-		@OneToMany(mappedBy="id_game")
-		private Set<RelUserGame> relUserGame = new HashSet<RelUserGame>();
 		
 		/*@ManyToMany
 		@JoinTable(name="rel_user_giochi", 

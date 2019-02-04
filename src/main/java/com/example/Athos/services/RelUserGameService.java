@@ -1,5 +1,8 @@
 package com.example.Athos.services;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +29,13 @@ public class RelUserGameService {
 		
 	}
 	
-	public int deleteRelUserGame(int id_game) {
-		return relUserGameRepository.deleteById_game(id_game);
+	public List<RelUserGame> chiGiocatoGioco(int id_game) {
+		return relUserGameRepository.chiGiocatoGioco(id_game);
+		
+	}
+	
+	public List<RelUserGame> diverso(int id_game) {
+		return relUserGameRepository.findById_game(id_game);
 		
 	}
 }

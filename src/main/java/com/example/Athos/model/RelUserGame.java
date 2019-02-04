@@ -31,7 +31,7 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="rel_user_giochi")
+@Table(name="rel_user_game")
 public class RelUserGame implements Serializable {
 	
 	@Id
@@ -47,17 +47,12 @@ public class RelUserGame implements Serializable {
     @JoinColumn(name = "id_game")
 	private Game id_game;
 	
-	@Column(name="id_p")
-	private int id_p;
+	@Column(name="id_poi")
+	private int id_poi;
 	
 	/*@ManyToMany(mappedBy="users")
 	private Set<Game> games = new HashSet<Game>();
-	*/
-	
-	
-    
-	
-	
+	*/	
 }
 	
 

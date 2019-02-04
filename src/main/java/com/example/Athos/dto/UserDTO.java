@@ -11,7 +11,7 @@ private boolean attivo;
 public UserDTO() {}
 
 public UserDTO(int id, int role, String username,String password, boolean attivo) {
-	//this();
+	
 	this.id = id;
 	this.role = role;
 	this.username = username;
@@ -19,7 +19,7 @@ public UserDTO(int id, int role, String username,String password, boolean attivo
 	this.attivo=attivo;
 }
 public UserDTO(String username, String password) {
-	this();
+	
 	this.username=username;
 	this.password=password;
 }

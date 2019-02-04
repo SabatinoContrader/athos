@@ -57,8 +57,8 @@ public class User {
 	@NotNull
 	private boolean attivo;
 
-	@OneToMany(mappedBy = "id_user")
-	private Set<RelUserGame> relUserGame = new HashSet<RelUserGame>();
+	/*@OneToMany(mappedBy = "id_user")
+	private Set<RelUserGame> relUserGame = new HashSet<RelUserGame>();*/
 	
 	  
 	/*public void addUserGiochi(RelUserGame userGame) {
