@@ -1,6 +1,8 @@
 package com.example.Athos.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -40,11 +43,11 @@ public class Poi implements Serializable {
 		private String longitudine;
 		
 		@Column (name="indizio")
+		@NotNull
 		private String indizio;
 		
-
 		@ManyToOne
-		@JoinColumn (name="idSponsor")
-		private Sponsor idSponsor;
-
+		@NotNull
+		@JoinColumn(name="id_sponsor")
+		private Sponsor id_sponsor;
 }

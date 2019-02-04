@@ -3,8 +3,8 @@ package com.example.Athos.dto;
 public class MessageDTO {
 
 	private int id;
-	private int idReceiver;
-	private int idSender;
+	private int id_receiver;
+	private int id_sender;
 	private String text;
 	
 	public MessageDTO() {}
@@ -17,20 +17,20 @@ public class MessageDTO {
 		this.id = id;
 	}
 
-	public int getIdReceiver() {
-		return idReceiver;
+	public int getId_receiver() {
+		return id_receiver;
 	}
 
-	public void setIdReceiver(int idReceiver) {
-		this.idReceiver = idReceiver;
+	public void setId_receiver(int id_receiver) {
+		this.id_receiver = id_receiver;
 	}
 
-	public int getIdSender() {
-		return idSender;
+	public int getId_sender() {
+		return id_sender;
 	}
 
-	public void setIdSender(int idSender) {
-		this.idSender = idSender;
+	public void setId_sender(int id_sender) {
+		this.id_sender = id_sender;
 	}
 
 	public String getText() {
@@ -41,11 +41,11 @@ public class MessageDTO {
 		this.text = text;
 	}
 
-	public MessageDTO(int id, int idReceiver, int idSender, String text) {
-		//super();
+	public MessageDTO(int id, int id_receiver, int id_sender, String text) {
+		
 		this.id = id;
-		this.idReceiver = idReceiver;
-		this.idSender = idSender;
+		this.id_receiver = id_receiver;
+		this.id_sender = id_sender;
 		this.text = text;
 	}
 }

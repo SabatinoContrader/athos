@@ -5,12 +5,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.persistence.Table;
@@ -38,5 +43,9 @@ public class Team {
 	@NotNull
 	private boolean attivo;
 	
-	
+	@ManyToMany
+	@JoinTable(name="rel_user_team", 
+		joinColumns= {@JoinColumn(name="id_team")}, 
+		inverseJoinColumns={@JoinColumn(name="id_user")})
+	 private Set<User> users = new HashSet<>();
 }

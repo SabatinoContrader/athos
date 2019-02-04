@@ -1,12 +1,15 @@
 package com.example.Athos.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -25,16 +28,28 @@ import lombok.Setter;
 public class Sponsor implements Serializable {
 		
 		@Id
-		@Column
+		@Column(name = "id")
 		@GeneratedValue(strategy = GenerationType.IDENTITY)	
 		private int id;
 		
-		@Column
+		@Column(name = "name")
 		@NotNull
 		private String name;
 		
-		@Column
+		@Column(name = "messagio")
 		@NotNull
 		private String messaggio;
+		
+		@Column(name = "descrizione")
+		@NotNull
+		private String descrizione;
+		
+		@Column(name = "attivo")
+		@NotNull
+		private boolean attivo;
+		
+	//	@OneToMany(mappedBy="id")
+	//	private List<Poi> listpoi=new ArrayList<>();
+
 
 }

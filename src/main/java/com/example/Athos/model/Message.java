@@ -21,34 +21,24 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="message")
-
 public class Message {
-	
-	//public Message() {}
 
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int id;
 
-	@Column(name="idSender")
+	@Column(name="id_sender")
 	@NotNull
-	private int idSender;
+	private int id_sender;
 
-	@Column(name="idReceiver")
+	@Column(name="id_receiver")
 	@NotNull
-	private int idReceiver;
+	private int id_receiver;
 
 	@Column(name="text")
 	@NotNull
 	private String text;
 	
-	//public Message(int id, int idSender, int idReceiver, String tipo) {
-	//	super();
-	//	this.id=id;
-	//	this.idSender=idSender;
-	//	this.idReceiver=idReceiver;
-	//	this.tipo=tipo;
-	//}
 
 }

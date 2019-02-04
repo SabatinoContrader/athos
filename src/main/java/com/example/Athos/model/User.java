@@ -56,6 +56,10 @@ public class User {
 	@Column(name="attivo")
 	@NotNull
 	private boolean attivo;
+	
+	@ManyToMany(mappedBy="users")
+	private Set<Team> teams = new HashSet<Team>();
+	
 
 	/*@OneToMany(mappedBy = "id_user")
 	private Set<RelUserGame> relUserGame = new HashSet<RelUserGame>();*/

@@ -1,20 +1,12 @@
 package com.example.Athos.dao;
 
-import com.example.Athos.model.Game;
 import com.example.Athos.model.RelUserGame;
-import com.example.Athos.model.User;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
-import org.jboss.logging.Param;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import java.util.List;
-import java.util.ArrayList;
-import org.springframework.jca.cci.connection.*;
 
 @Repository
 @Transactional
@@ -31,5 +23,11 @@ public interface RelUserGameRepository extends CrudRepository<RelUserGame, Long>
 	
 	@Query(value="select * from rel_user_giochi where id_game=?", nativeQuery = true)
 	List<RelUserGame>findById_game(int id);
+	
+	RelUserGame save(RelUserGame relusergame);
+	List<RelUserGame> findAll();
+	//List<RelUserGame> findByIdTeam(int id_team);
+	//List<RelUserGame> findByIdGame(int id_game);
+	RelUserGame findById(int id);
 	
 }

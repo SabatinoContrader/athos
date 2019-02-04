@@ -18,6 +18,32 @@ USE `athos_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `evento`
+--
+
+DROP TABLE IF EXISTS `evento`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `evento` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `data_fine` date NOT NULL,
+  `data_inizio` date NOT NULL,
+  `descr_evento` varchar(255) NOT NULL,
+  `id_game` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `evento`
+--
+
+LOCK TABLES `evento` WRITE;
+/*!40000 ALTER TABLE `evento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `evento` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `game`
 --
 
@@ -26,16 +52,15 @@ DROP TABLE IF EXISTS `game`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `game` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `attivo` bit(1) NOT NULL,
+  `descr_percorso` varchar(255) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `versione` int(11) NOT NULL,
   `id_creatore` int(11) DEFAULT NULL,
-  `nome` varchar(45) DEFAULT NULL,
-  `descr_percorso` varchar(200) DEFAULT NULL,
-  `versione` varchar(45) DEFAULT NULL,
-  `attivo` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `idCreatore_idx` (`id_creatore`),
-  CONSTRAINT `FK2t0uc7u1p8tn2yxfl2b51kf6t` FOREIGN KEY (`id_creatore`) REFERENCES `user` (`id`),
-  CONSTRAINT `idCreatore` FOREIGN KEY (`id_creatore`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `FK2t0uc7u1p8tn2yxfl2b51kf6t` (`id_creatore`),
+  CONSTRAINT `FK2t0uc7u1p8tn2yxfl2b51kf6t` FOREIGN KEY (`id_creatore`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +69,6 @@ CREATE TABLE `game` (
 
 LOCK TABLES `game` WRITE;
 /*!40000 ALTER TABLE `game` DISABLE KEYS */;
-INSERT INTO `game` VALUES (1,2,'a','a','1',1),(4,18,'prova','prova','1',1),(5,18,'prova','prova ','2',1),(6,2,'master','ciaociaofra','1',0),(7,2,'master','ciaociaofra','1',1),(8,2,'master','ciao   ciao     fra','2',1),(9,2,'master','ciao   ciao     fra','3',1),(10,2,'bellaaaaaaa','ciao bello','1',0),(11,2,'bellaaaaaaiiiiiiiiiiiiiiia','ciao belloooooooooooooooooooooo','1',0),(12,2,'bellaaaaaaiiiiiiiiiiiiiiia3','ciao belloooooooooooooooooooooo3','1',0),(13,2,'bellaaaaaaiiiiiiiiiiiiiiia3','ciao belloooooooooooooooooooooo3','1',0);
 /*!40000 ALTER TABLE `game` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +83,6 @@ CREATE TABLE `message` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_receiver` int(11) NOT NULL,
   `id_sender` int(11) NOT NULL,
-  `tipo` varchar(45) DEFAULT NULL,
   `text` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -83,16 +106,14 @@ DROP TABLE IF EXISTS `poi`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `poi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `latitudine` float DEFAULT NULL,
-  `longitudine` float DEFAULT NULL,
-  `indizio` varchar(600) DEFAULT NULL,
-  `id_sponsor` int(11) DEFAULT NULL,
-  `attivo` tinyint(1) DEFAULT '1',
+  `indizio` varchar(255) NOT NULL,
+  `latitudine` varchar(255) NOT NULL,
+  `longitudine` varchar(255) NOT NULL,
+  `id_sponsor` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `idSponsor_idx` (`id_sponsor`),
-  CONSTRAINT `FKj3p5pktmk6a34pmc6emgu1vy` FOREIGN KEY (`id_sponsor`) REFERENCES `sponsor` (`id`),
-  CONSTRAINT `idSponsor` FOREIGN KEY (`id_sponsor`) REFERENCES `sponsor` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `FKj3p5pktmk6a34pmc6emgu1vy` (`id_sponsor`),
+  CONSTRAINT `FKj3p5pktmk6a34pmc6emgu1vy` FOREIGN KEY (`id_sponsor`) REFERENCES `sponsor` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,101 +122,94 @@ CREATE TABLE `poi` (
 
 LOCK TABLES `poi` WRITE;
 /*!40000 ALTER TABLE `poi` DISABLE KEYS */;
-INSERT INTO `poi` VALUES (6,1,2,'a',1,1),(7,1,1,'a',1,1),(8,1,1,'a',1,1),(11,999,999,'klsjflasjfpoasjkdfljk',13,1),(12,0,45645600,'sdgsdfsdfhfhfjfg',14,1);
 /*!40000 ALTER TABLE `poi` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `rel_giochi_poi`
+-- Table structure for table `rel_game_poi`
 --
 
-DROP TABLE IF EXISTS `rel_giochi_poi`;
+DROP TABLE IF EXISTS `rel_game_poi`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `rel_giochi_poi` (
-  `id_poi` int(11) DEFAULT NULL,
-  `id_giochi` int(11) DEFAULT NULL,
-  `ordine` int(11) DEFAULT NULL,
+CREATE TABLE `rel_game_poi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`),
-  KEY `idPoi_idx` (`id_poi`),
-  KEY `idGiochi_idx` (`id_giochi`),
-  CONSTRAINT `idGiochi` FOREIGN KEY (`id_giochi`) REFERENCES `game` (`id`),
-  CONSTRAINT `idPoi` FOREIGN KEY (`id_poi`) REFERENCES `poi` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `rel_giochi_poi`
---
-
-LOCK TABLES `rel_giochi_poi` WRITE;
-/*!40000 ALTER TABLE `rel_giochi_poi` DISABLE KEYS */;
-INSERT INTO `rel_giochi_poi` VALUES (6,1,1,1),(7,1,2,2),(8,1,3,3),(11,4,1,4),(12,4,2,5);
-/*!40000 ALTER TABLE `rel_giochi_poi` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `rel_team_giochi`
---
-
-DROP TABLE IF EXISTS `rel_team_giochi`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `rel_team_giochi` (
-  `id_team` int(11) DEFAULT NULL,
-  `id_gioco` int(11) DEFAULT NULL,
-  `id` tinyint(1) DEFAULT '1',
-  KEY `idTeam2_idx` (`id_team`),
-  KEY `idGame2_idx` (`id_gioco`),
-  CONSTRAINT `idGame2` FOREIGN KEY (`id_gioco`) REFERENCES `game` (`id`),
-  CONSTRAINT `idTeam2` FOREIGN KEY (`id_team`) REFERENCES `team` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `rel_team_giochi`
---
-
-LOCK TABLES `rel_team_giochi` WRITE;
-/*!40000 ALTER TABLE `rel_team_giochi` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rel_team_giochi` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `rel_user_giochi`
---
-
-DROP TABLE IF EXISTS `rel_user_giochi`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `rel_user_giochi` (
-  `id_user` int(11) DEFAULT NULL,
-  `id_giochi` int(11) DEFAULT NULL,
-  `id_poi` int(11) DEFAULT NULL,
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_p` int(11) DEFAULT NULL,
+  `ordine` int(11) NOT NULL,
   `id_game` int(11) DEFAULT NULL,
+  `id_poi` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `idUser_idx` (`id_user`),
-  KEY `idGame_idx` (`id_giochi`),
-  KEY `idPoi2_idx` (`id_poi`),
-  KEY `FK8w9ty0he5n8vsks5mglvw56sl` (`id_game`),
-  CONSTRAINT `FK8w9ty0he5n8vsks5mglvw56sl` FOREIGN KEY (`id_game`) REFERENCES `game` (`id`),
-  CONSTRAINT `FKqy6capx31h45ytofj3g7qw8jd` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
-  CONSTRAINT `idGame` FOREIGN KEY (`id_giochi`) REFERENCES `game` (`id`),
-  CONSTRAINT `idPoi2` FOREIGN KEY (`id_poi`) REFERENCES `poi` (`id`),
-  CONSTRAINT `idUser` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
+  KEY `FK6magdn6aep231nvvdvbgqbkwl` (`id_game`),
+  KEY `FKh9hskcfkg85apifbph322reg1` (`id_poi`),
+  CONSTRAINT `FK6magdn6aep231nvvdvbgqbkwl` FOREIGN KEY (`id_game`) REFERENCES `game` (`id`),
+  CONSTRAINT `FKh9hskcfkg85apifbph322reg1` FOREIGN KEY (`id_poi`) REFERENCES `poi` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `rel_user_giochi`
+-- Dumping data for table `rel_game_poi`
 --
 
-LOCK TABLES `rel_user_giochi` WRITE;
-/*!40000 ALTER TABLE `rel_user_giochi` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rel_user_giochi` ENABLE KEYS */;
+LOCK TABLES `rel_game_poi` WRITE;
+/*!40000 ALTER TABLE `rel_game_poi` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rel_game_poi` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rel_team_game`
+--
+
+DROP TABLE IF EXISTS `rel_team_game`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `rel_team_game` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_poi` int(11) DEFAULT NULL,
+  `id_game` int(11) DEFAULT NULL,
+  `id_team` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKal224xso4jd3rs7her0k084pc` (`id_game`),
+  KEY `FKjw3mu78bbxw5gn9t4fbe7y471` (`id_team`),
+  CONSTRAINT `FKal224xso4jd3rs7her0k084pc` FOREIGN KEY (`id_game`) REFERENCES `game` (`id`),
+  CONSTRAINT `FKjw3mu78bbxw5gn9t4fbe7y471` FOREIGN KEY (`id_team`) REFERENCES `team` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rel_team_game`
+--
+
+LOCK TABLES `rel_team_game` WRITE;
+/*!40000 ALTER TABLE `rel_team_game` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rel_team_game` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rel_user_game`
+--
+
+DROP TABLE IF EXISTS `rel_user_game`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `rel_user_game` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_poi` int(11) DEFAULT NULL,
+  `id_game` int(11) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK1ljli565l7nlxfk5mj4xjvg2l` (`id_game`),
+  KEY `FKipb6pr98nh218jqmgxa1a71n7` (`id_user`),
+  CONSTRAINT `FK1ljli565l7nlxfk5mj4xjvg2l` FOREIGN KEY (`id_game`) REFERENCES `game` (`id`),
+  CONSTRAINT `FKipb6pr98nh218jqmgxa1a71n7` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rel_user_game`
+--
+
+LOCK TABLES `rel_user_game` WRITE;
+/*!40000 ALTER TABLE `rel_user_game` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rel_user_game` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -206,12 +220,12 @@ DROP TABLE IF EXISTS `rel_user_team`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `rel_user_team` (
-  `id_user` int(11) DEFAULT NULL,
-  `id_team` int(11) DEFAULT NULL,
-  KEY `idUser2_idx` (`id_user`),
-  KEY `idTeam_idx` (`id_team`),
-  CONSTRAINT `idTeam` FOREIGN KEY (`id_team`) REFERENCES `team` (`id`),
-  CONSTRAINT `idUser2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
+  `id_team` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  PRIMARY KEY (`id_team`,`id_user`),
+  KEY `FKtfft8nokt0l6c0pmbbabmok3f` (`id_user`),
+  CONSTRAINT `FKqffra7gbh9l7d63ub9m402t8k` FOREIGN KEY (`id_team`) REFERENCES `team` (`id`),
+  CONSTRAINT `FKtfft8nokt0l6c0pmbbabmok3f` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -233,12 +247,12 @@ DROP TABLE IF EXISTS `sponsor`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `sponsor` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `description` varchar(500) DEFAULT NULL,
-  `attivo` tinyint(1) DEFAULT '1',
-  `messaggio` varchar(255) NOT NULL,
+  `attivo` bit(1) NOT NULL,
+  `descrizione` varchar(255) NOT NULL,
+  `messagio` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -247,7 +261,6 @@ CREATE TABLE `sponsor` (
 
 LOCK TABLES `sponsor` WRITE;
 /*!40000 ALTER TABLE `sponsor` DISABLE KEYS */;
-INSERT INTO `sponsor` VALUES (1,'b','a',1,''),(13,'a','aaaaaaaaa',1,''),(14,'aa','a',1,'');
 /*!40000 ALTER TABLE `sponsor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,10 +273,10 @@ DROP TABLE IF EXISTS `team`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `team` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(45) DEFAULT NULL,
-  `attivo` tinyint(1) DEFAULT '1',
+  `attivo` bit(1) NOT NULL,
+  `nome` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,7 +285,6 @@ CREATE TABLE `team` (
 
 LOCK TABLES `team` WRITE;
 /*!40000 ALTER TABLE `team` DISABLE KEYS */;
-INSERT INTO `team` VALUES (36,'a',1),(37,'a',1),(38,'b',1),(39,'c',1),(40,'z',1),(41,'aaa',1),(42,'aaaaaaaaaaaaa',1);
 /*!40000 ALTER TABLE `team` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -285,12 +297,12 @@ DROP TABLE IF EXISTS `user`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `role` int(11) DEFAULT '2',
-  `attivo` tinyint(1) DEFAULT '1',
+  `attivo` bit(1) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -299,7 +311,6 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','admin',0,1),(2,'master','master',1,1),(3,'player','player',2,1),(17,'prova','prova',2,1),(18,'io','io',1,1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -316,4 +327,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-28 16:34:53
+-- Dump completed on 2019-02-04 18:00:14

@@ -20,9 +20,8 @@ import org.springframework.jca.cci.connection.*;
 public interface TeamRepository extends CrudRepository<Team, Long>{
 	
 	Team save(Team team);
-	
-	Boolean deleteById(int id);
-	
-	List <Team> findAll();
+	//Boolean deleteById(int id);
+	Team findById(int id);
+	List<Team> findAll();
 }
 
