@@ -18,32 +18,6 @@ USE `athos_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `evento`
---
-
-DROP TABLE IF EXISTS `evento`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `evento` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `data_fine` date NOT NULL,
-  `data_inizio` date NOT NULL,
-  `descr_evento` varchar(255) NOT NULL,
-  `id_game` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `evento`
---
-
-LOCK TABLES `evento` WRITE;
-/*!40000 ALTER TABLE `evento` DISABLE KEYS */;
-/*!40000 ALTER TABLE `evento` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `game`
 --
 
@@ -53,6 +27,9 @@ DROP TABLE IF EXISTS `game`;
 CREATE TABLE `game` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `attivo` bit(1) NOT NULL,
+  `data_fine` datetime DEFAULT NULL,
+  `data_inizio` datetime DEFAULT NULL,
+  `descr_evento` varchar(255) DEFAULT NULL,
   `descr_percorso` varchar(255) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `versione` int(11) NOT NULL,
@@ -81,10 +58,14 @@ DROP TABLE IF EXISTS `message`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `message` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `text` varchar(255) NOT NULL,
   `id_receiver` int(11) NOT NULL,
   `id_sender` int(11) NOT NULL,
-  `text` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `FKqyxddlqh59ce3gqls6qu9w3lq` (`id_receiver`),
+  KEY `FK249t1hnaxlacjng5xtud18fi` (`id_sender`),
+  CONSTRAINT `FK249t1hnaxlacjng5xtud18fi` FOREIGN KEY (`id_sender`) REFERENCES `user` (`id`),
+  CONSTRAINT `FKqyxddlqh59ce3gqls6qu9w3lq` FOREIGN KEY (`id_receiver`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -109,10 +90,7 @@ CREATE TABLE `poi` (
   `indizio` varchar(255) NOT NULL,
   `latitudine` varchar(255) NOT NULL,
   `longitudine` varchar(255) NOT NULL,
-  `id_sponsor` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKj3p5pktmk6a34pmc6emgu1vy` (`id_sponsor`),
-  CONSTRAINT `FKj3p5pktmk6a34pmc6emgu1vy` FOREIGN KEY (`id_sponsor`) REFERENCES `sponsor` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -137,9 +115,12 @@ CREATE TABLE `rel_game_poi` (
   `ordine` int(11) NOT NULL,
   `id_game` int(11) DEFAULT NULL,
   `id_poi` int(11) DEFAULT NULL,
+  `id_sponsor` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK6magdn6aep231nvvdvbgqbkwl` (`id_game`),
   KEY `FKh9hskcfkg85apifbph322reg1` (`id_poi`),
+  KEY `FK5qd6t10ylxpm8fv2xwxt2ivxu` (`id_sponsor`),
+  CONSTRAINT `FK5qd6t10ylxpm8fv2xwxt2ivxu` FOREIGN KEY (`id_sponsor`) REFERENCES `sponsor` (`id`),
   CONSTRAINT `FK6magdn6aep231nvvdvbgqbkwl` FOREIGN KEY (`id_game`) REFERENCES `game` (`id`),
   CONSTRAINT `FKh9hskcfkg85apifbph322reg1` FOREIGN KEY (`id_poi`) REFERENCES `poi` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -327,4 +308,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-04 18:00:14
+-- Dump completed on 2019-02-05 13:05:01

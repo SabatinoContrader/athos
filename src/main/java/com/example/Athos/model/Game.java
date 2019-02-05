@@ -2,6 +2,7 @@ package com.example.Athos.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -62,6 +63,17 @@ public class Game implements Serializable {
 		@Column(name="attivo")
 		@NotNull
 		private boolean attivo=true;
+		
+		@Column (name="descr_evento")
+		private String descrevento;
+		
+		@Column (name="data_inizio")
+		private Date data_inizio;
+		
+		@Column (name="data_fine")
+		private Date data_fine;
+		
+		
 		
 		
 		/*@ManyToMany

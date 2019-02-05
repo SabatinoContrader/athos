@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.example.Athos.converter.MessageConverter;
 import com.example.Athos.dao.MessageRepository;
 import com.example.Athos.dto.MessageDTO;
-import com.example.Athos.model.Evento;
 import com.example.Athos.model.Message;
 import com.example.Athos.model.User;
 

@@ -45,9 +45,4 @@ public class Poi implements Serializable {
 		@Column (name="indizio")
 		@NotNull
 		private String indizio;
-		
-		@ManyToOne
-		@NotNull
-		@JoinColumn(name="id_sponsor")
-		private Sponsor id_sponsor;
 }

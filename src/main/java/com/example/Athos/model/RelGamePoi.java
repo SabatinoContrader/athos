@@ -48,6 +48,11 @@ public class RelGamePoi implements Serializable {
 	@NotNull
 	private int ordine;
 	
+	@ManyToOne
+	@JoinColumn(name = "id_sponsor")
+	//@Column(name="id_game")
+    private Sponsor id_sponsor;
+	
 	/*@OneToMany	(mappedBy="id")
 	private List<Game> listgame=new ArrayList<>();
 

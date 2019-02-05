@@ -28,13 +28,15 @@ public class Message {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int id;
 
-	@Column(name="id_sender")
+	@ManyToOne
 	@NotNull
-	private int id_sender;
+	@JoinColumn(name="id_sender")
+	private User id_sender;
 
-	@Column(name="id_receiver")
+	@ManyToOne
 	@NotNull
-	private int id_receiver;
+	@JoinColumn(name="id_receiver")
+	private User id_receiver;
 
 	@Column(name="text")
 	@NotNull

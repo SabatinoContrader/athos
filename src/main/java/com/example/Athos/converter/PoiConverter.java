@@ -16,7 +16,6 @@ public class PoiConverter implements Converter<Poi , PoiDTO>{
 		poi.setIndizio(poiDTO.getIndizio());
 		poi.setLatitudine(poiDTO.getLatitudine());
 		poi.setLongitudine(poiDTO.getLongitudine());
-		poi.setId_sponsor(poiDTO.getId_sponsor());
 		
 		return poi;
 	}
@@ -30,7 +29,6 @@ public class PoiConverter implements Converter<Poi , PoiDTO>{
 		poiDTO.setIndizio(poi.getIndizio());
 		poiDTO.setLatitudine(poi.getLatitudine());
 		poiDTO.setLongitudine(poi.getLongitudine());
-		poiDTO.setId_sponsor(poi.getId_sponsor());
 		
 		return poiDTO;
 		}
