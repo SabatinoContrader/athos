@@ -1,5 +1,7 @@
 package com.example.Athos.dto;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 
 import lombok.AllArgsConstructor;
@@ -18,6 +20,5 @@ public class UserDTO {
 	private String username;
 	private String password;
 	private boolean attivo;
-
-
+	private Date data_iscrizione;
 }

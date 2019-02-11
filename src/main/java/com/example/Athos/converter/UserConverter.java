@@ -15,6 +15,7 @@ public class UserConverter implements Converter<User , UserDTO>{
 		user.setUsername(userDTO.getUsername());
 		user.setPassword(userDTO.getPassword());
 		user.setAttivo(userDTO.isAttivo());
+		user.setData_iscrizione(userDTO.getData_iscrizione());
 		
 		return user;
 		
@@ -28,6 +29,7 @@ public class UserConverter implements Converter<User , UserDTO>{
 		userDTO.setPassword(user.getPassword());
 		userDTO.setRole(user.getRole());
 		userDTO.setAttivo(user.isAttivo());
+		userDTO.setData_iscrizione(user.getData_iscrizione());
 		
 		return userDTO;
 		
