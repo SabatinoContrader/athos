@@ -1,10 +1,16 @@
 package com.example.Athos.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.Athos.converter.GameConverter;
+import com.example.Athos.converter.UserConverter;
 import com.example.Athos.dao.GameRepository;
+import com.example.Athos.dto.GameDTO;
+import com.example.Athos.dto.UserDTO;
 import com.example.Athos.model.Game;
 import com.example.Athos.model.User;
 
@@ -12,16 +18,25 @@ import com.example.Athos.model.User;
 public class GameService {
 
 	private GameRepository gameRepository;
+	private UserConverter userConverter;
+	private GameConverter gameConverter;
 	
 	@Autowired 
-	public GameService(GameRepository gameRepository) {
+	public GameService(GameRepository gameRepository, UserConverter userConverter, GameConverter gameConverter) {
 		this.gameRepository = gameRepository;
+		this.userConverter = userConverter;
+		this.gameConverter = gameConverter;
 	}
 	
-	public List<Game> findByCreatore(User user) {
-		List<Game> game = gameRepository.findByIdcreatore(user);
+	public List<GameDTO> findByCreatore(UserDTO userDTO) {
 		
-			return game;
+		User user=userConverter.converToEntity(userDTO);
+		List<Game> game = gameRepository.findByIdcreatore(user);
+		List<GameDTO> gameDTO= new ArrayList<>();
+		
+		game.forEach(i->gameDTO.add(gameConverter.convertToDTO(i)));
+		
+		return gameDTO;
 		
 	}
 	

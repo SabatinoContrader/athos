@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,7 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="rel_user_game")
+@Table(name="rel_user_game_team")
 public class RelUserGame implements Serializable {
 	
 	@Id
@@ -47,12 +48,20 @@ public class RelUserGame implements Serializable {
     @JoinColumn(name = "id_game")
 	private Game id_game;
 	
-	@Column(name="id_poi")
-	private int id_poi;
+	@ManyToOne()
+    @JoinColumn(name = "id_poi")
+	private Poi id_poi;
 	
-	/*@ManyToMany(mappedBy="users")
-	private Set<Game> games = new HashSet<Game>();
-	*/	
+	@ManyToOne()
+    @JoinColumn(name = "id_team")
+	private Team id_team;
+	
+	@Column (name="data_inizio")
+	private Date data_inizio;
+	
+	@Column (name="data_fine")
+	private Date data_fine;
+
 }
 	
 

@@ -1,44 +1,23 @@
 package com.example.Athos.dto;
 
+import java.util.Date;
+
+import javax.persistence.Entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class TeamDTO {
 	
 	private int id;
 	private String nome;
 	private boolean attivo;
+	private Date data_creazione;
 	
-	public TeamDTO() {}
-	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public TeamDTO(int id, String nome, boolean attivo) {
-		
-		this.id= id;
-		this.nome=nome;
-		this.attivo= attivo;
-	}
-
-	public boolean isAttivo() {
-		return attivo;
-	}
-
-	public void setAttivo(boolean attivo) {
-		this.attivo = attivo;
-	}
-
-	
-
 }

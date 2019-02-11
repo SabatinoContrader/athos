@@ -29,18 +29,18 @@ public class UserService {
 	    }
 	
 	
-//	public User login(String username, String password) {
+	public UserDTO login(String username, String password) {
 		
-//		User user = userRepository.findByUsernameAndPassword(username,password);
-		//UserDTO userDTO = userConverter.convertToDTO(user);
-//		return user;
-//	}
-	    public int login(String username, String password) {
+		User user = userRepository.findByUsernameAndPassword(username,password);
+		UserDTO userDTO = userConverter.convertToDTO(user);
+		return userDTO;
+	}
+	   /* public int login(String username, String password) {
 		
 		User user = userRepository.findByUsernameAndPassword(username,password);
 		//UserDTO userDTO = userConverter.convertToDTO(user);
 		return user.getRole();
-	}
+	}*/
 
 
 	 public List<UserDTO> getAll(int role) {	    	

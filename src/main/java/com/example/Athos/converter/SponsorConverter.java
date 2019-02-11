@@ -15,9 +15,8 @@ public class SponsorConverter implements Converter<Sponsor , SponsorDTO>{
 		Sponsor sponsor=new Sponsor();
 		
 		sponsor.setId(sponsordto.getId());
-		sponsor.setName(sponsordto.getNome());
+		sponsor.setName(sponsordto.getName());
 		sponsor.setAttivo(sponsordto.isAttivo());
-		sponsor.setDescrizione(sponsordto.getDescrizione());
 		sponsor.setMessaggio(sponsordto.getMessaggio());
 		
 		return sponsor;
@@ -42,9 +41,8 @@ public class SponsorConverter implements Converter<Sponsor , SponsorDTO>{
 		SponsorDTO sponsorDTO=new SponsorDTO();
 		
 		sponsorDTO.setId(sponsor.getId());
-		sponsorDTO.setNome(sponsor.getName());
+		sponsorDTO.setName(sponsor.getName());
 		sponsorDTO.setAttivo(sponsor.isAttivo());
-		sponsorDTO.setDescrizione(sponsor.getDescrizione());
 		sponsorDTO.setMessaggio(sponsor.getMessaggio());
 		
 		return sponsorDTO;

@@ -57,15 +57,4 @@ public class User {
 	@NotNull
 	private boolean attivo;
 	
-	@ManyToMany(mappedBy="users")
-	private Set<Team> teams = new HashSet<Team>();
-	
-
-	/*@OneToMany(mappedBy = "id_user")
-	private Set<RelUserGame> relUserGame = new HashSet<RelUserGame>();*/
-	
-	  
-	/*public void addUserGiochi(RelUserGame userGame) {
-        this.userGame.add(userGame);
-    }*/
 }

@@ -40,16 +40,7 @@ public class Sponsor implements Serializable {
 		@NotNull
 		private String messaggio;
 		
-		@Column(name = "descrizione")
-		@NotNull
-		private String descrizione;
-		
 		@Column(name = "attivo")
 		@NotNull
 		private boolean attivo;
-		
-	//	@OneToMany(mappedBy="id")
-	//	private List<Poi> listpoi=new ArrayList<>();
-
-
 }

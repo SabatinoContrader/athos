@@ -1,5 +1,7 @@
 package com.example.Athos.controller;
 
+import com.example.Athos.dto.GameDTO;
+import com.example.Athos.dto.UserDTO;
 import com.example.Athos.model.Game;
 import com.example.Athos.model.RelUserGame;
 import com.example.Athos.model.User;
@@ -30,7 +32,6 @@ public class GameController {
 
 	private GameService gameService;
 	private RelUserGameService relUserGameService;
-	//private GameDTO gameDTO;
 	private HttpSession session;
 
 
@@ -41,12 +42,15 @@ public class GameController {
 	}
 
 
-	@RequestMapping(value = "/giochiPerCreatore", method = RequestMethod.POST)
-	public List<Game> gameCreatore(@RequestBody User user , HttpServletRequest request) {
+	@RequestMapping(value = "/giochiPerCreatore", method = RequestMethod.GET)
+	public String gameCreatore(HttpServletRequest request, Model model) {
 		
-		this.session = request.getSession();
-		List <Game> game=gameService.findByCreatore(user);
-		return game;
+		//this.session = request.getSession();
+		//session.setAttribute("user",userDTO);
+		UserDTO userDTO=(UserDTO) session.getAttribute("user");
+		List <GameDTO> gameDTO=gameService.findByCreatore(userDTO);
+		model.addAttribute("game", gameDTO);
+		return "game";
 	}
 	
 	@RequestMapping(value = "/giochiPerVersione", method = RequestMethod.POST)

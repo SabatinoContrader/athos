@@ -36,12 +36,10 @@ public class RelGamePoi implements Serializable {
  
 	@ManyToOne
 	@JoinColumn(name = "id_poi") 
-	//@Column(name="id_poi")
 	private Poi id_poi;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_game")
-	//@Column(name="id_game")
     private Game id_game;
 	
 	@Column(name="ordine")
@@ -50,14 +48,7 @@ public class RelGamePoi implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_sponsor")
-	//@Column(name="id_game")
     private Sponsor id_sponsor;
-	
-	/*@OneToMany	(mappedBy="id")
-	private List<Game> listgame=new ArrayList<>();
-
-	@OneToMany	(mappedBy="id")
-	private List<Poi> listpoi=new ArrayList<>();
-	*/	
+		
 }
 

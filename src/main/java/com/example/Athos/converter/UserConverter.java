@@ -1,5 +1,6 @@
 package com.example.Athos.converter;
 
+
 import org.springframework.stereotype.Component;
 import com.example.Athos.dto.UserDTO;
 import com.example.Athos.model.User;
@@ -20,7 +21,7 @@ public class UserConverter implements Converter<User , UserDTO>{
 	}
 
 	@Override
-	public  UserDTO convertToDTO(User user) {
+	public UserDTO convertToDTO(User user) {
 		UserDTO userDTO=new UserDTO();
 		userDTO.setId(user.getId());
 		userDTO.setUsername(user.getUsername());

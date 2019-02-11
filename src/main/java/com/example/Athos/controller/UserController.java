@@ -24,7 +24,7 @@ import com.example.Athos.GenericResponse;
 public class UserController {
 
 	private UserService userService;
-	//private HttpSession session;
+	private HttpSession session;
 	private UserConverter userConverter;
 	
 	@Autowired
@@ -48,25 +48,15 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/loginControl", method = RequestMethod.POST)
-	public String loginControl(HttpServletRequest request, @RequestBody UserDTO userDTO){ 
+	public UserDTO loginControl(HttpServletRequest request, @RequestBody UserDTO userDTO){ 
 		
-		//User user = userConverter.converToEntity(userDTO);
-		//GenericResponse<UserDTO>
-		 int role = userService.login(userDTO.getUsername(),userDTO.getPassword());
-		 if (role == 0) {return "hello super";}
-		 else if (role ==1) {return "hello gamer";}
-		 else if (role ==2) {return "hello player";}
-		 return "null";
-		//if (user!=null)
-		//{
-		//	UserDTO userdto = userConverter.convertToDTO(user);
-		//	return new GenericResponse<UserDTO>(0,userdto);
+		 UserDTO userDTO2 = userService.login(userDTO.getUsername(),userDTO.getPassword());
 		 
-		//}
-		//else
-		//{			
-		//	return new GenericResponse<UserDTO>(1,null);
-		//}		
+		 this.session = request.getSession();
+		 session.setAttribute("user",userDTO2);
+		 
+		 return userDTO2;
+				
 	}
 }
 

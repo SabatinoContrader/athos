@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -43,9 +44,6 @@ public class Team {
 	@NotNull
 	private boolean attivo;
 	
-	@ManyToMany
-	@JoinTable(name="rel_user_team", 
-		joinColumns= {@JoinColumn(name="id_team")}, 
-		inverseJoinColumns={@JoinColumn(name="id_user")})
-	 private Set<User> users = new HashSet<>();
+	@Column (name="data_creazione")
+	private Date data_creazione;
 }
