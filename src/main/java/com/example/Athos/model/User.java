@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -56,5 +57,9 @@ public class User {
 	@Column(name="attivo")
 	@NotNull
 	private boolean attivo;
+	
+	@Column(name="data_iscrizione")
+	@NotNull
+	private Date data_iscrizione;
 	
 }
