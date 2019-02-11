@@ -2,15 +2,12 @@ package com.example.Athos.services;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.Athos.converter.MessageConverter;
 import com.example.Athos.dao.MessageRepository;
 import com.example.Athos.dto.MessageDTO;
 import com.example.Athos.model.Message;
-import com.example.Athos.model.User;
 
 @Service
 public class MessageService {
@@ -26,9 +23,10 @@ public class MessageService {
 		this.messageConverter = messageConverter;
 	}
 	
-	public boolean insert(Message message) {
-		messageRepository.save(message);
-		return true;
+	public Message insert(MessageDTO messageDTO) {
+		Message message = messageConverter.converToEntity(messageDTO);
+		
+		return this.messageRepository.save(message);
 	}
 	 public List<MessageDTO> getAll() {	    	
 	    	List<Message> ListMessage= (List<Message>) messageRepository.findAll();
@@ -43,7 +41,10 @@ public class MessageService {
 				return message;	
 		}
 		
-	
+		 public List<String> getText() {	    	
+		    	List<String> listMessage= (List<String>) messageRepository.getText();
+		        return listMessage;
+		    }
 	 
 	 // public void deleteById(int id) {
 	  //  	this.messageRepository.deleteById(id);}

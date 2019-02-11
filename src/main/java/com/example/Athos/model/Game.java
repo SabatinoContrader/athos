@@ -44,7 +44,7 @@ public class Game implements Serializable {
 		@GeneratedValue(strategy = GenerationType.IDENTITY)	
 		private int id;
 		
-		@ManyToOne()
+		@ManyToOne
 		@JoinColumn (name="id_creatore")
 		private User idcreatore;
 		
@@ -73,7 +73,17 @@ public class Game implements Serializable {
 		@Column (name="data_fine")
 		private Date data_fine;
 		
+		//@OneToMany	(mappedBy="id")
+		//private List<RelUserGame> listgameuser=new ArrayList<>();		
+
+		//@OneToMany	(mappedBy="id")
+		//private List<RelTeamGame> listgameteam=new ArrayList<>();
 		
+		//@OneToMany	(mappedBy="id")
+		//private List<Poi> listpoi=new ArrayList<>();
+	
+		//@OneToMany	(mappedBy="id")
+		//private List<RelGamePoi> listgamepoi=new ArrayList<>();
 		
 		
 		/*@ManyToMany

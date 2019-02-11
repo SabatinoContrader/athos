@@ -5,10 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
+
+import com.example.Athos.model.Game;
 import com.example.Athos.model.Team;
 import com.example.Athos.model.User;
 
+import javax.persistence.CascadeType;
 import javax.transaction.Transactional;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Cascade.*;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -23,5 +29,16 @@ public interface TeamRepository extends CrudRepository<Team, Long>{
 	//Boolean deleteById(int id);
 	Team findById(int id);
 	List<Team> findAll();
+	
+	Team findTopByOrderByIdDesc();
+	
+	@Modifying
+	@Query(value="insert into rel_user_team (id_team, id_user) value (?2,?1)", nativeQuery = true)
+	void saveplayers(User user , Team team);
+	
+	@Modifying
+	@Query(value="select nome from team", nativeQuery = true)
+	List<String> AllTeamName();
+	
 }
 

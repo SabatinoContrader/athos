@@ -15,6 +15,8 @@ public class GameConverter implements Converter<Game , GameDTO> {
 		game.setNome(gameDTO.getNome());
 		game.setVersione(gameDTO.getVersione());
 		game.setAttivo(gameDTO.isAttivo());
+		game.setData_inizio(gameDTO.getData_inizio());
+		game.setData_fine(gameDTO.getData_fine());
 		return game;
 	}
 
@@ -26,7 +28,8 @@ public class GameConverter implements Converter<Game , GameDTO> {
 		gameDTO.setNome(game.getNome());
 		gameDTO.setVersione(game.getVersione());
 		gameDTO.setAttivo(game.isAttivo());
-		
+		gameDTO.setData_inizio(game.getData_inizio());
+		gameDTO.setData_fine(game.getData_fine());
 		return gameDTO;
 		}
 }

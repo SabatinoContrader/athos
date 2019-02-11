@@ -42,18 +42,15 @@ public class MessageController {
 	
 	@RequestMapping(value = "/insertMessage" , method = RequestMethod.POST)
 	public boolean insertMessage(HttpServletRequest request , @RequestBody MessageDTO messageDTO){
-		Message message = messageConverter.converToEntity(messageDTO);
-		messageService.insert(message);
+		messageService.insert(messageDTO);
 		return true;
 	}
 	
-	
 	@CrossOrigin
-	@RequestMapping(value = "/viewMessage", method = RequestMethod.GET)
-	public GenericResponse<List<MessageDTO>> getAll( @RequestBody MessageDTO messageDTO){
-		Message message = messageConverter.converToEntity(messageDTO);	
-		List<MessageDTO> messagedto = messageService.getAll();
-		return new GenericResponse<List<MessageDTO>>(0,messagedto);
+	@RequestMapping(value = "/viewMessage", method = RequestMethod.POST)
+	public List<String> getAll(HttpServletRequest request){ //GenericResponse<List<MessageDTO>>			
+		List<String> listMessage = messageService.getText();
+		return listMessage;//new GenericResponse<List<MessageDTO>>(0,messagedto);
 	}
 
 	//@RequestMapping(value = "/deleteMessage", method = RequestMethod.GET)

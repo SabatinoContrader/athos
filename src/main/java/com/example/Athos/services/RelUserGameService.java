@@ -23,19 +23,15 @@ public class RelUserGameService {
 	}
 	
 	public boolean saveRelUserGame(RelUserGame relUserGame) {
-		relUserGameRepository.save(relUserGame);
-		
-		return true;
-		
+		relUserGameRepository.save(relUserGame);		
+		return true;	
 	}
 	
 	public List<RelUserGame> chiGiocatoGioco(int id_game) {
-		return relUserGameRepository.chiGiocatoGioco(id_game);
-		
+		return relUserGameRepository.chiGiocatoGioco(id_game);	
 	}
 	
 	public List<RelUserGame> diverso(int id_game) {
-		return relUserGameRepository.findById_game(id_game);
-		
+		return relUserGameRepository.findById_game(id_game);	
 	}
 }

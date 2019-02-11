@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import com.example.Athos.dto.RelUserGameDTO;
 import com.example.Athos.model.RelUserGame;
 
+
 @Component
 public class RelUserGameConverter implements Converter<RelUserGame , RelUserGameDTO> {
 	

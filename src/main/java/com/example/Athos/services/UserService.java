@@ -42,6 +42,18 @@ public class UserService {
 		return user.getRole();
 	}*/
 
+//		User user = userRepository.findByUsernameAndPassword(username,password);
+		//UserDTO userDTO = userConverter.convertToDTO(user);
+//		return user;
+//	}
+	   // public User login(String username, String password) {
+		
+		//User user = userRepository.findByUsernameAndPassword(username,password);
+		//UserDTO userDTO = userConverter.convertToDTO(user);
+		//return user;
+	//}
+
+
 
 	 public List<UserDTO> getAll(int role) {	    	
 	    	List<User> ListUser= (List<User>) this.userRepository.findUserByRole(role);

@@ -5,7 +5,6 @@ import com.example.Athos.dto.UserDTO;
 import com.example.Athos.model.Game;
 import com.example.Athos.model.RelUserGame;
 import com.example.Athos.model.User;
-//import com.example.Athos.dto.GameDTO;
 import com.example.Athos.services.GameService;
 import com.example.Athos.services.RelUserGameService;
 
@@ -41,6 +40,8 @@ public class GameController {
 		this.relUserGameService = relUserGameService;
 	}
 
+	
+	
 
 	@RequestMapping(value = "/giochiPerCreatore", method = RequestMethod.GET)
 	public String gameCreatore(HttpServletRequest request, Model model) {
