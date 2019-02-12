@@ -1,0 +1,38 @@
+#nav{
+    width: 100%;
+}
+
+.nav{
+    height: 50px;
+    opacity: 20%;
+}
+
+a{
+    font-family: myFirstFont;
+    font-size: 20px;
+    color: #a8d342 !important;
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url("/assets/OldSansBlack.ttf");
+}
+
+.table {
+    background: #34495E;
+   color: #fff;
+   border-radius: .4em;
+   overflow: hidden;
+     width: 60%;
+}
+.table tr {
+    border-color: #46637f;
+    font-size:large;
+}
+.table th {
+    color: #dd5;
+}
+.readTable{
+	    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,40 @@
+.contenitore {
+    padding-top: 50px;
+}
+
+
+.prova1 {
+  
+    border: 5px solid crimson;
+    padding: 7px;
+    border-radius: 15px;    
+}
+
+.separatore1{
+    padding-top: 10px;
+    padding-right: 400px;
+}
+
+.separatore {
+
+    padding-top: 10px;
+    padding-right: 400px;
+}
+
+.immagine {
+    width: 100px;
+    height: 100px;
+    padding-left: 300px;
+    padding-top: 6px;
+}
+
+.bottone {
+
+    color: black;
+    width: 150px;
+    border-radius: 15px;
+}
+
+.accedi {
+  padding-left: 70px;
+}
