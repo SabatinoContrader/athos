@@ -6,7 +6,7 @@ import { UserService } from "src/services/user.service";
 import { User } from 'src/models/User';
 
 @Component({
-  selector: 'app-gameMaster',
+  selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
