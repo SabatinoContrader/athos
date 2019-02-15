@@ -3,12 +3,14 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable, of, BehaviorSubject} from 'rxjs';
 import { Game } from '../models/Game';
 import { tap, catchError } from 'rxjs/operators';
+import { User } from "src/models/User";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
   feedback: string;
+  public user:User
 
   constructor(private http: HttpClient) { }
 
@@ -22,7 +24,8 @@ export class GameService {
   }
 
  findAll():Observable<Array<Game>>{
-    return this.http.get<Array<Game>>('http://localhost:8080/athos/Game/giochiPerCreatore');
+  this.user=JSON.parse(sessionStorage.getItem("user")); 
+  return this.http.post<Array<Game>>('http://localhost:8080/athos/Game/giochiPerCreatore', this.user);
   }
  /*
   readOne(idmedico:string): Observable<Medico>{

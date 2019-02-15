@@ -26,6 +26,7 @@ export class loginComponent implements OnInit {
       if (response != null) {
           this.user=response;
           sessionStorage.setItem("user", JSON.stringify(this.user));
+          console.log("user");
 
           if(response.role==0)
            this.router.navigateByUrl("/superUser");

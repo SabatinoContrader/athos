@@ -22,9 +22,10 @@ export class UserService {
   }
 
   login(username: string, password: string): Observable <User> {
-    var userInput=new User(0,username,password,0,true);
+    var userInput=new User(0,username,password,0,true, ' ');
+    console.log(userInput);
     return this.http.post<User>('http://localhost:8080/athos/Login/loginControl',userInput)
-    .pipe(tap((response) => console.log("User"), catchError(this.handleError("login error", {}))));
+    .pipe(tap((response) => console.log(User), catchError(this.handleError("login error", {}))));
   }
 
   changeFeedback(message: string){

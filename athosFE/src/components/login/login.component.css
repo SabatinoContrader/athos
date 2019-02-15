@@ -1,3 +1,9 @@
+html { 
+    background-image: url(../../assets/images/stocazzo.jpg); 
+    background-size: 100%;
+    background-attachment: fixed;
+}
+
 .contenitore {
     padding-top: 50px;
 }

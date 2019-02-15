@@ -1,51 +1,44 @@
 <body>
-  <div class="nav">
-      <nav class="navbar navbar-light bg-dark nav justify-content-end" id="nav">
-          <ul>
-              <li class="nav-item">
-                      <a class="nav-link" href="/#/newGame">Crea Nuovo Gioco</a>
-                  </li>
-              <li class="nav-item">
-                      <a class="nav-link" href="/#/gameMaster">Indietro</a>
-                  </li>    
-          <li class="nav-item">
-              <a class="nav-link" (click)="logout()">Logout</a>
-          </li>
-        </ul>
-      </nav>
+  <div class="text">
+        BENVENUTO NELLA PAGINA DI CREAZIONE DEL TUO DI GIOCO
   </div>
 
-  <div class="readTable">
-      <table class = "table">
-          <thead>
-  
-              <tr></tr>
-              <tr>
-                  <td>Nome</td>
-                  <td>Descrizione percorso</td>
-                  <td>Versione</td>
-                  <td>Descrizione evento</td>
-                  <td>Data inizio</td>
-                  <td>Data fine</td>
-              </tr>
-          </thead>
-          <tbody>
+  <ul>
+        <li>
+            <a (click)="logout()">Logout</a>
+        </li>
+        <li class="nav-item">
+                <a href="../gameMaster">Indietro</a>
+        </li>    
+        <li class="nav-item">
+            <a  href="../newGame">Crea Nuovo Gioco</a>
+        </li>
+  </ul>
+
+  <div>
+      <table>
+          <tr>
+            <td>Nome</td>
+            <td>Descrizione percorso</td>
+            <td>Versione</td>
+            <td>Descrizione evento</td>
+            <td>Data inizio</td>
+            <td>Data fine</td>
+          </tr>
+          
           <tr *ngFor="let game of games">
-              <td>{{game.idmedico}}</td>
               <td>{{game.nome}}</td>
-              <td>{{game.cognome}}</td>
-              <td>{{game.specializzazione}}</td>
-              <td>{{game.indirizzo}}</td>
-              <td>{{game.mail}}</td>
+              <td>{{game.descr_percorso}}</td>
+              <td>{{game.versione}}</td>
+              <td>{{game.descr_evento}}</td>
+              <td>{{game.data_inizio}}</td>
+              <td>{{game.data_fine}}</td>
               <td>
-                  <tr><button class = "btn lg btn-primary" [routerLink]="['/updateGame']" [queryParams]="{idmed: medico.idmedico}">Modifica</button></tr>
+                  <tr><button class = "bottone2" [routerLink]="['/updateGame']" [queryParams]="{idGame: game.id}">Nuova versione</button></tr>
               
-                  <tr><button class="btn lg btn-primary" type = "submit" (click)="delete(medico.idmedico)">Elimina</button></tr>
+                  <tr><button class="bottone1" type = "submit" (click)="delete(game.id)">X</button></tr>
               </td>
           </tr>
-          </tbody>
-  
-  
       </table>
   </div>
   
