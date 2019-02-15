@@ -19,21 +19,23 @@ import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @RestController
+@CrossOrigin(value = "*")
 @RequestMapping("/Game")
 public class GameController {
 
 	private GameService gameService;
 	private RelUserGameService relUserGameService;
 	private HttpSession session;
-
 
 	@Autowired
 	public GameController(GameService gameService, RelUserGameService relUserGameService) {
@@ -42,21 +44,18 @@ public class GameController {
 	}
 
 
-	@RequestMapping(value = "/giochiPerCreatore", method = RequestMethod.GET)
-	public String gameCreatore(HttpServletRequest request, Model model) {
+	@RequestMapping(value = "/giochiPerCreatore", method = RequestMethod.POST)
+	public List <GameDTO> gameCreatore(HttpServletRequest request, Model model, @RequestBody UserDTO userDTO) {
 		
-		//this.session = request.getSession();
-		//session.setAttribute("user",userDTO);
-		UserDTO userDTO=(UserDTO) session.getAttribute("user");
 		List <GameDTO> gameDTO=gameService.findByCreatore(userDTO);
 		model.addAttribute("game", gameDTO);
-		return "game";
+		return gameDTO;
 	}
 	
 	@RequestMapping(value = "/giochiPerVersione", method = RequestMethod.POST)
 	public List<Game> gameVersione(@RequestParam("nome") String nome , HttpServletRequest request) {
 		
-		this.session = request.getSession();
+		//this.session = request.getSession(true);
 		List <Game> game=gameService.findByVersione(nome);
 		return game;
 	}
@@ -64,7 +63,7 @@ public class GameController {
 	@RequestMapping(value = "/insertGiochi", method = RequestMethod.POST)
 	public boolean saveGame(@RequestBody Game game , HttpServletRequest request) {
 		
-		this.session = request.getSession();
+		//this.session = request.getSession();
 		gameService.saveGame(game);
 		return true;
 	}
@@ -72,7 +71,7 @@ public class GameController {
 	@RequestMapping(value = "/insertNewVersione", method = RequestMethod.POST)
 	public boolean saveNewVersione(@RequestBody Game game , HttpServletRequest request) {
 		
-		this.session = request.getSession();
+		//this.session = request.getSession();
 		game.setVersione(game.getVersione()+1);
 		gameService.saveGame(game);
 		return true;
@@ -81,7 +80,7 @@ public class GameController {
 	@RequestMapping(value = "/disattivaGiochi", method = RequestMethod.POST)
 	public int disattivaGame(@RequestParam("idGame") int idGame, HttpServletRequest request) {
 		
-		this.session = request.getSession();
+		//this.session = request.getSession();
 		return gameService.disattivaGame(idGame);
 	}
 	
@@ -89,7 +88,7 @@ public class GameController {
 	@RequestMapping(value = "/giochiPerAttivoCreatore", method = RequestMethod.GET)
 	public List<List<Game>> gamePerAttivoCreatore(@RequestParam("idCreatore") int idCreatore , HttpServletRequest request) {
 		
-		this.session = request.getSession();
+		//this.session = request.getSession();
 		List <Game> gameAttivi=gameService.findByAttivo(idCreatore);
 		List <Game> gameNonAttivi=gameService.findByNonAttivo(idCreatore);
 		List <List<Game>> games=new ArrayList<List<Game>>();
@@ -102,15 +101,13 @@ public class GameController {
 	@RequestMapping(value = "/giochiPerId", method = RequestMethod.POST)
 	public Set<RelUserGame> gameID(@RequestParam("id") int id , HttpServletRequest request) {
 		
-		this.session = request.getSession();
+		//this.session = request.getSession();
 		Game game=gameService.findById(id);
 		//game.getRelUserGame()
 		return null;
 	}
 	
-	public HttpSession getSession() {
-		return this.session;
-	}
+	
 	
 	
 }

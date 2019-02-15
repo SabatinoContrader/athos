@@ -65,7 +65,7 @@ public class Game implements Serializable {
 		private boolean attivo=true;
 		
 		@Column (name="descr_evento")
-		private String descrevento;
+		private String descr_evento;
 		
 		@Column (name="data_inizio")
 		private Date data_inizio;

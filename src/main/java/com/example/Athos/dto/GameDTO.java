@@ -22,7 +22,7 @@ public class GameDTO {
 	private String descr_percorso;
 	private int versione;
 	private boolean attivo;
-	private String descrevento;
+	private String descr_evento;
 	private Date data_inizio;
 	private Date data_fine;
 }

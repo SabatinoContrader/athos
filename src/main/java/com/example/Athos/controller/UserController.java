@@ -5,6 +5,8 @@ import com.example.Athos.services.UserService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+
 import com.example.Athos.model.User;
 import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.example.Athos.converter.UserConverter;
 import com.example.Athos.GenericResponse;
@@ -24,7 +27,7 @@ import com.example.Athos.GenericResponse;
 public class UserController {
 
 	private UserService userService;
-	private HttpSession session;
+	//private HttpSession session;
 	private UserConverter userConverter;
 	
 	@Autowired
@@ -43,7 +46,7 @@ public class UserController {
 	
 	
 	@RequestMapping(value = "/logoutControl", method = RequestMethod.GET)
-	public String logoutControl(HttpServletRequest request,@RequestBody UserDTO userDTO ) {
+	public String logoutControl(HttpServletRequest request, @RequestBody UserDTO userDTO ) {
 		return "index";
 	}
 	
@@ -51,9 +54,6 @@ public class UserController {
 	public UserDTO loginControl(HttpServletRequest request, @RequestBody UserDTO userDTO){ 
 		
 		 UserDTO userDTO2 = userService.login(userDTO.getUsername(),userDTO.getPassword());
-		 
-		 this.session = request.getSession();
-		 session.setAttribute("user",userDTO2);
 		 
 		 return userDTO2;
 				
