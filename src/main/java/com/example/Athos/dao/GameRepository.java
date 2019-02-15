@@ -1,6 +1,7 @@
 package com.example.Athos.dao;
 
 import com.example.Athos.model.Game;
+import com.example.Athos.model.Poi;
 import com.example.Athos.model.User;
 
 import java.sql.Connection;
@@ -27,7 +28,7 @@ public interface GameRepository extends CrudRepository<Game, Integer> {
 	
 
 	Game findById(int id);
-	
+	Game save(Game game);
 	
 	@Modifying
 	@Query(value="select * from game where attivo=1 and id_creatore=?", nativeQuery = true)

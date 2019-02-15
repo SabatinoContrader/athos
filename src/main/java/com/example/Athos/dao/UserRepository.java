@@ -18,7 +18,7 @@ import org.springframework.jca.cci.connection.*;
 public interface UserRepository extends CrudRepository<User, Long> {
 
 
-	User findUserByUsernameAndPassword(String username, String password);
+	//User findUserByUsernameAndPassword(String username, String password);
 	
 
 	User findByUsernameAndPassword(String username, String password);

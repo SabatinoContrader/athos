@@ -28,9 +28,8 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Table(name="team")
 
-public class Team {
-
-
+public class Team implements Serializable {
+	
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
@@ -40,10 +39,27 @@ public class Team {
 	@NotNull
 	private String nome;
 	
+	//@Column(name="id_user")
+	//@NotNull
+	//private User id_user;
+	@ManyToOne
+	@JoinColumn (name="id_user")	
+	private User id_user;	
+	
 	@Column(name="attivo")
 	@NotNull
-	private boolean attivo;
+	private boolean attivo = true;
 	
+	
+
 	@Column (name="data_creazione")
 	private Date data_creazione;
+
+	@ManyToMany
+	@JoinTable(name="rel_user_team", 
+	joinColumns= {@JoinColumn(name="id_team")}, 
+	inverseJoinColumns={@JoinColumn(name="id_user")})
+	 private Set<User> users = new HashSet<>();
+	
+
 }

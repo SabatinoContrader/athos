@@ -11,6 +11,7 @@ public class TeamConverter implements Converter<Team , TeamDTO> {
 	public  Team converToEntity(TeamDTO teamDTO) {
 		Team team=new Team();
 		team.setId(teamDTO.getId());
+		team.setId_user(teamDTO.getId_user());
 		team.setNome(teamDTO.getNome());
 		team.setAttivo(teamDTO.isAttivo());
 		return team;
@@ -20,6 +21,7 @@ public class TeamConverter implements Converter<Team , TeamDTO> {
 	public  TeamDTO convertToDTO(Team team) {
 		TeamDTO teamDTO=new TeamDTO();
 		teamDTO.setId(team.getId());
+		teamDTO.setId_user(team.getId_user());
 		teamDTO.setNome(team.getNome());
 		teamDTO.setAttivo(team.isAttivo());
 		

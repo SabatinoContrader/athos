@@ -34,7 +34,7 @@ public class GameConverter implements Converter<Game , GameDTO> {
 		gameDTO.setDescr_evento(game.getDescr_evento());
 		gameDTO.setData_inizio(game.getData_inizio());
 		gameDTO.setData_fine(game.getData_fine());
-		
+
 		return gameDTO;
 		}
 }

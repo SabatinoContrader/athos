@@ -23,4 +23,7 @@ public interface MessageRepository extends CrudRepository<Message, Long>{
 	//List<Message> findByIdSender(int id_sender);
 	//List<Message> findByIdReceiver(int id_receiver);
 	
+	@Modifying
+	@Query(value="select text from message", nativeQuery = true)
+	List<String> getText();
 }

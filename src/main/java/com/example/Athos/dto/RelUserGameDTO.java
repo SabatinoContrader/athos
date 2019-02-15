@@ -6,7 +6,6 @@ import com.example.Athos.model.Game;
 import com.example.Athos.model.Poi;
 import com.example.Athos.model.Team;
 import com.example.Athos.model.User;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -45,8 +45,22 @@ public class Poi implements Serializable {
 		@Column (name="indizio")
 		@NotNull
 		private String indizio;
+
 		
 		@Column(name="attivo")
 		@NotNull
 		private boolean attivo=true;
+
+			
+	//	@NotNull
+	//	@JoinColumn(name="id_sponsor")
+	//	private int id_sponsor;
+		
+	//	@OneToMany(mappedBy="id")
+	//	private List<Game> listgame=new ArrayList<>();
+		
+	//	@OneToMany	(mappedBy="id")
+	//	private List<RelGamePoi> listgamepoi=new ArrayList<>();
+	
+
 }

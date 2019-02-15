@@ -1,5 +1,6 @@
 package com.example.Athos.dto;
 
+
 import javax.persistence.Entity;
 
 import com.example.Athos.model.Game;
@@ -10,6 +11,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import com.example.Athos.model.Game;
+import com.example.Athos.model.Poi;
+import com.example.Athos.model.Team;
 
 @Getter
 @Setter

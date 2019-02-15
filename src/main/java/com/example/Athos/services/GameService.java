@@ -28,13 +28,15 @@ public class GameService {
 		this.gameConverter = gameConverter;
 	}
 	
+	
 	public List<GameDTO> findByCreatore(UserDTO userDTO) {
 		
 		User user=userConverter.converToEntity(userDTO);
-		List<Game> game = gameRepository.findByIdcreatore(user);
+		List<Game> game =  gameRepository.findByIdcreatore(user);
 		List<GameDTO> gameDTO= new ArrayList<>();
 		
 		game.forEach(i->gameDTO.add(gameConverter.convertToDTO(i)));
+
 		
 		return gameDTO;
 		

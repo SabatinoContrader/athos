@@ -33,7 +33,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="user")
-public class User {
+public class User implements Serializable{
 	
 	
 	@Id
@@ -53,13 +53,24 @@ public class User {
 	@NotNull
 	private int role;
 	
-
 	@Column(name="attivo")
 	@NotNull
 	private boolean attivo;
 	
+
 	@Column(name="data_iscrizione")
 	@NotNull
 	private Date data_iscrizione;
 	
+
+	//@ManyToMany(mappedBy="users")
+	//private Set<Team> teams = new HashSet<Team>();
+	
+	/*@OneToMany(mappedBy = "id_user")
+	private Set<RelUserGame> relUserGame = new HashSet<RelUserGame>();
+	
+	  public void addUserGiochi(RelUserGame userGame) {
+        this.userGame.add(userGame);
+    }*/
+
 }
