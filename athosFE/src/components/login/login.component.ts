@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
 import { UserService } from "src/services/user.service";
 import { User } from 'src/models/User';
 
@@ -11,12 +10,13 @@ import { User } from 'src/models/User';
   styleUrls: ['./login.component.css']
 })
 export class loginComponent implements OnInit {
-
+ 
   user:User;
   title = 'GIOCO PAZZESCO O.o';
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
+  
   }
 
   login(f: NgForm): void{

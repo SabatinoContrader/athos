@@ -1,15 +1,24 @@
 import { NgModule } from '@angular/core';
-import {Routes, RouterModule} from '@angular/router'
-
+import { RouterModule, Routes } from '@angular/router';
 import { loginComponent } from 'src/components/login/login.component';
-import { GameMasterComponent } from '../components/gameMaster/gameMaster.component';
 import { GameComponent } from '../components/game/game.component';
+import { GameMasterComponent } from '../components/gameMaster/gameMaster.component';
+import { PlayerComponent } from '../components/player/player.component';
+import { PlayComponent } from '../components/play/play.component';
+import { PlayStartComponent } from '../components/play-start/play-start.component';
+import { PlayEndComponent } from '../components/play-end/play-end.component';
+import { SuperUserComponent } from '../components/super-user/super-user.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path:'login', component: loginComponent},
   {path:'gameMaster', component: GameMasterComponent},
-  {path:'game', component: GameComponent}
+  {path:'game', component: GameComponent},
+  {path:'player', component: PlayerComponent},
+  {path:'play', component: PlayComponent},
+  {path:'playStart', component: PlayStartComponent},
+  {path:'playEnd', component: PlayEndComponent},
+  {path:'superUser', component: SuperUserComponent}
 ];
 
 @NgModule({

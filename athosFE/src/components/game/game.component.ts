@@ -19,7 +19,7 @@ export class GameComponent implements OnInit {
   ngOnInit() {
     this.gameService.findAll().subscribe((response) =>{
       this.games=response;
-      console.log(this.games);
+      console.log(this.games);      
     } );
   }
 

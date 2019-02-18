@@ -1,0 +1,45 @@
+<html>
+<body>
+    <div class="nav">
+        <nav class="navbar navbar-light bg-dark nav justify-content-end" id="nav">
+            <ul>
+                    <li class="nav-item">
+                            <a href="../player">Indietro</a>
+                    </li>  
+            <li class="nav-item">
+                <a  (click)="logout()" href="/#/login">Logout</a>
+            </li>
+          </ul>
+        </nav>
+    </div>
+    <div class="readTable">
+        <ul>
+        <table class = "table">
+            <thead>
+                <tr></tr>
+                <tr *ngIf="giochi">
+                    <th>Nome</th> 
+                    <th>Descrizione Evento</th> 
+                    <th>Descrizione Percorso </th> 
+                    <th>Versione</th>  
+                </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let game of giochi">
+                  <td>{{game.nome}}</td>
+                  <td>{{game.descrevento}}</td>
+                  <td>{{game.descrpercorso}}</td>
+                  <td>{{game.versione}}</td>
+                  <td>
+                    <tr><button class = "btn lg btn-primary" type = "submit" >Riprendi</button></tr>
+                
+                    <tr><button class="btn lg btn-primary" type = "submit">Termina</button></tr>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </ul>
+    </div>
+  </body>
+  </html>
+  

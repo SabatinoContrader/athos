@@ -1,0 +1,46 @@
+<html>
+<body>
+  <div class="nav">
+      <nav class="navbar navbar-light bg-dark nav justify-content-end" id="nav">
+          <ul>
+                <li class="nav-item">
+                        <a href="../player">Indietro</a>
+                </li>  
+          <li class="nav-item">
+              <a  click="logout()" href="/#/login">Logout</a>
+          </li>
+        </ul>
+      </nav>
+  </div>
+    <div class="readTable">
+        <ul>
+            <table class = "table">
+                 <thead>
+                    <tr></tr>
+                   <tr *ngIf="partite">
+                            <td>Nome</td>  
+                            <td>Versione</td>  
+                            <td>Data inizio</td>
+                            <td>Data fine</td> 
+                            <td>Team</td>  
+                            <td>Punteggio</td>            
+                 </tr>
+                </thead>
+                <tbody>
+                        <tr *ngFor="let relusergameteam of partite">
+                                <td>{{relusergameteam.id_game.nome}}</td>
+                                 <td>{{1}}</td>
+                                 <td>{{relusergameteam.data_fine}}</td>
+                                 <td>{{relusergameteam.data_inizio}}</td>
+                                 <td>{{relusergameteam.id_team.nome}}</td>
+                                 <td>{{1000}}</td>
+                             </tr>                   
+                </tbody>
+            </table>
+        </ul>
+    </div>
+</body>ù
+</html>
+
+
+

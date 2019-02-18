@@ -16,7 +16,6 @@ export class GameService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.log(result);
       console.error(error);
       console.log('${operation} failed: ${error.message}');
       return of(result as T);
@@ -26,6 +25,11 @@ export class GameService {
  findAll():Observable<Array<Game>>{
   this.user=JSON.parse(sessionStorage.getItem("user")); 
   return this.http.post<Array<Game>>('http://localhost:8080/athos/Game/giochiPerCreatore', this.user);
+  }
+
+  tuttigiochi():Observable<Array<Game>>{
+    return this.http.get<Array<Game>>('http://localhost:8080/athos/Game/tuttiGiochi')
+    .pipe(tap((response) => console.log("Game"), catchError(this.handleError("login error", {}))))
   }
  /*
   readOne(idmedico:string): Observable<Medico>{
