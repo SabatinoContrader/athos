@@ -3,14 +3,16 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable, of, BehaviorSubject} from 'rxjs';
 import { User } from '../models/User';
 import { tap, catchError } from 'rxjs/operators';
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  public user:User
   feedback: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public datepipe : DatePipe) { }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -27,6 +29,18 @@ export class UserService {
     return this.http.post<User>('http://localhost:8080/athos/Login/loginControl',userInput)
     .pipe(tap((response) => console.log(User), catchError(this.handleError("login error", {}))));
   }
+
+  save(username: string, password: string): any{
+    var user = new User(0, username, password, 1 , true,  '2019-02-19T16:35:56.213');
+    return this.http.post<any>('http://localhost:8080/athos/Login/insertUser', user)
+    .pipe(tap((response) => console.log("user"), catchError(this.handleError("new Master error", {})))
+  );
+ 
+  }
+  allGamer():Observable<Array<User>>{
+    return this.http.get<Array<User>>('http://localhost:8080/athos/Login/tuttiGamer')
+    .pipe(tap((response) => console.log(User), catchError(this.handleError("login error", {}))));
+    }
 
   changeFeedback(message: string){
     this.feedback = message;

@@ -4,6 +4,7 @@ import {Observable, of, BehaviorSubject} from 'rxjs';
 import { Game } from '../models/Game';
 import { tap, catchError } from 'rxjs/operators';
 import { User } from "src/models/User";
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class GameService {
   feedback: string;
   public user:User
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public datepipe : DatePipe) { }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

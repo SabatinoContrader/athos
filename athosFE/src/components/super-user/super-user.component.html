@@ -3,6 +3,9 @@
     <div class="nav">
         <nav class="navbar navbar-light bg-dark nav justify-content-end" id="nav">
             <ul>
+                <li class="nav-item">
+                    <a href="../viewSuper/">Indietro</a>
+            </li>  
             <li class="nav-item">
                 <a  (click)="logout()" href="/#/login">Logout</a>
             </li>
@@ -14,20 +17,16 @@
           <h1>
             Inserisci i dati del nuovo Game Master
           </h1>
-              <form> <!--</form>#f="ngForm">-->
-                  <div class="form-group separatore1">
-                    <label for="usr">Username: </label>
-                    <input type="text" class="form-control prova1" id="usr" name="username" ngModel required>
-                  </div>
-                  <div class="form-group separatore">
-                    <label for="pwd"> Password: </label>
-                    <input type="password" class="form-control prova1" id="pwd" name="password" ngModel required>
-                  </div>
-                  <ul class="accedi">
-                  <button type="submit" class="bottone" (click)="login(f)">Salva</button>
-                  </ul>
+        
+              <form class="userForm" #f="ngForm">
+
+                  <p>Username:<input type="text" name="username" class="form-control form-control-lg" ngModel/></p>
+                  <p>Password:<input type="text" name="password" class="form-control form-control-lg" ngModel/></p>
+                  
+                  <button (click)="save(f)">Salva</button>
               </form>
         </div>    
       </div>
   </body>
 </html>
+

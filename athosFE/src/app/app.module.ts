@@ -16,9 +16,12 @@ import { PlayEndComponent } from '../components/play-end/play-end.component';
 import { PlayComponent } from '../components/play/play.component';
 import { TeamService } from '../services/team.service';
 import { DatePipe } from '@angular/common';
-import { PlayTeamComponent } from "src/components/play-team/play-team.component";
-import { PlayOnlyComponent } from "src/components/play-only/play-only.component";
+import { PlayTeamComponent } from 'src/components/play-team/play-team.component';
+import { PlayOnlyComponent } from 'src/components/play-only/play-only.component';
 import { SuperUserComponent } from '../components/super-user/super-user.component';
+import { ViewSuperComponent } from '../components/view-super/view-super.component';
+import { SuperListComponent } from '../components/super-list/super-list.component';
+import { UserService } from '../services/user.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { SuperUserComponent } from '../components/super-user/super-user.componen
     PlayComponent,
     PlayTeamComponent,
     PlayOnlyComponent,
-    SuperUserComponent
+     SuperUserComponent,
+     ViewSuperComponent,
+     SuperListComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,8 @@ import { SuperUserComponent } from '../components/super-user/super-user.componen
     GameService,
     RelUserGameTeamService,
     TeamService,
-    DatePipe
+    DatePipe,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

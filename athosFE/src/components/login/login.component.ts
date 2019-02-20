@@ -29,7 +29,7 @@ export class loginComponent implements OnInit {
           console.log("user");
 
           if(response.role==0)
-           this.router.navigateByUrl("/superUser");
+           this.router.navigateByUrl("/viewSuper");
           else if(response.role==1)
            this.router.navigateByUrl("/gameMaster");
           else if(response.role==2)

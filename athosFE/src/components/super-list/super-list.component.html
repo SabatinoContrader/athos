@@ -1,0 +1,39 @@
+<html>
+<body>
+        <div class="text">
+                ELENCO DEI GAME MASTER
+          </div>
+    <div class="nav">
+        <nav class="navbar navbar-light bg-dark nav justify-content-end" id="nav">
+            <ul>
+                    <li class="nav-item">
+                            <a href="../viewSuper">Indietro</a>
+                    </li>  
+            <li class="nav-item">
+                <a  (click)="logout()" href="/#/login">Logout</a>
+            </li>
+          </ul>
+        </nav>
+    </div>
+    <div class="readTable">
+        <ul>
+        <table class = "table">
+            <thead>
+                <tr></tr>
+                <tr *ngIf="gamemaster">
+                    <th>Username</th> 
+                    <th>Data Iscrizione</th>   
+                </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of gamemaster">
+                  <td>{{user.username}}</td>
+                  <td>{{user.data_iscrizione}}</td>
+               </tr>
+            </tbody>
+        </table>
+        </ul>
+    </div>
+  </body>
+  </html>
+  

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/Game';
 import { GameService } from 'src/services/game.service';
 import { User } from 'src/models/User';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-game',
@@ -14,14 +15,17 @@ export class GameComponent implements OnInit {
   public games: Array<Game>
   public userDTO:User
   
-  constructor(private router: Router, private gameService: GameService) { }
+  constructor(private router: Router, private gameService: GameService, private datePipe: DatePipe) { }
 
   ngOnInit() {
-    this.gameService.findAll().subscribe((response) =>{
-      this.games=response;
-      console.log(this.games);      
+    this.gameService.findAll().subscribe((response) =>{ this.games=response
+            this.games.forEach(element => { 
+              element.data_inizio = this.datePipe.transform(element.data_inizio, 'dd/MM/yyyy');
+              element.data_fine = this.datePipe.transform(element.data_fine, 'dd/MM/yyyy');
+            });
     } );
   }
+
 
   logout(){
     sessionStorage.clear();

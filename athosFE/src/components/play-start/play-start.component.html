@@ -1,5 +1,8 @@
 <html>
 <body>
+        <div class="text">
+                CONTINUA UNA PARTITA 
+          </div>
   <div class="nav">
       <nav class="navbar navbar-light bg-dark nav justify-content-end" id="nav">
           <ul>
@@ -14,7 +17,7 @@
   </div>
   <div class="readTable">
       <ul>
-      <table class = "table">
+      <table  class="row" id="blank"> <!--class = "table"-->
           <thead>
               <tr></tr>
               <tr *ngIf="partite">
@@ -22,16 +25,24 @@
                   <td>Team</td> 
                   <td>Poi </td> 
                   <td>Punteggio</td>
+                  <td></td>
               </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let relusergameteam of partite">
-                <td>{{relusergameteam.id_game.nome}}</td>
+          <tr *ngFor="let relusergameteam of partite">              
+            <td>{{relusergameteam.id_game.nome}}</td>
                 <td>{{relusergameteam.id_team.nome}}</td>
                 <td>{{relusergameteam.id_poi.nome}}</td>
                 <td>{{0}}</td>
-                <td>   
-                    <tr><button class="btn lg btn-primary" type = "submit">Comincia</button></tr>
+                <td>
+
+                        <tr><button class = "bottone2" >Riprendi</button></tr>
+              
+                        <tr><button class="bottone1" type = "submit" (click)="delete(relusergameteam.id)" >X</button></tr>
+             
+                    <!--<tr><button class = "btn lg btn-primary" type = "submit" >Riprendi</button></tr>
+                    [routerLink]="['/updateGame']" [queryParams]="{idGame: game.id}"-->
+                    
                 </td>
           </tr>
           </tbody>
