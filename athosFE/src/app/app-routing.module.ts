@@ -10,6 +10,8 @@ import { PlayEndComponent } from '../components/play-end/play-end.component';
 import { SuperUserComponent } from '../components/super-user/super-user.component';
 import { ViewSuperComponent } from '../components/view-super/view-super.component';
 import { SuperListComponent } from '../components/super-list/super-list.component';
+import { PoiComponent } from '../components/poi/poi.component';
+import { SponsorComponent } from '../components/sponsor/sponsor.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -22,7 +24,9 @@ const routes: Routes = [
   {path:'playEnd', component: PlayEndComponent},
   {path:'superUser', component: SuperUserComponent},
   {path:'viewSuper', component: ViewSuperComponent},
-  {path:'superList', component: SuperListComponent}
+  {path:'superList', component: SuperListComponent},
+  {path:'poi',component:PoiComponent},
+  {path:'sponsor',component:SponsorComponent}
 ];
 
 @NgModule({

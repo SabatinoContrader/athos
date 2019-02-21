@@ -1,0 +1,52 @@
+<html>
+<body>
+        <div class="text">
+                PUNTI DI INTERESSE 
+          </div>
+  <div class="nav">
+      <nav class="navbar navbar-light bg-dark nav justify-content-end" id="nav">
+          <ul>
+                <li class="nav-item">
+                        <a  href="../gameMaster">Crea Nuovo Poi</a>
+                    </li>
+                <li class="nav-item">
+                        <a href="../gameMaster">Indietro</a>
+                </li>  
+          <li class="nav-item">
+              <a  (click)="logout()" href="/#/login">Logout</a>
+          </li>
+        </ul>
+      </nav>
+  </div>
+  <div class="readTable">
+      <ul>
+      <table  class="row" id="blank"> <!--class = "table"-->
+          <thead>
+              <tr></tr>
+              <tr *ngIf="tuttipoi">
+                  <td>Nome</td> 
+                  <td>Latitudine</td> 
+                  <td>Longitudine </td> 
+                  <td></td>
+              </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let poi of tuttipoi">              
+            <td>{{poi.nome}}</td>
+                <td>{{poi.latitudine}}</td>
+                <td>{{poi.longitudine}}</td>
+                <td>
+
+                        <tr><button class = "bottone2" >MODIFICA</button></tr>
+              
+                        <tr><button class="bottone1" type = "submit" (click)="delete(poi.id)" >X</button></tr>
+             
+                </td>
+          </tr>
+          </tbody>
+      </table>
+      </ul>
+  </div>
+</body>
+</html>
+
