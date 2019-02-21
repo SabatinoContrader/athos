@@ -32,15 +32,20 @@ public class SponsorService {
 				return sponsor;	
 		}
 		
-		public List<Sponsor> findAll() {
-			List<Sponsor> sponsor = sponsorRepository.findAll();	
+		public List<Sponsor> findAttivi() {
+			List<Sponsor> sponsor = sponsorRepository.findAttivi();	
 				return sponsor;	
 		}
 
-		public boolean save(Sponsor sponsor) {
+		public boolean saveSponsor(Sponsor sponsor) {
 			sponsorRepository.save(sponsor);	
 			return true;
 			
 		}
+		
+		public int disattivaSponsor(int id) {
+			return sponsorRepository.disattivaSponsor(id);
+		}
+		
 		
 }

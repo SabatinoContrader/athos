@@ -34,14 +34,19 @@ public class PoiService {
 				return poi;	
 		}
 		
-		public List<Poi> findAll() {
-			List<Poi> poi = poiRepository.findAll();	
+		public List<Poi> findAttivi() {
+			List<Poi> poi = poiRepository.findAttivi();	
 				return poi;	
 		}
 
-		public boolean save(Poi poi) {
+		public boolean savePoi(Poi poi) {
 			poiRepository.save(poi);	
 			return true;
 			
 		}
+		
+		public int disattivaPoi(int id) {
+			return poiRepository.disattivaPoi(id);
+		}
+		
 }

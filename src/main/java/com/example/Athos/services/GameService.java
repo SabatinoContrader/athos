@@ -34,11 +34,8 @@ public class GameService {
 		
 		User user=userConverter.converToEntity(userDTO);
 		List<Game> game =  gameRepository.findByIdcreatore(user);
-		List<GameDTO> gameDTO= new ArrayList<>();
-		
-		game.forEach(i->gameDTO.add(gameConverter.convertToDTO(i)));
-
-		
+		List<GameDTO> gameDTO= new ArrayList<>();	
+		game.forEach(i->gameDTO.add(gameConverter.convertToDTO(i)));	
 		return gameDTO;
 		
 	}

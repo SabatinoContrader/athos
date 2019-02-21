@@ -16,6 +16,7 @@ public class PoiConverter implements Converter<Poi , PoiDTO>{
 		poi.setNome(poiDTO.getNome());
 		poi.setLatitudine(poiDTO.getLatitudine());
 		poi.setLongitudine(poiDTO.getLongitudine());
+		poi.setAttivo(poiDTO.isAttivo());
 		
 		return poi;
 	}
@@ -29,6 +30,7 @@ public class PoiConverter implements Converter<Poi , PoiDTO>{
 		poiDTO.setNome(poi.getNome());
 		poiDTO.setLatitudine(poi.getLatitudine());
 		poiDTO.setLongitudine(poi.getLongitudine());
+		poiDTO.setAttivo(poi.isAttivo());
 		
 		return poiDTO;
 		}
