@@ -13,7 +13,7 @@ import { DatePipe } from '@angular/common';
 export class GameComponent implements OnInit {
 
   public games: Array<Game>
-  public userDTO:User
+ // public userDTO:User
   
   constructor(private router: Router, private gameService: GameService, private datePipe: DatePipe) { }
 

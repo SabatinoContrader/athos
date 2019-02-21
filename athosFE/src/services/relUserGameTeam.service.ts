@@ -38,5 +38,10 @@ export class RelUserGameTeamService {
     this.user=JSON.parse(sessionStorage.getItem("user")); 
     return this.http.post<Array<RelUserGameTeam>>('http://localhost:8080/athos/relUserGame/tuttiGiochi', this.user);
     }
+
+    allGameEnd():Observable<Array<RelUserGameTeam>>{
+      this.user=JSON.parse(sessionStorage.getItem("user")); 
+      return this.http.post<Array<RelUserGameTeam>>('http://localhost:8080/athos/relUserGame/tuttiGiochiFiniti', this.user);
+      }
   
 }
