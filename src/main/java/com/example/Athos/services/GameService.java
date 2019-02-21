@@ -12,6 +12,7 @@ import com.example.Athos.dao.GameRepository;
 import com.example.Athos.dto.GameDTO;
 import com.example.Athos.dto.UserDTO;
 import com.example.Athos.model.Game;
+import com.example.Athos.model.RelUserGame;
 import com.example.Athos.model.User;
 
 @Service
@@ -67,20 +68,20 @@ public class GameService {
 		List<Game> game = gameRepository.findByNonAttivo(idCreatore);
 		
 			return game;
-		
+	
 	}
 
 	public boolean saveGame(Game game) {
 		gameRepository.save(game);
-		
 		return true;
-		
 	}
 	
 	public int disattivaGame(int id) {
-
 		return gameRepository.disattivaGame(id);
-		
+	}
+	
+	public List<Game> findAttivi() {
+		return gameRepository.findAttivi();	
 	}
 	
 }

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
 
 @RestController
 @CrossOrigin(value = "*")
@@ -41,13 +42,17 @@ public class GameController {
 		this.gameService = gameService;
 		this.relUserGameService = relUserGameService;
 	}
-
+	
+	@RequestMapping(value = "/tuttiGiochi", method = RequestMethod.GET)
+	public List<Game> tuttiGiochi( HttpServletRequest request) {
+		this.session = request.getSession();
+		List<Game> poi = gameService.findAttivi();
+		return poi;
+	}
 	
 	
-
 	@RequestMapping(value = "/giochiPerCreatore", method = RequestMethod.POST)
 	public List <GameDTO> gameCreatore(HttpServletRequest request, Model model, @RequestBody UserDTO userDTO) {
-		
 		List <GameDTO> gameDTO=gameService.findByCreatore(userDTO);
 		model.addAttribute("game", gameDTO);
 		return gameDTO;

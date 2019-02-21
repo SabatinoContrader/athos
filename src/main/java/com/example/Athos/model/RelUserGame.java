@@ -61,7 +61,12 @@ public class RelUserGame implements Serializable {
 	
 	@Column (name="data_fine")
 	private Date data_fine;
+	
+	@Column(name="attivo")
+	@NotNull
+	private boolean attivo=true;
 
+	
 }
 	
 

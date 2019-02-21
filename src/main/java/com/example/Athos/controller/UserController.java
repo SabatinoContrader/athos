@@ -27,7 +27,7 @@ import com.example.Athos.GenericResponse;
 public class UserController {
 
 	private UserService userService;
-	//private HttpSession session;
+	private HttpSession session;
 	private UserConverter userConverter;
 	
 	@Autowired
@@ -62,7 +62,12 @@ public class UserController {
 
 		 UserDTO userDTO2 = userService.login(userDTO.getUsername(),userDTO.getPassword());
 		 
-		 return userDTO2;
+		// this.session = request.getSession();
+		 //session.setAttribute("user",userDTO2);
+		 request.getSession().setAttribute("user", userDTO2);
+		 
+		return userDTO2;
+
 				
 		 //userService.login(userDTO.getUsername(),userDTO.getPassword());
 		// if (role == 0) {return userDTO;} //"homesuper"
@@ -76,7 +81,13 @@ public class UserController {
 	public boolean save(@RequestBody UserDTO userDTO , HttpServletRequest request) {
 		userService.insert(userDTO);
 		return true;
-
+	}
+	
+	@RequestMapping(value = "/tuttiGamer", method = RequestMethod.GET)
+	public List<User> tuttiGamer( HttpServletRequest request) {
+		this.session = request.getSession();
+		List<User> poi = userService.allGamer(1);
+		return poi;
 	}
 }
 

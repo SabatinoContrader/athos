@@ -42,9 +42,9 @@ public class Poi implements Serializable {
 		@NotNull
 		private String longitudine;
 		
-		@Column (name="indizio")
+		@Column (name="nome")
 		@NotNull
-		private String indizio;
+		private String nome;
 
 		
 		@Column(name="attivo")

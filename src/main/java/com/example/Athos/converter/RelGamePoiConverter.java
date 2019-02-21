@@ -11,9 +11,10 @@ public class RelGamePoiConverter implements Converter<RelGamePoi , RelGamePoiDTO
 	public RelGamePoi converToEntity(RelGamePoiDTO relgamepoiDTO) {
 		RelGamePoi relgamepoi=new RelGamePoi();
 		relgamepoi.setId(relgamepoiDTO.getId());
-		relgamepoi.setId_game(relgamepoi.getId_game());
-		relgamepoi.setId_poi(relgamepoi.getId_poi());
-		relgamepoi.setOrdine(relgamepoi.getOrdine());
+		relgamepoi.setId_game(relgamepoiDTO.getId_game());
+		relgamepoi.setId_poi(relgamepoiDTO.getId_poi());
+		relgamepoi.setOrdine(relgamepoiDTO.getOrdine());
+		relgamepoi.setIndizio(relgamepoiDTO.getIndizio());
 		return relgamepoi;
 	}
 
@@ -24,7 +25,7 @@ public class RelGamePoiConverter implements Converter<RelGamePoi , RelGamePoiDTO
 		relgamepoiDTO.setId_game(relgamepoi.getId_game());
 		relgamepoiDTO.setId_poi(relgamepoi.getId_poi());
 		relgamepoiDTO.setOrdine(relgamepoi.getOrdine());
-		
+		relgamepoiDTO.setIndizio(relgamepoi.getIndizio());
 		return relgamepoiDTO;
 		}
 }

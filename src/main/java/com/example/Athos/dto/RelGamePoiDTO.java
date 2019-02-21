@@ -27,4 +27,5 @@ public class RelGamePoiDTO {
 	private Game id_game;
 	private Poi id_poi;
 	private Sponsor id_sponsor;
+	private String indizio;
 }

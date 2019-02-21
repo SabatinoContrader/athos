@@ -1,6 +1,9 @@
 package com.example.Athos.dao;
 
+import com.example.Athos.model.Game;
 import com.example.Athos.model.RelUserGame;
+import com.example.Athos.model.User;
+
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -29,5 +32,18 @@ public interface RelUserGameRepository extends CrudRepository<RelUserGame, Long>
 	//List<RelUserGame> findByIdTeam(int id_team);
 	//List<RelUserGame> findByIdGame(int id_game);
 	RelUserGame findById(int id);
+	
+	@Modifying
+	@Query(value="update rel_user_game_team set attivo=0 where id=?", nativeQuery = true)
+	int disattiva(int id);
+	
+	@Modifying
+	@Query(value="select * from rel_user_game_team where attivo=1 and id_user=?", nativeQuery = true)
+	List<RelUserGame> findXGiocatore(User user);
+	
+
+	@Modifying
+	@Query(value="select * from rel_user_game_team where (id_user = ? and (id_poi= 2  or attivo=0))", nativeQuery = true)
+	List<RelUserGame> giochiFiniti(User user);
 	
 }

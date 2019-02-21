@@ -2,6 +2,7 @@ package com.example.Athos.dao;
 
 import com.example.Athos.model.Game;
 import com.example.Athos.model.Poi;
+import com.example.Athos.model.RelUserGame;
 import com.example.Athos.model.User;
 
 import java.sql.Connection;
@@ -26,7 +27,7 @@ public interface GameRepository extends CrudRepository<Game, Integer> {
 	@Query(value="select * from game where nome=?", nativeQuery = true)
 	List<Game> findByVersione(String nome);
 	
-
+	List<Game> findAll();
 	Game findById(int id);
 	Game save(Game game);
 	
@@ -42,5 +43,8 @@ public interface GameRepository extends CrudRepository<Game, Integer> {
 	@Query(value="update game set attivo=0 where id=?", nativeQuery = true)
 	int disattivaGame(int id);
 	
+	@Modifying
+	@Query(value="select * from game where attivo=1 ", nativeQuery = true)
+	List<Game> findAttivi();
 	
 }

@@ -3,6 +3,7 @@ package com.example.Athos.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.Athos.dao.UserRepository;
+import com.example.Athos.model.Game;
 import com.example.Athos.model.User;
 import com.example.Athos.dto.UserDTO;
 import com.example.Athos.converter.UserConverter;
@@ -67,6 +68,9 @@ public class UserService {
 	 public User insert(UserDTO userDTO) {
 		 User user = userConverter.converToEntity(userDTO);
 		 return this.userRepository.save(user);
-		 	 }
+	 }
 	 
+	 public List<User> allGamer(int role) {
+			return userRepository.findUserByRole(role);	
+		} 
 	  }

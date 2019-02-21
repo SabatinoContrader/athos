@@ -49,6 +49,11 @@ public class RelGamePoi implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_sponsor")
     private Sponsor id_sponsor;
+	
+	@Column(name="indizio")
+	@NotNull
+	private String indizio;
+
 		
 }
 

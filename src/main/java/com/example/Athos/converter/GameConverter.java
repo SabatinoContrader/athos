@@ -15,6 +15,8 @@ public class GameConverter implements Converter<Game , GameDTO> {
 		game.setNome(gameDTO.getNome());
 		game.setDescrpercorso(gameDTO.getDescr_percorso());
 		game.setVersione(gameDTO.getVersione());
+		game.setDescr_evento(gameDTO.getDescr_evento());
+		game.setDescrpercorso(gameDTO.getDescr_percorso());
 		game.setAttivo(gameDTO.isAttivo());
 		game.setDescr_evento(gameDTO.getDescr_evento());
 		game.setData_inizio(gameDTO.getData_inizio());
@@ -30,6 +32,8 @@ public class GameConverter implements Converter<Game , GameDTO> {
 		gameDTO.setNome(game.getNome());
 		gameDTO.setDescr_percorso(game.getDescrpercorso());
 		gameDTO.setVersione(game.getVersione());
+		gameDTO.setDescr_percorso(game.getDescrpercorso());
+		gameDTO.setDescr_evento(game.getDescr_evento());
 		gameDTO.setAttivo(game.isAttivo());
 		gameDTO.setDescr_evento(game.getDescr_evento());
 		gameDTO.setData_inizio(game.getData_inizio());

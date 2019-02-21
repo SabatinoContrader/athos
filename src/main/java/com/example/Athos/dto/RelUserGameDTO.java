@@ -25,5 +25,6 @@ public class RelUserGameDTO {
 		private Team id_team;
 		private Date data_inizio;
 		private Date data_fine;
-
+		private boolean attivo;
+		
 }

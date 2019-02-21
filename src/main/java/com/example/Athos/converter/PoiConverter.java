@@ -13,7 +13,7 @@ public class PoiConverter implements Converter<Poi , PoiDTO>{
 		Poi poi=new Poi();
 		
 		poi.setId(poiDTO.getId());
-		poi.setIndizio(poiDTO.getIndizio());
+		poi.setNome(poiDTO.getNome());
 		poi.setLatitudine(poiDTO.getLatitudine());
 		poi.setLongitudine(poiDTO.getLongitudine());
 		
@@ -26,7 +26,7 @@ public class PoiConverter implements Converter<Poi , PoiDTO>{
 		PoiDTO poiDTO=new PoiDTO();
 		
 		poiDTO.setId(poi.getId());
-		poiDTO.setIndizio(poi.getIndizio());
+		poiDTO.setNome(poi.getNome());
 		poiDTO.setLatitudine(poi.getLatitudine());
 		poiDTO.setLongitudine(poi.getLongitudine());
 		
