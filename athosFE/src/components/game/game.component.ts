@@ -26,6 +26,12 @@ export class GameComponent implements OnInit {
     } );
   }
 
+  delete(idgame: String){
+    this.gameService.delete(idgame).subscribe(async(response)=> {
+      await this.ngOnInit();
+    })
+
+  }
 
   logout(){
     sessionStorage.clear();

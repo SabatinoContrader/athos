@@ -32,6 +32,10 @@ export class GameService {
     return this.http.get<Array<Game>>('http://localhost:8080/athos/Game/tuttiGiochi')
     .pipe(tap((response) => console.log("Game"), catchError(this.handleError("login error", {}))))
   }
+
+  delete(idGame: String): Observable<boolean>{
+    return this.http.post<boolean>('http://localhost:8080/athos/Game/disattivaGiochi', idGame);
+  }
  /*
   readOne(idmedico:string): Observable<Medico>{
     return this.http.get<Medico>('http://localhost:8080/HomeMedico/updateForm?id='+idmedico);
@@ -43,9 +47,7 @@ export class GameService {
     return this.http.post<Medico>("http://localhost:8080/HomeMedico/updateMedico", params)
   }
 
-  delete(id: String): Observable<boolean>{
-    return this.http.get<boolean>('http://localhost:8080/HomeMedico/deleteMedico?id='+id);
-  }
+  
 
   newMedico(nomeMedico:string, cognomeMedico:string, specializzazioneMedico:string, indirizzoMedico:string, mailMedico:string): Observable<Medico>{
     const params = new HttpParams().set("nomeMedico", nomeMedico).set("cognomeMedico", cognomeMedico).set("specializzazioneMedico",specializzazioneMedico).set("indirizzoMedico",indirizzoMedico).set("mailMedico",mailMedico);
