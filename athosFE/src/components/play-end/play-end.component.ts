@@ -17,7 +17,7 @@ export class PlayEndComponent implements OnInit {
 
   ngOnInit() 
   {   
-     this.relUserGameTeamService.findAll().subscribe(response => {this.partite = response
+     this.relUserGameTeamService.allGameEnd().subscribe(response => {this.partite = response
     this.partite.forEach(element => {
       element.data_inizio= this.datePipe.transform(element.data_inizio, 'dd/MM/yyyy');
       element.data_fine= this.datePipe.transform(element.data_fine, 'dd/MM/yyyy');

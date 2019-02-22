@@ -22,6 +22,10 @@ import { SuperUserComponent } from '../components/super-user/super-user.componen
 import { ViewSuperComponent } from '../components/view-super/view-super.component';
 import { SuperListComponent } from '../components/super-list/super-list.component';
 import { UserService } from '../services/user.service';
+import { PoiService } from '../services/poi.service';
+import { SponsorService } from '../services/sponsor.service';
+import { PoiComponent } from '../components/poi/poi.component';
+import { SponsorComponent } from '../components/sponsor/sponsor.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,9 @@ import { UserService } from '../services/user.service';
     PlayOnlyComponent,
      SuperUserComponent,
      ViewSuperComponent,
-     SuperListComponent
+     SuperListComponent,
+     PoiComponent,
+     SponsorComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,9 @@ import { UserService } from '../services/user.service';
     RelUserGameTeamService,
     TeamService,
     DatePipe,
-    UserService
+    UserService,
+    PoiService,
+    SponsorService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,50 @@
+<html>
+<body>
+        <div class="text">
+                LISTA DEGLI SPONSOR
+          </div>
+  <div class="nav">
+      <nav class="navbar navbar-light bg-dark nav justify-content-end" id="nav">
+          <ul>
+                <li class="nav-item">
+                        <a  href="../gameMaster">Crea Nuovo Sponsor</a>
+                    </li>
+                <li class="nav-item">
+                        <a href="../gameMaster">Indietro</a>
+                </li>  
+          <li class="nav-item">
+              <a  (click)="logout()" href="/#/login">Logout</a>
+          </li>
+        </ul>
+      </nav>
+  </div>
+  <div class="readTable">
+      <ul>
+      <table  class="row" id="blank"> <!--class = "table"-->
+          <thead>
+              <tr></tr>
+              <tr *ngIf="tuttisponsor">
+                  <td>Nome</td> 
+                  <td>Messaggio</td> 
+                  <td></td>
+              </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let sponsor of tuttisponsor">              
+                 <td>{{sponsor.name}}</td>
+                <td>{{sponsor.messaggio}}</td>
+                <td>
+
+                        <tr><button class = "bottone2" >MODIFICA</button></tr>
+              
+                        <tr><button class="bottone1" type = "submit" (click)="delete(sponsor.id)" >X</button></tr>
+             
+                </td>
+          </tr>
+          </tbody>
+      </table>
+      </ul>
+  </div>
+</body>
+</html>
+
